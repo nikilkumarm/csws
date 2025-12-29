@@ -8,12 +8,12 @@ import { ArrowRight } from "lucide-react";
 // The source photos
 const pilePhotos = [
   "/images/pile/p1.JPG",
-  "/images/pile/p2.JPG",
-  "/images/pile/p3.JPG",
+  "/images/pile/p2.jpg",
+  "/images/pile/p3.jpg",
   "/images/pile/p4.JPG",
   "/images/pile/p5.JPG",
   "/images/pile/p6.JPG",
-  "/images/pile/p7.JPG",
+  "/images/pile/p7.jpg",
   "/images/pile/p8.JPG",
 ];
 
