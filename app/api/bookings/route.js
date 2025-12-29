@@ -67,6 +67,8 @@ export async function POST(req) {
 
     } catch (error) {
         console.error('Error in /api/bookings:', error);
-        return NextResponse.json({ error: 'Failed to save booking.' }, { status: 500 });
+        return NextResponse.json({
+            error: `Failed to save booking: ${error.message}`
+        }, { status: 500 });
     }
 }
