@@ -1,0 +1,477 @@
+/* stylelint-disable media-feature-range-notation */
+/* stylelint-disable declaration-block-single-line-max-declarations */
+/* stylelint-disable at-rule-empty-line-before */
+/* stylelint-disable keyframes-name-pattern */
+/* stylelint-disable rule-empty-line-before */
+/* stylelint-disable selector-class-pattern */
+/* stylelint-disable color-function-notation */
+/* stylelint-disable alpha-value-notation */
+/* stylelint-disable comment-empty-line-before */
+/* stylelint-disable color-function-alias-notation */
+/* ==========================================================================
+   CINELINE GLOBALS.CSS — ULTRA PREMIUM VERSION
+   Cleaned • Structured • Optimized • Deduplicated
+========================================================================== */
+
+/* Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   BASE RESETS & TYPOGRAPHY
+========================================================================== */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+  line-height: 1.5;
+}
+
+/* Responsive Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* Typography */
+h1,
+h2,
+h3 {
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(28px, 4vw, 42px);
+}
+
+h2 {
+  font-size: clamp(22px, 3.6vw, 34px);
+}
+
+h3 {
+  font-size: clamp(18px, 2.6vw, 22px);
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==========================================================================
+   COLOR SYSTEM — LIGHT & DARK MODE
+========================================================================== */
+
+:root {
+  --bg: #ffffff;
+  /* Changed to light grey */
+  --text: #111111;
+  --muted: #6b6b6b;
+  --card: #ffffff;
+  --accent: #cbb99e;
+  --footer-bg: #0b0b0b;
+  --glass: rgba(255, 255, 255, 0.85);
+  /* Increased opacity slightly for better blur blocking */
+  --nav-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+html.dark {
+  --bg: #0b0b0b;
+  --text: #f5f5f5;
+  --muted: #bfbfbf;
+  --card: #0f0f10;
+  --accent: #b89a70;
+  --footer-bg: #000000;
+  --glass: rgba(8, 8, 8, 0.75);
+  /* FIXED: Lowered opacity from 0.6 to 0.3 to prevent dirty smudge look */
+  --nav-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================================================
+   NAVBAR GLASS UI (FIXED)
+========================================================================== */
+
+nav {
+  /* FIXED: Added background variable so blur doesn't smear underlying text */
+  background: var(--glass);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--nav-shadow);
+
+  /* FIXED: Added positioning to ensure it stays on top of content */
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover\:text-gold:hover {
+  color: var(--accent) !important;
+}
+
+/* ==========================================================================
+   INPUTS & BUTTONS
+========================================================================== */
+
+.input-clean {
+  background: #fff;
+  border: 1px solid #eee;
+  padding: .75rem .9rem;
+  border-radius: .75rem;
+  transition: border-color .18s;
+}
+
+.input-clean:focus {
+  border-color: #999;
+}
+
+.btn-gold {
+  background: #111;
+  color: #fff !important;
+  transition: background-color .12s ease;
+  animation: btnPulse 3s ease-in-out infinite;
+}
+
+.btn-gold:hover {
+  background-color: #333;
+}
+
+@keyframes btnPulse {
+  0% {
+    box-shadow: 0 0 0 rgba(203, 185, 158, 0.0);
+  }
+
+  /* FIXED: Tightened blur from 22px to 15px for cleaner glow */
+  50% {
+    box-shadow: 0 0 15px rgba(203, 185, 158, 0.25);
+  }
+
+  100% {
+    box-shadow: 0 0 0 rgba(203, 185, 158, 0.0);
+  }
+}
+
+/* ==========================================================================
+   PREMIUM CARDS
+========================================================================== */
+
+.card-premium {
+  transition: transform .25s cubic-bezier(.2, .8, .2, 1),
+    box-shadow .25s,
+    border-color .25s;
+}
+
+.card-premium:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.16);
+  border-color: rgba(203, 185, 158, 0.45);
+}
+
+/* ==========================================================================
+   PAGE FADE
+========================================================================== */
+
+.page-fade {
+  opacity: 0;
+  animation: pageFade .6s ease-out forwards;
+}
+
+@keyframes pageFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* ==========================================================================
+   SCROLL REVEAL
+========================================================================== */
+
+.sr {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all .85s cubic-bezier(.22, .9, .36, 1);
+}
+
+.sr-show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sr-delay-1 {
+  transition-delay: .12s;
+}
+
+.sr-delay-2 {
+  transition-delay: .22s;
+}
+
+.sr-delay-3 {
+  transition-delay: .32s;
+}
+
+.sr-delay-4 {
+  transition-delay: .45s;
+}
+
+/* ==========================================================================
+   BOOKING PAGE ANIMATIONS
+========================================================================== */
+
+.booking-fade {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: bookingFade .7s cubic-bezier(.25, .8, .25, 1) forwards;
+}
+
+@keyframes bookingFade {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.booking-logo {
+  opacity: 0;
+  transform: translateY(-8px) scale(.95);
+  animation: logoPop .8s cubic-bezier(.25, .9, .25, 1) .2s forwards;
+}
+
+@keyframes logoPop {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) scale(.92);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.03);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.booking-title {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: titleRise .9s cubic-bezier(.25, .8, .3, 1) .3s forwards;
+}
+
+@keyframes titleRise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.booking-sub {
+  opacity: 0;
+  animation: subFade 1s ease .45s forwards;
+}
+
+@keyframes subFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.booking-card-anim {
+  opacity: 0;
+  transform: translateY(22px) scale(.97);
+  animation: cardPop .75s cubic-bezier(.2, .9, .3, 1) .55s forwards;
+}
+
+@keyframes cardPop {
+  0% {
+    opacity: 0;
+    transform: translateY(22px) scale(.97);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.01);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ==========================================================================
+   BOOKING POPUP
+========================================================================== */
+
+.booking-popup-overlay {
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.35);
+  animation: popupFade .3s ease-out forwards;
+}
+
+@keyframes popupFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.booking-popup-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 24px 28px;
+  max-width: 380px;
+  width: 90%;
+  text-align: center;
+  animation: popupScale .35s cubic-bezier(.2, .9, .25, 1) forwards;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.25);
+}
+
+@keyframes popupScale {
+  0% {
+    transform: scale(.75);
+    opacity: 0;
+  }
+
+  60% {
+    transform: scale(1.03);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.popup-success {
+  border: 2px solid #10b981;
+  box-shadow:
+    0 0 18px rgba(16, 185, 129, 0.4),
+    0 0 45px rgba(16, 185, 129, 0.25);
+}
+
+.popup-error {
+  border: 2px solid #ef4444;
+  box-shadow:
+    0 0 18px rgba(239, 68, 68, 0.4),
+    0 0 45px rgba(239, 68, 68, 0.25);
+}
+
+/* ==========================================================================
+   CINELINE FOOTER — PREMIUM LAYOUT
+========================================================================== */
+
+footer {
+  background: var(--footer-bg);
+  padding-top: 3.5rem;
+  padding-bottom: 2.5rem;
+  color: #ffffff !important;
+}
+
+.cineline-footer-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  .cineline-footer-grid {
+    grid-template-columns: 1.1fr 1fr 1fr 0.8fr;
+  }
+}
+
+.cineline-footer-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+}
+
+.cineline-footer-links a {
+  color: #d6d6d6 !important;
+}
+
+.cineline-footer-links a:hover {
+  color: white !important;
+}
+
+.footer-icon {
+  color: #dcdcdc;
+  transition: all .25s ease;
+}
+
+.footer-icon:hover {
+  color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.cineline-footer-copy {
+  text-align: center;
+  color: #888 !important;
+  font-size: .85rem;
+  margin-top: 1.4rem;
+  padding-top: .8rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Back to Top */
+.back-to-top {
+  cursor: pointer;
+  color: #dcdcdc;
+  transition: color .2s;
+}
+
+.back-to-top:hover {
+  color: white;
+}
+
+/* PERFORMANCE OPTIMIZATIONS */
+* {
+  /* Improve font rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hardware Acceleration Class */
+.will-change-transform {
+  will-change: transform;
+  transform: translateZ(0);
+  /* Hack to force GPU layer */
+}
