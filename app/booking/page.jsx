@@ -55,7 +55,7 @@ export default function BookingPage() {
         }
       });
 
-      await axios.post("http://localhost:5001/bookings", data);
+      await axios.post("/api/bookings", data);
 
       setPopup({
         type: "success",
@@ -87,8 +87,8 @@ export default function BookingPage() {
 
       {/* UPDATED: Styled 'Back to Home' Button */}
       <div className="flex justify-start mb-8">
-        <Link 
-          href="/" 
+        <Link
+          href="/"
           className="
             group inline-flex items-center gap-2.5 
             px-5 py-2.5 
@@ -100,8 +100,8 @@ export default function BookingPage() {
           "
         >
           {/* Animated Arrow Icon */}
-          <svg 
-            width="16" height="16" viewBox="0 0 24 24" fill="none" 
+          <svg
+            width="16" height="16" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
             className="transition-transform duration-300 group-hover:-translate-x-1"
           >
