@@ -229,7 +229,7 @@ function BackToTopButton({ show, onClick }) {
   return (
     <button
       onClick={onClick}
-      className={`fixed bottom-10 right-10 z-50 group p-4 rounded-full bg-[#111] border border-white/10 text-white 
+      className={`fixed bottom-20 right-6 z-50 group p-3 rounded-full bg-[#111] border border-white/10 text-white 
         shadow-[0_0_0_1px_rgba(255,255,255,0.05)]
         transition-all duration-700 ease-[0.22, 1, 0.36, 1]
         hover:scale-110 hover:border-cinelineGold
