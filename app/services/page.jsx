@@ -1,114 +1,192 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
-import ServiceCard from "../components/ServiceCard";
-import { Video, Camera, Package, MonitorPlay } from "lucide-react";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform, useMotionTemplate, useMotionValue } from "framer-motion";
+import { Video, Camera, Package, MonitorPlay, ArrowUpRight } from "lucide-react";
+import TrustedPartners from "../components/TrustedPartners";
+import Image from "next/image";
+import Link from "next/link";
 
-const services = [
+// Data
+const SERVICES = [
   {
     title: "Cinematic Wedding Films",
-    desc: "Every love story deserves a masterpiece. We craft wedding films that feel like cinema.",
+    desc: "We don't just record events; we craft legacies. Every frame is composed with a cinematographer's eye, capturing the raw emotion and grandeur of your union.",
     icon: Video,
     slug: "wedding-films",
+    image: "/images/services/wedding.jpg" // Placeholder path, using gradients for now if image fails
   },
   {
     title: "Event Photography",
-    desc: "From corporate galas to private celebrations, we capture the essence of every moment.",
+    desc: "From high-society galas to intimate private celebrations, we document the essence of the moment with an editorial flair that rivals fashion magazines.",
     icon: Camera,
     slug: "event-photography",
+    image: "/images/services/event.jpg"
   },
   {
     title: "Product Campaigns",
-    desc: "Identify your brand's visual language with high-fidelity product photography.",
+    desc: "Elevate your brand with high-fidelity visuals. We create product imagery that speaks visual language of desire, precision, and luxury.",
     icon: Package,
     slug: "product-campaigns",
+    image: "/images/services/product.jpg"
   },
   {
     title: "Broadcast & Commercials",
-    desc: "End-to-end production for commercials, documentaries, and live broadcasts.",
+    desc: "End-to-end production for commercials and documentaries. We handle everything from conceptualization to the final color grade.",
     icon: MonitorPlay,
     slug: "broadcast-commercials",
+    image: "/images/services/commercial.jpg"
   },
 ];
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
+function PremiumCard({ service, index }) {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
-const item = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
-};
+  function handleMouseMove({ currentTarget, clientX, clientY }) {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
+
+  return (
+    <Link href={`/services/${service.slug}`} className="block w-full">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: index * 0.1 }}
+        className="group relative w-full h-[500px] bg-[#0a0a0a] border border-white/5 overflow-hidden hover:border-cinelineGold/30 transition-all duration-700"
+        onMouseMove={handleMouseMove}
+      >
+        {/* 1. Spotlight Effect */}
+        <motion.div
+          className="pointer-events-none absolute -inset-px opacity-0 transition duration-500 group-hover:opacity-100 mix-blend-soft-light z-10"
+          style={{
+            background: useMotionTemplate`
+                radial-gradient(
+                600px circle at ${mouseX}px ${mouseY}px,
+                rgba(255, 255, 255, 0.1),
+                transparent 80%
+                )
+            `,
+          }}
+        />
+
+        {/* 2. Background Elements */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-0 pointer-events-none" />
+        <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] z-0 mix-blend-overlay" />
+
+        {/* Subtle Background Glow on Hover */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cinelineGold/20 blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+
+        {/* 3. Content */}
+        <div className="relative h-full flex flex-col justify-between p-10 z-20">
+
+          {/* Top: Icon & Number */}
+          <div className="flex justify-between items-start">
+            <div className="w-20 h-20 rounded-full bg-white/5 backdrop-blur-md flex items-center justify-center border border-white/10 group-hover:bg-cinelineGold group-hover:text-black group-hover:border-cinelineGold transition-all duration-500 text-white">
+              <service.icon strokeWidth={1.5} size={40} />
+            </div>
+            <span className="font-mono text-xs text-white/30 group-hover:text-cinelineGold transition-colors duration-500">0{index + 1}</span>
+          </div>
+
+          {/* Bottom: Text Info */}
+          <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+            <h3 className="text-3xl md:text-4xl font-black text-white uppercase leading-none tracking-tighter mb-4">
+              {service.title.split(' ').map((word, i) => (
+                <span key={i} className="block">{word}</span>
+              ))}
+            </h3>
+
+            <div className="w-12 h-[1px] bg-cinelineGold mb-6 group-hover:w-full transition-all duration-700" />
+
+            <p className="text-gray-400 text-sm leading-relaxed mb-6 line-clamp-3 group-hover:text-gray-200 transition-colors duration-500">
+              {service.desc}
+            </p>
+
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-white/50 group-hover:text-cinelineGold transition-colors duration-500">
+              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform -translate-x-2 group-hover:translate-x-0">Explore Service</span>
+              <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75 transform -translate-x-2 group-hover:translate-x-0" />
+            </div>
+          </div>
+
+        </div>
+
+      </motion.div>
+    </Link>
+  );
+}
 
 export default function ServicesPage() {
+  const containerRef = useRef(null);
+
   return (
-    <div className="min-h-screen bg-[#fbfaf8] text-[var(--text)] relative overflow-hidden">
+    <div ref={containerRef} className="min-h-screen bg-black text-white selection:bg-cinelineGold selection:text-white relative overflow-hidden font-sans">
 
-      {/* ATMOSPHERE LAYERS - VISIBLE & PREMIUM */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Top Mesh Gradient - Warmer and clearer */}
-        <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1200px] h-[800px] bg-[radial-gradient(circle,rgba(203,185,158,0.25),transparent_60%)] blur-[80px]" />
-
-        {/* Bottom Right Luxe Glow */}
-        <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-gradient-to-t from-[#cbb99e] via-[#e8e0d5] to-transparent opacity-20 blur-[100px]" />
-
-        {/* Top Left Subtle Cool light for Contrast */}
-        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-to-b from-gray-200 to-transparent opacity-40 blur-[90px]" />
+      {/* GLOBAL BACKGROUND ATMOSPHERE */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-white/5 to-transparent opacity-20" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cinelineGold/5 blur-[150px] rounded-full" />
       </div>
 
-      {/* DISTINCT TEXTURE: Tech Grid */}
-      <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
-        style={{ backgroundImage: `linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)`, backgroundSize: '40px 40px' }}
-      />
+      <main className="relative z-10 pt-40 pb-20">
 
-
-
-      <main className="pt-32 pb-24 max-w-7xl mx-auto px-6 relative z-10">
-
-        <div className="mb-20 text-center max-w-3xl mx-auto">
-          <motion.h1
+        {/* HERO SECTION */}
+        <div className="container mx-auto px-6 mb-32">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-5xl md:text-6xl font-bold mb-6 text-cinelineDark"
+            className="text-center md:text-left"
           >
-            Our <span className="text-cinelineGold">Services</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-gray-500 text-lg leading-relaxed"
-          >
-            We provide a comprehensive suite of creative production services.
-            From initial concept to final cut, perfection is our baseline.
-          </motion.p>
+            {/* Cinematic Label */}
+            <div className="flex flex-col items-center md:items-start relative z-10">
+              <span className="block text-cinelineGold text-sm md:text-base font-bold uppercase tracking-[1em] mb-4 pl-1 opacity-80">
+                Our
+              </span>
+
+              {/* Massive Cinematic Title */}
+              <h1 className="relative text-8xl md:text-[13rem] font-black uppercase leading-[0.8] tracking-tighter mb-12 text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-200 to-gray-600">
+                Services
+                {/* Bloom Effect Duplicate */}
+                <span className="absolute inset-0 text-white opacity-20 blur-2xl -z-10" aria-hidden="true">
+                  Services
+                </span>
+              </h1>
+            </div>
+
+            {/* Cinematic Divider */}
+            <div className="w-full max-w-[200px] h-[2px] bg-gradient-to-r from-cinelineGold to-transparent mb-12" />
+            <div className="flex flex-col md:flex-row justify-between items-start pt-8 gap-8">
+              <p className="max-w-xl text-xl text-gray-400 font-light leading-relaxed">
+                We deliver a comprehensive suite of creative production services. From the initial spark of an idea to the final master export, perfection is our baseline.
+              </p>
+              <div className="hidden md:flex gap-12">
+                <div>
+                  <span className="block text-4xl font-bold text-white mb-2">4+</span>
+                  <span className="text-xs uppercase tracking-widest text-gray-500">Core Disciplines</span>
+                </div>
+                <div>
+                  <span className="block text-4xl font-bold text-white mb-2">Top</span>
+                  <span className="text-xs uppercase tracking-widest text-gray-500">Tier Gear</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          animate="show"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
-          {services.map((s, i) => (
-            <motion.div key={i} variants={item} className="h-full">
-              <ServiceCard
-                index={i}
-                title={s.title}
-                desc={s.desc}
-                icon={s.icon}
-                slug={s.slug}
-              />
-            </motion.div>
+        {/* SERVICES GRID */}
+        <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 border border-white/10 overflow-hidden">
+          {SERVICES.map((service, index) => (
+            <PremiumCard key={index} service={service} index={index} />
           ))}
-        </motion.div>
+        </div>
+
+        {/* TRUSTED PARTNERS SECTION */}
+        <div className="mt-32 border-t border-white/5">
+          <TrustedPartners />
+        </div>
+
       </main>
 
     </div>
