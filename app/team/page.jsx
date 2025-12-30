@@ -105,9 +105,7 @@ export default function TeamPage() {
       </section>
 
       {/* Simple Footer */}
-      <footer className="py-8 bg-black text-center text-xs text-zinc-600 border-t border-white/5">
-        <p>© {new Date().getFullYear()} Cineline Studios. All rights reserved.</p>
-      </footer>
+
 
     </div>
   );
