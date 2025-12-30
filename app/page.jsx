@@ -315,7 +315,7 @@ export default function Page() {
               <div className="absolute bottom-12 left-12 right-12 flex justify-between items-end">
                 <div>
                   <span className="block text-cinelineGold uppercase tracking-widest text-xs mb-2">Featured</span>
-                  <h3 className="text-4xl md:text-5xl font-black text-white drop-shadow-md tracking-tighter">2024 Collection</h3>
+                  <h3 className="text-4xl md:text-5xl font-black text-white drop-shadow-md tracking-tighter">2025 Collection</h3>
                 </div>
               </div>
             </motion.div>

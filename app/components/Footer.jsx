@@ -175,7 +175,6 @@ export default function Footer() {
             <div className="flex flex-wrap gap-8 items-center">
               <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
               <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
-              <Link href="/sitemap" className="hover:text-white transition-colors">Sitemap</Link>
             </div>
           </div>
         </motion.div>
