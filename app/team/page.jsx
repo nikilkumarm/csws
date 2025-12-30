@@ -11,7 +11,7 @@ const TEAM_MEMBERS = [
     id: 1,
     name: "Nikilkumar",
     role: "Founder & Creative Director",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1534308143481-c55f00be8bd7?q=80&w=1000&auto=format&fit=crop", // Moody, dark studio
     bio: "Visionary storyteller crafting narratives that resonate on a primal level. Nikil sees the world in frames, textures, and unwritten emotions.",
     quote: "We don't capture moments; we construct memories.",
     socials: { instagram: "#", linkedin: "#", email: "mailto:nikil@cinelinestudios.com" }
@@ -20,7 +20,7 @@ const TEAM_MEMBERS = [
     id: 2,
     name: "Rakshan",
     role: "Co-Founder & Head of Production",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1506634572416-48cdfe530110?q=80&w=1000&auto=format&fit=crop", // Dramatic lighting
     bio: "The architect of execution. Rakshan ensures that the wildest creative dreams are grounded in flawless technical delivery.",
     quote: "Precision is the ultimate form of art.",
     socials: { instagram: "#", linkedin: "#", email: "mailto:rakshan@cinelinestudios.com" }
@@ -29,7 +29,7 @@ const TEAM_MEMBERS = [
     id: 3,
     name: "Sarah Jenkins",
     role: "Lead Cinematographer",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=1000&auto=format&fit=crop", // Artistic, moody
     bio: "Master of light. Treating every scene as a canvas waiting to be illuminated. Sarah paints with shadows.",
     quote: "Light is a language, and I speak it fluently.",
     socials: { instagram: "#", email: "mailto:sarah@cinelinestudios.com" }
@@ -38,7 +38,7 @@ const TEAM_MEMBERS = [
     id: 4,
     name: "David Chen",
     role: "Senior Editor",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1000&auto=format&fit=crop", // Serious, dark background
     bio: "The rhythm creator. Weaving emotional tapestries from raw footage. David finds the pulse in the silence.",
     quote: "The cut is the heartbeat of the film.",
     socials: { linkedin: "#", email: "mailto:david@cinelinestudios.com" }
@@ -162,17 +162,25 @@ function TeamMemberRow({ member, index, setHovered, isHovered }) {
 
         {/* 02. Hover Image Reveal (Desktop) - Cinematic Wide */}
         <div className="hidden md:block absolute left-[40%] top-1/2 -translate-y-1/2 w-[600px] h-[350px] pointer-events-none z-10 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-[0.22, 1, 0.36, 1] scale-95 group-hover:scale-100 group-hover:translate-x-12">
-          <div className="relative w-full h-full overflow-hidden shadow-2xl shadow-black/50 bg-gray-900 border border-white/5">
+          <div className="relative w-full h-full overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] bg-black border border-white/10">
+            {/* Film Grain Overlay */}
+            <div className="absolute inset-0 z-30 opacity-20 pointer-events-none mix-blend-overlay"
+              style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}
+            />
+
             <Image
               src={member.image}
               alt={member.name}
               fill
-              className="object-cover transition-transform duration-1000 scale-110 group-hover:scale-100 grayscale-[50%] group-hover:grayscale-0"
+              className="object-cover transition-all duration-1000 scale-110 group-hover:scale-100 grayscale contrast-125 brightness-75 group-hover:grayscale-[20%] group-hover:contrast-110 group-hover:brightness-100"
             />
+
             {/* Cinematic Letterbox Bars */}
-            <div className="absolute top-0 left-0 w-full h-[10%] bg-black/80 z-20" />
-            <div className="absolute bottom-0 left-0 w-full h-[10%] bg-black/80 z-20" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent z-10" />
+            <div className="absolute top-0 left-0 w-full h-[12%] bg-black z-20" />
+            <div className="absolute bottom-0 left-0 w-full h-[12%] bg-black z-20" />
+
+            {/* Vignette */}
+            <div className="absolute inset-0 bg-radial-gradient from-transparent via-transparent to-black/80 z-10" />
           </div>
         </div>
 
