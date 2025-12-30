@@ -317,11 +317,6 @@ export default function Page() {
                   <span className="block text-cinelineGold uppercase tracking-widest text-xs mb-2">Featured</span>
                   <h3 className="text-4xl md:text-5xl font-black text-white drop-shadow-md tracking-tighter">2024 Collection</h3>
                 </div>
-                <MagneticButton className="cursor-pointer">
-                  <div className="w-20 h-20 rounded-full bg-white text-black flex items-center justify-center hover:bg-cinelineGold hover:text-white transition-all duration-300">
-                    <Play size={24} fill="currentColor" />
-                  </div>
-                </MagneticButton>
               </div>
             </motion.div>
           </div>
