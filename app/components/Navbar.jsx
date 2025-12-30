@@ -95,17 +95,13 @@ export default function Navbar() {
 
       {/* MOBILE MENU - GOD MODE FORMAL */}
       <div
-        className={`md:hidden fixed inset-0 bg-[#050505] z-[10000] flex flex-col justify-center items-center transition-all duration-700 ease-[0.22, 1, 0.36, 1] ${open ? "clip-path-circle-full opacity-100 visible" : "clip-path-circle-zero opacity-0 invisible delay-300"
+        className={`md:hidden fixed inset-0 bg-black z-[10000] flex flex-col justify-center items-center transition-all duration-700 ease-[0.22, 1, 0.36, 1] ${open ? "clip-path-circle-full opacity-100 visible" : "clip-path-circle-zero opacity-0 invisible delay-300"
           }`}
         style={{
           clipPath: open ? "circle(150% at 90% 5%)" : "circle(0% at 90% 5%)",
           WebkitClipPath: open ? "circle(150% at 90% 5%)" : "circle(0% at 90% 5%)"
         }}
       >
-        {/* Background Atmosphere */}
-        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none"
-          style={{ backgroundImage: 'radial-gradient(circle at center, #222 1px, transparent 1px)', backgroundSize: '40px 40px' }}
-        />
 
         <nav className="flex flex-col gap-0 text-center z-10 w-full px-8 max-w-lg mx-auto">
 
@@ -128,7 +124,7 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className={`group py-6 flex items-center justify-between text-3xl font-light tracking-wide text-gray-400 hover:text-white transition-all duration-500 transform ${open ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
+                className={`group py-6 flex items-center justify-between text-3xl font-light tracking-wide text-white hover:text-cinelineGold transition-all duration-500 transform ${open ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
                   }`}
                 style={{ transitionDelay: `${150 + i * 50}ms` }}
               >
