@@ -10,7 +10,6 @@ import Hero from "./components/Hero";
 import PremiumServices from "./components/PremiumServices";
 import Testimonials from "./components/Testimonials";
 import WhatsAppButton from "./components/WhatsAppButton";
-import WelcomeModal from "./components/WelcomeModal";
 import FounderNote from "./components/FounderNote";
 import { CinematicGrain, SubtleGrid, DotGrid } from "./components/Patterns";
 
@@ -197,7 +196,6 @@ const ProjectCard = ({ title, category, img, year = "2024", colSpan = 1 }) => {
 };
 
 export default function Page() {
-  const [entered, setEntered] = useState(true);
   const containerRef = useRef(null);
 
   // Manifesto Parallax
@@ -207,8 +205,6 @@ export default function Page() {
 
   return (
     <div ref={containerRef} className="bg-[#fcfbf9] min-h-screen text-[#111] overflow-x-hidden selection:bg-cinelineGold selection:text-white font-sans">
-      {!entered && <WelcomeModal onEnter={() => setEntered(true)} />}
-
       <main>
         {/* 1. HERO - FULL SCREEN & IMMERSIVE */}
         <Hero />
