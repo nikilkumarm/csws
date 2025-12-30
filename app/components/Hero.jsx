@@ -53,6 +53,8 @@ export default function Hero() {
       { id: 'farRight', x: 220 * spreadFactor, y: 110 * spreadFactor, rot: -12, z: 0, zIndex: 2, varX: 50, varY: 50, varRot: 15 },
       { id: 'farLeft', x: -220 * spreadFactor, y: -20 * spreadFactor, rot: 8, z: 5, zIndex: 3, varX: 50, varY: 50, varRot: 15 },
       { id: 'botCenter', x: 40 * spreadFactor, y: 170 * spreadFactor, rot: 2, z: 80, zIndex: 45, varX: 30, varY: 30, varRot: 5 },
+      { id: 'deepTopLeft', x: -180 * spreadFactor, y: -180 * spreadFactor, rot: -15, z: -40, zIndex: 1, varX: 60, varY: 60, varRot: 15 },
+      { id: 'midBotRight', x: 200 * spreadFactor, y: 180 * spreadFactor, rot: 10, z: 45, zIndex: 30, varX: 40, varY: 40, varRot: 10 },
     ];
 
     // 3. Generate Randomized Positions based on Architecture + Jitter
