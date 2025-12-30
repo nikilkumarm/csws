@@ -23,14 +23,14 @@ function FounderProfile({ name, role, title, quote, image, reverse = false, inde
             <div className="w-full lg:w-1/2 flex justify-center">
                 <motion.div
                     style={{ opacity }}
-                    className="relative w-full max-w-[500px] aspect-[4/5] overflow-hidden bg-zinc-900 group"
+                    className="relative w-full max-w-[500px] aspect-[4/5] overflow-hidden bg-black group"
                 >
                     <motion.div style={{ y }} className="relative h-full w-full">
                         <Image
                             src={image}
                             alt={name}
                             fill
-                            className="object-cover filter grayscale contrast-125 brightness-[0.8] transition-all duration-1000 group-hover:scale-110 group-hover:grayscale-0 group-hover:brightness-100"
+                            className="object-cover contrast-125 brightness-[0.8] transition-all duration-1000 group-hover:scale-110 group-hover:brightness-100"
                             sizes="(max-width: 1024px) 100vw, 50vw"
                         />
                     </motion.div>
@@ -49,7 +49,7 @@ function FounderProfile({ name, role, title, quote, image, reverse = false, inde
                 </div>
 
                 <div className="max-w-xl space-y-10">
-                    <p className="text-base md:text-xl text-gray-400 font-light leading-relaxed italic border-l border-cinelineGold/30 pl-8">
+                    <p className="text-base md:text-xl text-white/70 font-light leading-relaxed italic border-l border-cinelineGold/30 pl-8">
                         “{quote}”
                     </p>
 
