@@ -134,9 +134,9 @@ function ParallaxMember({ member, index }) {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-        className="w-full md:w-1/2 relative group"
+        className="w-full md:w-1/3 relative group"
       >
-        <div className="relative aspect-[3/4] overflow-hidden rounded-sm">
+        <div className="relative aspect-[3/4] w-2/3 md:w-full mx-auto overflow-hidden rounded-sm">
           <div className="absolute inset-0 bg-cinelineGold/20 mix-blend-overlay z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
           <Image
             src={member.image}
@@ -146,7 +146,7 @@ function ParallaxMember({ member, index }) {
           />
 
           {/* Floating Name Overlay - Creative Typography */}
-          <h2 className={`absolute ${isEven ? '-right-12 md:-right-24' : '-left-12 md:-left-24'} top-12 text-6xl md:text-9xl font-black text-transparent stroke-text z-20 pointer-events-none opacity-50`}>
+          <h2 className={`absolute ${isEven ? '-right-8 md:-right-16' : '-left-8 md:-left-16'} top-8 text-5xl md:text-8xl font-black text-transparent stroke-text z-20 pointer-events-none opacity-30 select-none`}>
             {member.name.split(' ')[0]}
           </h2>
         </div>
@@ -161,11 +161,11 @@ function ParallaxMember({ member, index }) {
         className="w-full md:w-1/2 space-y-8"
       >
         <div className="space-y-2">
-          <h3 className="text-4xl md:text-5xl font-bold text-white tracking-tight">{member.name}</h3>
-          <p className="text-cinelineGold font-mono text-sm uppercase tracking-widest">{member.role}</p>
+          <h3 className="text-5xl md:text-7xl font-display italic font-medium text-white tracking-tighter">{member.name}</h3>
+          <p className="text-cinelineGold font-sans text-xs uppercase tracking-[0.3em]">{member.role}</p>
         </div>
 
-        <p className="text-xl md:text-2xl text-gray-400 font-light leading-relaxed max-w-md">
+        <p className="text-lg md:text-xl text-gray-400 font-light leading-relaxed max-w-sm">
           {member.bio}
         </p>
 
