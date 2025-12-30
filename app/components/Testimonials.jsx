@@ -37,7 +37,7 @@ export default function Testimonials({ darkMode = true }) {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* CARDS GRID */}
-        <div className="grid md:grid-cols-3 gap-8 mb-24">
+        <div className="grid md:grid-cols-3 gap-8 mb-4">
           {testimonials.map((t, i) => (
             <motion.div
               key={i}

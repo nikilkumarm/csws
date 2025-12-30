@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
+import ContactForm from "./ContactForm";
 import {
   Instagram,
   Linkedin,
@@ -49,32 +50,28 @@ export default function Footer() {
   return (
     <footer ref={footerRef} className="w-full relative bg-[#050505] text-gray-300 overflow-hidden font-sans border-t border-white/5">
 
-      {/* 1. TOP CTA SECTION - THE MAGNET */}
-      <div className="relative z-20 pt-10 md:pt-16 pb-24 md:pb-40 border-b border-white/5 bg-gradient-to-b from-black to-transparent">
-        <div className="container mx-auto px-6 flex flex-col items-center text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <span className="text-cinelineGold text-xs font-bold uppercase tracking-[0.2em] block">Ready to start?</span>
-            <h2 className="text-4xl md:text-7xl font-black text-white leading-[1.1] tracking-tighter uppercase mb-2">
-              Let's Build <br />
-              <span className="stroke-text">Something Grand</span>
-            </h2>
-
-            <div className="pt-8 flex justify-center">
-              <Link href="/contact" className="group relative inline-flex items-center gap-6 px-16 py-8 bg-white text-black font-black uppercase tracking-widest text-xs md:text-sm overflow-hidden transition-all duration-500 hover:bg-cinelineGold hover:text-white">
-                <span className="relative z-10 transition-colors group-hover:text-white">Initiate Project</span>
-                <ArrowUpRight size={24} className="relative z-10 group-hover:rotate-45 transition-transform" />
-                <div className="absolute inset-x-0 bottom-0 h-1 bg-cinelineGold scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
-              </Link>
+      {/* 1. CONTACT FORM SECTION - THE CONVERSATION */}
+      <div className="relative z-20 pt-20 pb-24 border-b border-white/5">
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            <div className="space-y-8">
+              <span className="text-cinelineGold text-xs font-semibold uppercase tracking-[0.3em] block">Legacy Starts Here</span>
+              <h2 className="text-4xl md:text-6xl font-black text-white leading-[1.1] tracking-tighter uppercase">
+                Got a vision? <br />
+                <span className="block text-white/90 font-extralight lowercase text-4xl md:text-6xl leading-none mt-2 tracking-tighter">let's make it real.</span>
+              </h2>
+              <div className="w-12 h-1 bg-cinelineGold/50" />
+              <p className="text-gray-500 max-w-md text-sm leading-relaxed font-light">
+                Fill out the form to discuss your project. Whether it’s a global campaign or an intimate story, we are here to define its visual atmosphere.
+              </p>
             </div>
-          </motion.div>
+
+            <div className="relative w-full max-w-xl mx-auto lg:ml-auto">
+              <ContactForm />
+            </div>
+          </div>
         </div>
       </div>
-
       <div className="relative pt-24 pb-12">
         {/* --- DYNAMIC AMBIENCE --- */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-cinelineGold/5 rounded-full blur-[200px] pointer-events-none -translate-y-1/2 translate-x-1/3 z-0" />
@@ -101,9 +98,9 @@ export default function Footer() {
               </div>
 
               <div className="space-y-3">
-                <span className="text-[11px] font-black uppercase tracking-[0.2em] text-cinelineGold/80 block">Studio</span>
+                <span className="text-[11px] font-black uppercase tracking-[0.2em] text-cinelineGold/80 block">Location</span>
                 <p className="text-sm md:text-base text-gray-300 font-light leading-relaxed">
-                  Chennai, India <br />
+                  Tamilnadu, India <br />
                   <span className="text-white/40">Available Globally</span>
                 </p>
               </div>
@@ -112,7 +109,7 @@ export default function Footer() {
             {/* COLUMN 2: ARCHIVE NAV */}
             <div className="md:col-span-3 grid grid-cols-1 gap-12">
               <div>
-                <h3 className="text-white text-xs font-bold uppercase tracking-[0.1em] mb-10 flex items-center gap-3">
+                <h3 className="text-white text-[11px] font-black uppercase tracking-[0.2em] mb-10 flex items-center gap-3">
                   <span className="w-8 h-[1px] bg-cinelineGold/40" /> Archive
                 </h3>
                 <ul className="space-y-4">
@@ -124,25 +121,22 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* COLUMN 3: CONTACT & CONNECT */}
+            {/* COLUMN 3: CONNECT */}
             <div className="md:col-span-4 space-y-12">
-              <div className="bg-white/5 border border-white/10 p-10 rounded-none relative group overflow-hidden">
-                <div className="absolute inset-0 bg-cinelineGold/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                <div className="relative z-10 space-y-6">
-                  <span className="text-[10px] font-mono text-cinelineGold/60 uppercase tracking-[0.1em] block">Direct Inquiry</span>
-                  <a href="mailto:cinelinestudio24@gmail.com" className="text-lg md:text-xl text-white font-medium hover:text-cinelineGold transition-colors border-b border-white/10 pb-2 block w-max">
-                    cinelinestudio24@gmail.com
-                  </a>
-                  <div className="flex items-center gap-6 pt-2">
-                    <a href="https://instagram.com" className="text-white/40 hover:text-cinelineGold transition-colors"><Instagram size={20} /></a>
-                    <a href="https://youtube.com" className="text-white/40 hover:text-cinelineGold transition-colors"><Youtube size={20} /></a>
-                    <a href="https://linkedin.com" className="text-white/40 hover:text-cinelineGold transition-colors"><Linkedin size={20} /></a>
-                    <a href="mailto:cinelinestudio24@gmail.com" className="text-white/40 hover:text-cinelineGold transition-colors"><Mail size={20} /></a>
-                  </div>
+              <div className="space-y-6">
+                <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-cinelineGold/80 block">Direct Inquiry</span>
+                <a href="mailto:cinelinestudio24@gmail.com" className="text-lg md:text-xl text-white font-medium hover:text-cinelineGold transition-colors border-b border-white/10 pb-2 block w-max">
+                  cinelinestudio24@gmail.com
+                </a>
+                <div className="flex items-center gap-6 pt-2">
+                  <a href="https://instagram.com" className="text-white/40 hover:text-cinelineGold transition-colors"><Instagram size={20} /></a>
+                  <a href="https://youtube.com" className="text-white/40 hover:text-cinelineGold transition-colors"><Youtube size={20} /></a>
+                  <a href="https://linkedin.com" className="text-white/40 hover:text-cinelineGold transition-colors"><Linkedin size={20} /></a>
+                  <a href="mailto:cinelinestudio24@gmail.com" className="text-white/40 hover:text-cinelineGold transition-colors"><Mail size={20} /></a>
                 </div>
               </div>
 
-              <div className="flex gap-4">
+              <div className="flex gap-4 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
                 <div className="p-4 bg-white/5 border border-white/5 flex flex-col items-center justify-center flex-1">
                   <Globe size={18} className="text-cinelineGold mb-2" />
                   <span className="text-[9px] font-mono uppercase tracking-widest text-white/30">Worldwide</span>
@@ -206,7 +200,7 @@ function BackToTopButton({ show, onClick }) {
   return (
     <button
       onClick={onClick}
-      className={`fixed bottom-32 right-10 z-50 group p-4 bg-black border border-white/10 text-white rounded-none transition-all duration-700 ease-out 
+      className={`fixed bottom-32 right-10 z-50 group p-4 bg-black border border-white/10 text-white rounded-full transition-all duration-700 ease-out 
         hover:border-cinelineGold shadow-2xl
         ${show ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}
     >

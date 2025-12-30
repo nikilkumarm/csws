@@ -1,4 +1,4 @@
-import { Inter, Outfit } from "next/font/google";
+import { Inter, Outfit, MonteCarlo } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -19,6 +19,13 @@ const outfit = Outfit({
   variable: "--font-outfit",
 });
 
+const monteCarlo = MonteCarlo({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-script",
+});
+
 export const metadata = {
   title: "Cineline Studios",
   description: "Cinematic photography and film production crafted with precision."
@@ -27,7 +34,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${outfit.variable} font-sans antialiased bg-white text-black selection:bg-black selection:text-white`}>
+      <body className={`${inter.variable} ${outfit.variable} ${monteCarlo.variable} font-sans antialiased bg-white text-black selection:bg-black selection:text-white`}>
 
         {/* 1. SMOOTH SCROLL ENGINE */}
         <SmoothScroll />

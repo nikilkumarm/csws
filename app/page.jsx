@@ -408,7 +408,7 @@ export default function Page() {
         <FounderNote />
 
         {/* 7. TESTIMONIALS - IMMERSIVE DARK */}
-        <div className="bg-[#050505] py-32 md:py-40 text-white relative overflow-hidden">
+        <div className="bg-[#050505] py-12 md:py-16 text-white relative overflow-hidden">
           <CinematicGrain opacity={0.05} />
           <DotGrid opacity={0.05} />
           {/* Spotlight Effect & Constellation Pattern */}
@@ -429,7 +429,7 @@ export default function Page() {
             <circle cx="50%" cy="50%" r="200" stroke="rgba(255,255,255,0.05)" fill="none" />
           </svg >
 
-          <div className="max-w-7xl mx-auto px-6 mb-20 text-center relative z-10">
+          <div className="max-w-7xl mx-auto px-6 mb-12 text-center relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
