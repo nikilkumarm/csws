@@ -12,6 +12,7 @@ import Testimonials from "./components/Testimonials";
 import WhatsAppButton from "./components/WhatsAppButton";
 import WelcomeModal from "./components/WelcomeModal";
 import FounderNote from "./components/FounderNote";
+import { CinematicGrain, SubtleGrid, DotGrid } from "./components/Patterns";
 
 // --- VELOCITY SCROLL COMPONENT ---
 function ParallaxText({ children, baseVelocity = 100 }) {
@@ -214,11 +215,13 @@ export default function Page() {
 
         {/* 2. VELOCITY SCROLL STRIP - SEAMLESS BLEND */}
         <div className="py-12 bg-black border-y border-white/10 relative z-20 overflow-hidden">
+          <CinematicGrain opacity={0.1} />
           <ParallaxText baseVelocity={-2}>Visual Excellence • Cineline Studios •</ParallaxText>
         </div>
 
         {/* 3. MANIFESTO - DARK MODE PARALLAX */}
         <section className="relative py-40 md:py-60 px-6 bg-[#050505] text-white">
+          <SubtleGrid opacity={0.05} />
 
           {/* Subtle Dynamic Background & GEOMETRIC PATTERNS */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -406,6 +409,8 @@ export default function Page() {
 
         {/* 7. TESTIMONIALS - IMMERSIVE DARK */}
         <div className="bg-[#050505] py-32 md:py-40 text-white relative overflow-hidden">
+          <CinematicGrain opacity={0.05} />
+          <DotGrid opacity={0.05} />
           {/* Spotlight Effect & Constellation Pattern */}
           < div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-cinelineGold/5 blur-[120px] rounded-full pointer-events-none" />
 

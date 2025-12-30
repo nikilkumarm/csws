@@ -5,6 +5,7 @@ import { Video, Camera, Package, MonitorPlay, ArrowUpRight } from "lucide-react"
 import TrustedPartners from "../components/TrustedPartners";
 import Image from "next/image";
 import Link from "next/link";
+import { CinematicGrain, SubtleGrid, DotGrid } from "../components/Patterns";
 
 // Data
 const SERVICES = [
@@ -58,6 +59,7 @@ function PremiumCard({ service, index }) {
         className="group relative w-full h-[500px] bg-[#0a0a0a] border border-white/5 overflow-hidden hover:border-cinelineGold/30 transition-all duration-700"
         onMouseMove={handleMouseMove}
       >
+        <DotGrid opacity={0.05} />
         {/* 1. Spotlight Effect */}
         <motion.div
           className="pointer-events-none absolute -inset-px opacity-0 transition duration-500 group-hover:opacity-100 mix-blend-soft-light z-10"
@@ -125,6 +127,8 @@ export default function ServicesPage() {
 
       {/* GLOBAL BACKGROUND ATMOSPHERE */}
       <div className="fixed inset-0 pointer-events-none">
+        <CinematicGrain opacity={0.06} />
+        <SubtleGrid opacity={0.04} />
         <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-white/5 to-transparent opacity-20" />
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cinelineGold/5 blur-[150px] rounded-full" />
       </div>

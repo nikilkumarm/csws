@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
 import { Camera, Award, Heart, ArrowRight } from "lucide-react";
 import FounderNote from "../components/FounderNote";
+import { CinematicGrain } from "../components/Patterns";
 
 // --- GOD-LEVEL VISUAL COMPONENTS ---
 
@@ -194,6 +195,7 @@ export default function AboutPage() {
     <div ref={containerRef} className="min-h-screen bg-[var(--bg)] text-[var(--text)] overflow-x-hidden font-sans selection:bg-cinelineGold/30 relative">
 
       <AtmosphericDust />
+      <CinematicGrain opacity={0.05} />
 
       {/* HERO SECTION */}
       <section className="relative h-[90vh] min-h-[700px] flex items-center justify-center overflow-hidden">
