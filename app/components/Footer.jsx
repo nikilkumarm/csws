@@ -82,10 +82,10 @@ export default function Footer() {
 
         <motion.div style={{ y, opacity }} className="max-w-7xl mx-auto px-6 relative z-10">
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-24">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-12 md:mb-24">
 
             {/* Brand Column */}
-            <div className="md:col-span-5 space-y-8">
+            <div className="md:col-span-5 space-y-6 md:space-y-8">
               <Link href="/" className="inline-block group relative">
                 <div className="absolute -inset-4 bg-cinelineGold/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 <Image
@@ -93,17 +93,17 @@ export default function Footer() {
                   width={260}
                   height={90}
                   alt="Cineline Logo"
-                  className="relative z-10 opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+                  className="relative z-10 opacity-90 group-hover:opacity-100 transition-opacity duration-500 w-[180px] md:w-[260px] h-auto"
                 />
               </Link>
 
-              <div className="space-y-6 max-w-md ml-2">
-                <p className="text-2xl md:text-3xl font-display text-white italic leading-tight">
+              <div className="space-y-4 md:space-y-6 max-w-md ml-0 md:ml-2">
+                <p className="text-xl md:text-3xl font-display text-white italic leading-tight">
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-cinelineGold via-white to-cinelineGold bg-[length:200%_auto] animate-text-shimmer">
                     Capturing emotions effortlessly.
                   </span>
                 </p>
-                <p className="text-gray-500 leading-relaxed text-base font-light border-l border-white/10 pl-6">
+                <p className="text-gray-500 leading-relaxed text-sm md:text-base font-light border-l border-white/10 pl-4 md:pl-6">
                   Tailored for those who demand uncompromising quality. We utilize light, shadow, and silence to construct timeless atmospheres.
                 </p>
               </div>
@@ -112,37 +112,41 @@ export default function Footer() {
             {/* Spacer */}
             <div className="hidden md:block md:col-span-1" />
 
-            {/* Explore Links */}
-            <div className="md:col-span-2 space-y-8">
-              <h3 className="flex items-center gap-3 font-display font-bold text-white tracking-widest text-xs uppercase text-cinelineGold/80 mb-6">
-                <span className="w-8 h-[1px] bg-cinelineGold/50" /> Explore
-              </h3>
-              <ul className="space-y-2">
-                <li><FooterLink href="/about">Our Story</FooterLink></li>
-                <li><FooterLink href="/portfolio">Portfolio</FooterLink></li>
-                <li><FooterLink href="/services">Services</FooterLink></li>
-                <li><FooterLink href="/manifesto">Manifesto</FooterLink></li>
-              </ul>
-            </div>
+            {/* LINKS SECTION: Grid on Mobile (Explore + Support) */}
+            <div className="md:col-span-6 grid grid-cols-2 gap-8">
 
-            {/* Support & Connect */}
-            <div className="md:col-span-4 space-y-10">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              {/* Explore Links */}
+              <div className="space-y-6 md:space-y-8">
+                <h3 className="flex items-center gap-3 font-display font-bold text-white tracking-widest text-xs uppercase text-cinelineGold/80 mb-4 md:mb-6">
+                  <span className="w-8 h-[1px] bg-cinelineGold/50" /> Explore
+                </h3>
+                <ul className="space-y-2">
+                  <li><FooterLink href="/about">Our Story</FooterLink></li>
+                  <li><FooterLink href="/portfolio">Portfolio</FooterLink></li>
+                  <li><FooterLink href="/services">Services</FooterLink></li>
+                  <li><FooterLink href="/manifesto">Manifesto</FooterLink></li>
+                </ul>
+              </div>
+
+              {/* Support Links */}
+              <div className="space-y-6 md:space-y-8">
+                <h3 className="flex items-center gap-3 font-display font-bold text-white tracking-widest text-xs uppercase text-cinelineGold/80 mb-4 md:mb-6">
+                  <span className="w-8 h-[1px] bg-cinelineGold/50" /> Support
+                </h3>
+                <ul className="space-y-2">
+                  <li><FooterLink href="/contact">Contact</FooterLink></li>
+                  <li><FooterLink href="/booking">Booking</FooterLink></li>
+                  <li><FooterLink href="/faq">FAQ</FooterLink></li>
+                </ul>
+              </div>
+
+              {/* Social + Contact (Spans 2 columns on mobile, auto on desktop) */}
+              <div className="col-span-2 space-y-8">
                 <div>
-                  <h3 className="flex items-center gap-3 font-display font-bold text-white tracking-widest text-xs uppercase text-cinelineGold/80 mb-6">
-                    <span className="w-8 h-[1px] bg-cinelineGold/50" /> Support
-                  </h3>
-                  <ul className="space-y-2">
-                    <li><FooterLink href="/contact">Contact</FooterLink></li>
-                    <li><FooterLink href="/booking">Booking</FooterLink></li>
-                    <li><FooterLink href="/faq">FAQ</FooterLink></li>
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="flex items-center gap-3 font-display font-bold text-white tracking-widest text-xs uppercase text-cinelineGold/80 mb-6">
+                  <h3 className="flex items-center gap-3 font-display font-bold text-white tracking-widest text-xs uppercase text-cinelineGold/80 mb-4 md:mb-6">
                     <span className="w-8 h-[1px] bg-cinelineGold/50" /> Social
                   </h3>
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="flex flex-wrap gap-3">
                     <SocialLink href="https://instagram.com" icon={Instagram} />
                     <SocialLink href="https://threads.net" icon={MessageCircle} />
                     <SocialLink href="https://youtube.com" icon={Youtube} />
@@ -150,20 +154,22 @@ export default function Footer() {
                     <SocialLink href="mailto:cinelinestudio24@gmail.com" icon={Mail} />
                   </div>
                 </div>
-              </div>
 
-              {/* Contact Box */}
-              <div className="relative group overflow-hidden rounded-2xl bg-white/5 border border-white/10 p-6 hover:border-cinelineGold/30 transition-colors duration-500">
-                <div className="absolute inset-0 bg-gradient-to-r from-cinelineGold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative z-10 flex justify-between items-end">
-                  <div>
-                    <p className="text-xs text-gray-500 uppercase tracking-widest mb-1">Project Enquiries</p>
-                    <a href="mailto:cinelinestudio24@gmail.com" className="text-xl text-white font-medium hover:text-cinelineGold transition-colors">cinelinestudio24@gmail.com</a>
+                {/* Contact Box */}
+                <div className="relative group overflow-hidden rounded-2xl bg-white/5 border border-white/10 p-6 hover:border-cinelineGold/30 transition-colors duration-500">
+                  <div className="absolute inset-0 bg-gradient-to-r from-cinelineGold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="relative z-10 flex justify-between items-end">
+                    <div>
+                      <p className="text-xs text-gray-500 uppercase tracking-widest mb-1">Project Enquiries</p>
+                      <a href="mailto:cinelinestudio24@gmail.com" className="text-lg md:text-xl text-white font-medium hover:text-cinelineGold transition-colors break-all">cinelinestudio24@gmail.com</a>
+                    </div>
+                    <ArrowRight className="text-cinelineGold -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300" />
                   </div>
-                  <ArrowRight className="text-cinelineGold -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300" />
                 </div>
               </div>
+
             </div>
+
           </div>
 
           {/* Bottom Bar */}
