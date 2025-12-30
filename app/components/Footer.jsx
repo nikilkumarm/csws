@@ -140,18 +140,18 @@ export default function Footer() {
                 </div>
               </div>
 
-              <div className="flex gap-4 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
-                <div className="p-4 bg-white/5 border border-white/5 flex flex-col items-center justify-center flex-1">
-                  <Globe size={18} className="text-cinelineGold mb-2" />
-                  <span className="text-[9px] font-mono uppercase tracking-widest text-white/30">Worldwide</span>
+              <div className="flex gap-4">
+                <div className="group/metric p-4 bg-white/5 border border-white/10 flex flex-col items-center justify-center flex-1 hover:border-cinelineGold/50 hover:bg-cinelineGold/5 transition-all duration-300 rounded-sm">
+                  <Globe size={18} className="text-cinelineGold mb-2 group-hover/metric:scale-110 transition-transform" />
+                  <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/80 group-hover/metric:text-white transition-colors text-center leading-tight">Worldwide</span>
                 </div>
-                <div className="p-4 bg-white/5 border border-white/5 flex flex-col items-center justify-center flex-1">
-                  <Zap size={18} className="text-cinelineGold mb-2" />
-                  <span className="text-[9px] font-mono uppercase tracking-widest text-white/30">Performance</span>
+                <div className="group/metric p-4 bg-white/5 border border-white/10 flex flex-col items-center justify-center flex-1 hover:border-cinelineGold/50 hover:bg-cinelineGold/5 transition-all duration-300 rounded-sm">
+                  <Zap size={18} className="text-cinelineGold mb-2 group-hover/metric:scale-110 transition-transform" />
+                  <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/80 group-hover/metric:text-white transition-colors text-center leading-tight">Performative</span>
                 </div>
-                <div className="p-4 bg-white/5 border border-white/5 flex flex-col items-center justify-center flex-1">
-                  <Compass size={18} className="text-cinelineGold mb-2" />
-                  <span className="text-[9px] font-mono uppercase tracking-widest text-white/30">Strategic</span>
+                <div className="group/metric p-4 bg-white/5 border border-white/10 flex flex-col items-center justify-center flex-1 hover:border-cinelineGold/50 hover:bg-cinelineGold/5 transition-all duration-300 rounded-sm">
+                  <Compass size={18} className="text-cinelineGold mb-2 group-hover/metric:scale-110 transition-transform" />
+                  <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/80 group-hover/metric:text-white transition-colors text-center leading-tight">Strategic</span>
                 </div>
               </div>
             </div>
