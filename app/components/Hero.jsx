@@ -114,7 +114,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative w-full pt-24 pb-20 md:pt-32 md:pb-32 bg-[var(--bg)] overflow-hidden select-none min-h-screen flex items-center">
+    <section className="relative w-full pt-20 pb-16 md:pt-32 md:pb-32 bg-[var(--bg)] overflow-hidden select-none min-h-[85vh] md:min-h-screen flex items-center">
 
       {/* ATMOSPHERE LAYERS */}
       <div className="absolute inset-0 pointer-events-none">
@@ -143,7 +143,7 @@ export default function Hero() {
       {/* GOD RAY / PROJECTOR LIGHT EFFECT BEHIND IMAGES */}
       <div className="absolute right-0 top-1/4 w-1/2 h-[500px] bg-gradient-to-l from-cinelineGold/10 to-transparent blur-[120px] pointer-events-none" />
 
-      <div className="relative w-full max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 md:gap-20 items-center">
+      <div className="relative w-full max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 md:gap-20 items-center">
 
         {/* LEFT SIDE: CONTENT */}
         <div className="flex flex-col items-start z-10 will-change-transform">
@@ -210,7 +210,7 @@ export default function Hero() {
         </div>
 
         {/* RIGHT SIDE: PREMIUM CONNECTED GALLERY (Curated 3D Cluster) */}
-        <div className="relative w-full h-[500px] md:h-[600px] flex items-center justify-center perspective-[2000px] cursor-grab active:cursor-grabbing">
+        <div className="relative w-full h-[400px] md:h-[600px] flex items-center justify-center perspective-[2000px] cursor-grab active:cursor-grabbing">
           <div
             className="relative w-full h-full preserve-3d will-change-transform"
             style={{

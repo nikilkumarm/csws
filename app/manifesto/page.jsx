@@ -37,7 +37,7 @@ export default function ManifestoPage() {
             </nav>
 
             {/* Main Content */}
-            <main className="relative z-10 pt-40 pb-32 px-6">
+            <main className="relative z-10 pt-24 md:pt-40 pb-20 md:pb-32 px-6">
                 <div className="max-w-4xl mx-auto">
 
                     {/* Title Section */}
@@ -45,19 +45,19 @@ export default function ManifestoPage() {
                         initial={{ opacity: 0, y: 50 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                        className="mb-32 text-center"
+                        className="mb-20 md:mb-32 text-center"
                     >
                         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8">
                             <Sparkles size={14} className="text-cinelineGold" />
                             <span className="text-xs uppercase tracking-[0.2em] text-white">Our Philosophy</span>
                         </div>
-                        <h1 className="text-6xl md:text-8xl font-bold text-white tracking-tighter leading-none mb-8">
+                        <h1 className="text-5xl md:text-8xl font-bold text-white tracking-tighter leading-none mb-8">
                             The Search for <span className="text-transparent bg-clip-text bg-gradient-to-r from-cinelineGold to-white italic font-serif pr-2">Truth</span> in Every Frame.
                         </h1>
                     </motion.div>
 
                     {/* Manifesto Text */}
-                    <div className="space-y-20">
+                    <div className="space-y-12 md:space-y-20">
                         <ManifestoSection title="01. Light as Language">
                             <p>
                                 We believe that light isn't just illumination; it's a narrative force. It shapes emotion, directs attention, and whispers what cannot be spoken. Our work is a constant conversation with light, bending it to reveal the soul of the moment.
@@ -112,7 +112,7 @@ function ManifestoSection({ title, children }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 0.8 }}
-            className="group relative border-l border-white/10 pl-8 md:pl-16 hover:border-cinelineGold/50 transition-colors duration-500"
+            className="group relative border-l border-white/10 pl-6 md:pl-16 hover:border-cinelineGold/50 transition-colors duration-500"
         >
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 group-hover:text-cinelineGold transition-colors">{title}</h2>
             <div className="text-lg md:text-xl text-gray-400 font-light leading-relaxed max-w-2xl">
