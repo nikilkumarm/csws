@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
+import { usePathname } from "next/navigation";
 import ContactForm from "./ContactForm";
 import {
   Instagram,
@@ -19,6 +20,7 @@ import {
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 export default function Footer() {
+  const pathname = usePathname();
   const [showTop, setShowTop] = useState(false);
   const footerRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -51,27 +53,29 @@ export default function Footer() {
     <footer ref={footerRef} className="w-full relative bg-[#050505] text-gray-300 overflow-hidden font-sans border-t border-white/5">
 
       {/* 1. CONTACT FORM SECTION - THE CONVERSATION */}
-      <div className="relative z-20 pt-20 pb-24 border-b border-white/5">
-        <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
-            <div className="space-y-8">
-              <span className="text-cinelineGold text-xs font-semibold uppercase tracking-[0.3em] block">Legacy Starts Here</span>
-              <h2 className="text-4xl md:text-6xl font-black text-white leading-[1.1] tracking-tighter uppercase">
-                Got a vision? <br />
-                <span className="block text-white/90 font-extralight lowercase text-4xl md:text-6xl leading-none mt-2 tracking-tighter">let's make it real.</span>
-              </h2>
-              <div className="w-12 h-1 bg-cinelineGold/50" />
-              <p className="text-gray-500 max-w-md text-sm leading-relaxed font-light">
-                Fill out the form to discuss your project. Whether it’s a global campaign or an intimate story, we are here to define its visual atmosphere.
-              </p>
-            </div>
+      {(pathname === "/" || pathname === "/booking") && (
+        <div className="relative z-20 pt-20 pb-24 border-b border-white/5">
+          <div className="container mx-auto px-6">
+            <div className="grid lg:grid-cols-2 gap-20 items-center">
+              <div className="space-y-8">
+                <span className="text-cinelineGold text-xs font-semibold uppercase tracking-[0.3em] block">Legacy Starts Here</span>
+                <h2 className="text-4xl md:text-6xl font-black text-white leading-[1.1] tracking-tighter uppercase">
+                  Got a vision? <br />
+                  <span className="block text-white/90 font-extralight lowercase text-4xl md:text-6xl leading-none mt-2 tracking-tighter">let's make it real.</span>
+                </h2>
+                <div className="w-12 h-1 bg-cinelineGold/50" />
+                <p className="text-gray-500 max-w-md text-sm leading-relaxed font-light">
+                  Fill out the form to discuss your project. Whether it’s a global campaign or an intimate story, we are here to define its visual atmosphere.
+                </p>
+              </div>
 
-            <div className="relative w-full max-w-xl mx-auto lg:ml-auto">
-              <ContactForm />
+              <div className="relative w-full max-w-xl mx-auto lg:ml-auto">
+                <ContactForm />
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
       <div className="relative pt-24 pb-12">
         {/* --- DYNAMIC AMBIENCE --- */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-cinelineGold/5 rounded-full blur-[200px] pointer-events-none -translate-y-1/2 translate-x-1/3 z-0" />
