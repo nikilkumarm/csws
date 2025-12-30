@@ -77,7 +77,7 @@ export default function Navbar() {
             aria-label="Toggle Menu"
           >
             <span
-              className={`w-6 h-0.5 bg-black transition-all duration-300 ${open ? "rotate-45 translate-y-2 bg-white" : ""
+              className={`w-6 h-0.5 bg-black transition-all duration-300 ${open ? "rotate-45 translate-y-2" : ""
                 }`}
             />
             <span
@@ -85,7 +85,7 @@ export default function Navbar() {
                 }`}
             />
             <span
-              className={`w-6 h-0.5 bg-black transition-all duration-300 ${open ? "-rotate-45 -translate-y-2 bg-white" : ""
+              className={`w-6 h-0.5 bg-black transition-all duration-300 ${open ? "-rotate-45 -translate-y-2" : ""
                 }`}
             />
           </button>
@@ -93,23 +93,18 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* MOBILE MENU - FULL SCREEN GOD MODE */}
+      {/* MOBILE MENU - MINIMALIST CLEAN */}
       <div
-        className={`md:hidden fixed inset-0 bg-[#050505] z-[10000] flex flex-col justify-center items-center gap-8 transition-all duration-500 ${open ? "opacity-100 visible pointer-events-auto" : "opacity-0 invisible pointer-events-none delay-200"
+        className={`md:hidden fixed inset-0 bg-white/95 backdrop-blur-2xl z-[10000] flex flex-col justify-center items-center gap-12 transition-all duration-500 ${open ? "opacity-100 visible" : "opacity-0 invisible delay-200"
           }`}
       >
-        {/* Background Texture */}
-        <div className="absolute inset-0 pointer-events-none opacity-[0.05] z-0"
-          style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}
-        />
-
-        <nav className="flex flex-col gap-6 text-center z-10 w-full px-6">
+        <nav className="flex flex-col gap-8 text-center z-10 w-full px-6">
           {NAV_ITEMS.map((item, i) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className={`text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500 hover:to-cinelineGold tracking-tighter transition-all duration-500 transform ${open ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+              className={`text-3xl font-light tracking-wide text-black hover:text-cinelineGold transition-all duration-500 transform ${open ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
                 }`}
               style={{ transitionDelay: `${i * 100}ms` }}
             >
@@ -118,13 +113,13 @@ export default function Navbar() {
           ))}
 
           <div
-            className={`mt-8 w-full flex justify-center transition-all duration-700 delay-500 ${open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            className={`mt-8 w-full flex justify-center transition-all duration-700 delay-300 ${open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
           >
             <Link
               href="/booking"
               onClick={() => setOpen(false)}
-              className="px-12 py-5 rounded-full bg-cinelineGold text-black font-bold uppercase tracking-[0.2em] shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:shadow-[0_0_50px_rgba(212,175,55,0.6)] hover:scale-105 transition-all duration-300"
+              className="px-10 py-3 rounded-full bg-black text-white text-sm font-bold uppercase tracking-[0.2em] hover:bg-cinelineGold transition-colors shadow-lg"
             >
               Book Now
             </Link>
