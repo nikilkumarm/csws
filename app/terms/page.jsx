@@ -131,12 +131,7 @@ export default function TermsPage() {
                 </div>
 
                 {/* Acknowledgment */}
-                <div className="mt-16 p-8 bg-white/5 border border-white/10 rounded-2xl text-center">
-                    <h3 className="text-white font-bold text-xl mb-2">Acknowledgment</h3>
-                    <p className="text-gray-400 text-sm">
-                        By proceeding with Cineline Studios’ services, you acknowledge that you have read and agree to the above terms and conditions.
-                    </p>
-                </div>
+
 
             </section>
 
@@ -173,16 +168,14 @@ export default function TermsPage() {
                     </div>
 
                     <div className="pt-10 border-t border-white/5">
-                        <h4 className="text-white font-display text-xl mb-1">Nikilkumar & Rakshan</h4>
+                        <h4 className="text-white font-display text-3xl font-bold mb-2">Nikilkumar & Rakshan</h4>
                         <p className="text-cinelineGold text-sm tracking-widest uppercase">Founders, Cineline Studios</p>
                     </div>
                 </div>
             </div>
 
             {/* Legal Footer */}
-            <footer className="py-6 bg-black text-center text-xs text-zinc-600">
-                <p>Terms & Conditions | CINELINESTUDIOS</p>
-            </footer>
+
 
         </div>
     );
