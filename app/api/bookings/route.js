@@ -31,8 +31,8 @@ export async function POST(req) {
 
         for (const file of files) {
             if (file && file.size > 0) {
-                // limit file size to avoid exploding DB or Payload limits (e.g., 2MB)
-                if (file.size > 2 * 1024 * 1024) {
+                // limit file size to avoid exploding DB or Payload limits (e.g., 5MB)
+                if (file.size > 5 * 1024 * 1024) {
                     console.warn(`File ${file.name} is too large, skipping.`);
                     continue;
                 }

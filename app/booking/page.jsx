@@ -41,6 +41,29 @@ export default function BookingPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    console.log("Submitting form. Files state:", form.files);
+
+    const MAX_SIZE = 5 * 1024 * 1024; // 5MB
+
+    if (!form.files || form.files.length === 0) {
+      setPopup({
+        type: "error",
+        message: "Please upload at least one reference file.",
+      });
+      return;
+    }
+
+    for (const file of form.files) {
+      if (file.size > MAX_SIZE) {
+        setPopup({
+          type: "error",
+          message: `File "${file.name}" exceeds the 5MB limit.`,
+        });
+        return;
+      }
+    }
+
     setLoading(true);
 
     try {
@@ -59,7 +82,7 @@ export default function BookingPage() {
 
       setPopup({
         type: "success",
-        message: "Your booking has been submitted successfully!",
+        message: "Your booking and files have been uploaded successfully!",
       });
 
       resetForm();
@@ -181,8 +204,22 @@ export default function BookingPage() {
               type="file"
               multiple
               onChange={(e) => update("files", Array.from(e.target.files))}
-              className="text-[rgb(99_88_79)] file:bg-[rgb(246_242_239)] file:border file:border-[rgb(233_230_226)] file:px-4 file:py-2 file:rounded-md cursor-pointer"
+              className="text-[rgb(99_88_79)] file:bg-[rgb(246_242_239)] file:border file:border-[rgb(233_230_226)] file:px-4 file:py-2 file:rounded-md cursor-pointer block w-full mb-2"
             />
+            {/* File Analysis / List */}
+            {form.files && form.files.length > 0 && (
+              <div className="bg-[rgb(250_250_249)] p-3 rounded-md border border-[rgb(233_230_226)] text-sm space-y-2">
+                <p className="font-medium text-[rgb(99_88_79)] border-b pb-1 mb-2">Selected Files ({form.files.length}):</p>
+                <ul className="space-y-1">
+                  {form.files.map((file, idx) => (
+                    <li key={idx} className="flex items-center justify-between text-gray-600">
+                      <span className="truncate max-w-[200px]">{file.name}</span>
+                      <span className="text-xs text-gray-400">{(file.size / 1024 / 1024).toFixed(2)} MB</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
 
           <div className="flex gap-3 items-center pt-2">
@@ -191,7 +228,15 @@ export default function BookingPage() {
               disabled={loading}
               className="btn-gold px-8 py-3 rounded-md font-semibold disabled:opacity-60 flex-1 text-center justify-center"
             >
-              {loading ? "Sending..." : "Submit Booking"}
+              {loading ? (
+                <span className="flex items-center gap-2">
+                  <svg className="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Uploading {form.files?.length} files...
+                </span>
+              ) : "Submit Booking"}
             </button>
 
             <button
