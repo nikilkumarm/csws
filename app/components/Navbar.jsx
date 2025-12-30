@@ -93,55 +93,44 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* MOBILE MENU - GOD MODE FORMAL */}
+      {/* MOBILE MENU - STATIC NO ANIMATION */}
       <div
-        className={`md:hidden fixed inset-0 bg-black z-[10000] flex flex-col justify-center items-center transition-all duration-700 ease-[0.22, 1, 0.36, 1] ${open ? "clip-path-circle-full opacity-100 visible" : "clip-path-circle-zero opacity-0 invisible delay-300"
+        className={`md:hidden fixed inset-0 bg-black z-[10000] flex-col justify-center items-center ${open ? "flex" : "hidden"
           }`}
-        style={{
-          clipPath: open ? "circle(150% at 90% 5%)" : "circle(0% at 90% 5%)",
-          WebkitClipPath: open ? "circle(150% at 90% 5%)" : "circle(0% at 90% 5%)"
-        }}
       >
-
         <nav className="flex flex-col gap-0 text-center z-10 w-full px-8 max-w-lg mx-auto">
 
-          {/* Menu Logo - Clean & Centered */}
-          <div className={`mb-16 flex justify-center transition-all duration-700 ease-[0.22, 1, 0.36, 1] ${open ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8"
-            }`}>
+          {/* Menu Logo */}
+          <div className="mb-16 flex justify-center">
             <Image
               src="/cs_logo_w_t.png"
               alt="Cineline Studios"
               width={160}
               height={50}
-              className="w-40 h-auto opacity-100"
+              className="w-40 h-auto"
             />
           </div>
 
-          {/* Links - Formal List */}
+          {/* Links - Static List */}
           <div className="flex flex-col divide-y divide-white/10 border-y border-white/10">
-            {NAV_ITEMS.map((item, i) => (
+            {NAV_ITEMS.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className={`group py-6 flex items-center justify-between text-3xl font-light tracking-wide text-white hover:text-cinelineGold transition-all duration-500 transform ${open ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
-                  }`}
-                style={{ transitionDelay: `${150 + i * 50}ms` }}
+                className="group py-6 flex items-center justify-between text-3xl font-light tracking-wide text-white hover:text-cinelineGold"
               >
                 <span>{item.label}</span>
-                <span className="w-2 h-2 rounded-full bg-cinelineGold opacity-0 group-hover:opacity-100 transform scale-0 group-hover:scale-100 transition-all duration-300" />
+                <span className="w-2 h-2 rounded-full bg-cinelineGold opacity-0 group-hover:opacity-100" />
               </Link>
             ))}
           </div>
 
-          <div
-            className={`mt-16 w-full flex justify-center transition-all duration-700 delay-500 ${open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-          >
+          <div className="mt-16 w-full flex justify-center">
             <Link
               href="/booking"
               onClick={() => setOpen(false)}
-              className="w-full py-5 rounded-lg bg-white/5 border border-white/10 text-white text-sm font-medium uppercase tracking-[0.2em] hover:bg-cinelineGold hover:text-black hover:border-cinelineGold transition-all duration-300"
+              className="w-full py-5 rounded-lg bg-white/5 border border-white/10 text-white text-sm font-medium uppercase tracking-[0.2em] hover:bg-cinelineGold hover:text-black hover:border-cinelineGold"
             >
               Book Now
             </Link>
