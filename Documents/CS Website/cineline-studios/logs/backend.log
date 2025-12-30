@@ -1,0 +1,13 @@
+[dotenv@17.2.3] injecting env (5) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
+❌ MongoDB connection error: options usenewurlparser, useunifiedtopology are not supported
+Retrying connection in 2000ms... (5 attempts left)
+❌ MongoDB connection error: options usenewurlparser, useunifiedtopology are not supported
+Retrying connection in 2000ms... (4 attempts left)
+❌ MongoDB connection error: options usenewurlparser, useunifiedtopology are not supported
+Retrying connection in 2000ms... (3 attempts left)
+❌ MongoDB connection error: options usenewurlparser, useunifiedtopology are not supported
+Retrying connection in 2000ms... (2 attempts left)
+❌ MongoDB connection error: options usenewurlparser, useunifiedtopology are not supported
+Retrying connection in 2000ms... (1 attempts left)
+❌ MongoDB connection error: options usenewurlparser, useunifiedtopology are not supported
+Failed to connect to MongoDB after multiple attempts. Exiting.

@@ -1,0 +1,20 @@
+
+> cineline-studios@1.0.0 dev
+> next dev
+
+  ▲ Next.js 14.2.33
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ✓ Ready in 2s
+ ○ Compiling / ...
+ ✓ Compiled / in 574ms (625 modules)
+ GET / 200 in 699ms
+ ✓ Compiled in 89ms (304 modules)
+ ✓ Compiled /favicon.ico in 84ms (353 modules)
+ GET /favicon.ico 200 in 119ms
+ GET / 200 in 80ms
+ GET /favicon.ico 200 in 5ms
+ GET / 200 in 21ms
+ GET /favicon.ico 200 in 4ms
+[?25h
