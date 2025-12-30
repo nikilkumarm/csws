@@ -73,19 +73,19 @@ export default function Navbar() {
           {/* MOBILE MENU BUTTON - ANIMATED */}
           <button
             onClick={() => setOpen((s) => !s)}
-            className="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 z-[10001] relative"
+            className="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 z-[10001] relative group"
             aria-label="Toggle Menu"
           >
             <span
-              className={`w-6 h-0.5 bg-black transition-all duration-300 ${open ? "rotate-45 translate-y-2" : ""
+              className={`w-8 h-[1.5px] bg-black transition-all duration-500 ease-[0.22, 1, 0.36, 1] ${open ? "rotate-45 translate-y-2 bg-cinelineGold" : "group-hover:bg-cinelineGold"
                 }`}
             />
             <span
-              className={`w-6 h-0.5 bg-black transition-all duration-300 ${open ? "opacity-0" : ""
+              className={`w-8 h-[1.5px] bg-black transition-all duration-500 ease-[0.22, 1, 0.36, 1] ${open ? "opacity-0" : "group-hover:bg-cinelineGold"
                 }`}
             />
             <span
-              className={`w-6 h-0.5 bg-black transition-all duration-300 ${open ? "-rotate-45 -translate-y-2" : ""
+              className={`w-8 h-[1.5px] bg-black transition-all duration-500 ease-[0.22, 1, 0.36, 1] ${open ? "-rotate-45 -translate-y-2 bg-cinelineGold" : "group-hover:bg-cinelineGold"
                 }`}
             />
           </button>
@@ -93,35 +93,72 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* MOBILE MENU - MINIMALIST CLEAN */}
+      {/* MOBILE MENU - GOD MODE MINIMAL */}
       <div
-        className={`md:hidden fixed inset-0 bg-white/95 backdrop-blur-2xl z-[10000] flex flex-col justify-center items-center gap-12 transition-all duration-500 ${open ? "opacity-100 visible" : "opacity-0 invisible delay-200"
+        className={`md:hidden fixed inset-0 bg-[#080808] z-[10000] flex flex-col justify-center items-center transition-all duration-700 ease-[0.22, 1, 0.36, 1] ${open ? "clip-path-circle-full opacity-100 visible" : "clip-path-circle-zero opacity-0 invisible delay-300"
           }`}
+        style={{
+          clipPath: open ? "circle(150% at 90% 5%)" : "circle(0% at 90% 5%)",
+          WebkitClipPath: open ? "circle(150% at 90% 5%)" : "circle(0% at 90% 5%)"
+        }}
       >
-        <nav className="flex flex-col gap-8 text-center z-10 w-full px-6">
-          {NAV_ITEMS.map((item, i) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={() => setOpen(false)}
-              className={`text-3xl font-light tracking-wide text-black hover:text-cinelineGold transition-all duration-500 transform ${open ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-                }`}
-              style={{ transitionDelay: `${i * 100}ms` }}
-            >
-              {item.label}
-            </Link>
-          ))}
+        {/* Background Atmosphere */}
+        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none"
+          style={{ backgroundImage: 'radial-gradient(circle at center, #2a2a2a 1px, transparent 1px)', backgroundSize: '40px 40px' }}
+        />
+        <div className="absolute top-0 right-0 w-[60vw] h-[60vw] bg-cinelineGold/10 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[80vw] h-[80vw] bg-cinelineGold/5 rounded-full blur-[120px] pointer-events-none" />
+
+        <nav className="flex flex-col gap-2 text-center z-10 w-full px-6 container mx-auto">
+
+          {/* Menu Logo */}
+          <div className={`mb-8 flex justify-center transition-all duration-700 ease-[0.22, 1, 0.36, 1] ${open ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-12"
+            }`}>
+            <Image
+              src="/cs_logo_w_t.png"
+              alt="Cineline Studios"
+              width={160}
+              height={50}
+              className="w-40 h-auto opacity-90"
+            />
+          </div>
+
+          <div className="flex flex-col items-center gap-4">
+            {NAV_ITEMS.map((item, i) => (
+              <div key={item.href} className="relative group overflow-hidden">
+                <Link
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className={`relative block text-5xl md:text-7xl font-black uppercase italic tracking-tighter transition-all duration-500 ease-out transform ${open ? "translate-y-0 opacity-100 rotate-0" : "translate-y-20 opacity-0 rotate-3"
+                    }`}
+                  style={{ transitionDelay: `${100 + i * 100}ms` }}
+                >
+                  <span className="absolute -left-6 top-0 text-xs font-mono text-cinelineGold/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -translate-y-2">
+                    0{i + 1}
+                  </span>
+                  <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-b from-gray-600 to-gray-900 group-hover:text-white transition-colors duration-300">
+                    {item.label}
+                  </span>
+                  {/* Glitch/Ghost Effect on Hover */}
+                  <span className="absolute top-0 left-0 text-cinelineGold opacity-0 group-hover:opacity-30 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 pointer-events-none">
+                    {item.label}
+                  </span>
+                </Link>
+              </div>
+            ))}
+          </div>
 
           <div
-            className={`mt-8 w-full flex justify-center transition-all duration-700 delay-300 ${open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            className={`mt-12 w-full flex justify-center transition-all duration-700 delay-500 ${open ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-12 scale-90"
               }`}
           >
             <Link
               href="/booking"
               onClick={() => setOpen(false)}
-              className="px-10 py-3 rounded-full bg-black text-white text-sm font-bold uppercase tracking-[0.2em] hover:bg-cinelineGold transition-colors shadow-lg"
+              className="group relative px-12 py-5 bg-transparent border border-white/10 text-white text-xs font-bold uppercase tracking-[0.3em] overflow-hidden transition-all hover:border-cinelineGold hover:shadow-[0_0_40px_rgba(212,175,55,0.2)]"
             >
-              Book Now
+              <span className="absolute inset-0 bg-cinelineGold transform scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-bottom ease-[0.22, 1, 0.36, 1]" />
+              <span className="relative z-10 group-hover:text-black transition-colors duration-500">Starts Here</span>
             </Link>
           </div>
         </nav>
