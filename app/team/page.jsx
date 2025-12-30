@@ -134,9 +134,9 @@ function ParallaxMember({ member, index }) {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-        className="w-full md:w-1/3 relative group"
+        className="w-full md:w-1/4 relative group"
       >
-        <div className="relative aspect-[3/4] w-2/3 md:w-full mx-auto overflow-hidden rounded-sm">
+        <div className="relative aspect-[3/4] w-3/4 md:w-full mx-auto overflow-hidden rounded-sm">
           <div className="absolute inset-0 bg-cinelineGold/20 mix-blend-overlay z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
           <Image
             src={member.image}
@@ -158,7 +158,7 @@ function ParallaxMember({ member, index }) {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-        className="w-full md:w-1/2 space-y-8"
+        className="w-full md:w-2/3 space-y-6"
       >
         <div className="space-y-2">
           <h3 className="text-5xl md:text-7xl font-display italic font-medium text-white tracking-tighter">{member.name}</h3>
