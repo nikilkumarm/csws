@@ -70,64 +70,67 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* MOBILE MENU BUTTON */}
+          {/* MOBILE MENU BUTTON - ANIMATED */}
           <button
             onClick={() => setOpen((s) => !s)}
-            className="md:hidden p-2 text-black cinematic-item relative z-[10001] cursor-pointer"
+            className="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 z-[10001] relative"
+            aria-label="Toggle Menu"
           >
-            <svg
-              className="w-6 h-6"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth="2"
-              fill="none"
-            >
-              {open ? (
-                <path d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <>
-                  <path d="M3 7h18" />
-                  <path d="M3 12h18" />
-                  <path d="M3 17h18" />
-                </>
-              )}
-            </svg>
+            <span
+              className={`w-6 h-0.5 bg-black transition-all duration-300 ${open ? "rotate-45 translate-y-2 bg-white" : ""
+                }`}
+            />
+            <span
+              className={`w-6 h-0.5 bg-black transition-all duration-300 ${open ? "opacity-0" : ""
+                }`}
+            />
+            <span
+              className={`w-6 h-0.5 bg-black transition-all duration-300 ${open ? "-rotate-45 -translate-y-2 bg-white" : ""
+                }`}
+            />
           </button>
 
         </div>
       </div>
 
-      {/* MOBILE MENU */}
-      {open && (
-        <div
-          ref={menuRef}
-          onClick={(e) => {
-            if (e.target === e.currentTarget) setOpen(false);
-          }}
-          className="md:hidden fixed inset-0 bg-white/95 backdrop-blur-xl px-6 pt-32 z-[9998] flex flex-col items-center gap-8 shadow-2xl transition-all duration-300"
-        >
-          <nav className="flex flex-col gap-6 text-black text-2xl font-light tracking-wide text-center">
-            {NAV_ITEMS.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="py-2 hover:text-cinelineGold transition-colors"
-              >
-                {item.label}
-              </Link>
-            ))}
+      {/* MOBILE MENU - FULL SCREEN GOD MODE */}
+      <div
+        className={`md:hidden fixed inset-0 bg-[#050505] z-[10000] flex flex-col justify-center items-center gap-8 transition-all duration-500 ${open ? "opacity-100 visible pointer-events-auto" : "opacity-0 invisible pointer-events-none delay-200"
+          }`}
+      >
+        {/* Background Texture */}
+        <div className="absolute inset-0 pointer-events-none opacity-[0.05] z-0"
+          style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}
+        />
 
+        <nav className="flex flex-col gap-6 text-center z-10 w-full px-6">
+          {NAV_ITEMS.map((item, i) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={() => setOpen(false)}
+              className={`text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500 hover:to-cinelineGold tracking-tighter transition-all duration-500 transform ${open ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+                }`}
+              style={{ transitionDelay: `${i * 100}ms` }}
+            >
+              {item.label}
+            </Link>
+          ))}
+
+          <div
+            className={`mt-8 w-full flex justify-center transition-all duration-700 delay-500 ${open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              }`}
+          >
             <Link
               href="/booking"
               onClick={() => setOpen(false)}
-              className="mt-6 px-10 py-4 bg-black text-white rounded-full uppercase text-sm font-bold tracking-widest hover:bg-cinelineGold transition-colors shadow-lg"
+              className="px-12 py-5 rounded-full bg-cinelineGold text-black font-bold uppercase tracking-[0.2em] shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:shadow-[0_0_50px_rgba(212,175,55,0.6)] hover:scale-105 transition-all duration-300"
             >
               Book Now
             </Link>
-          </nav>
-        </div>
-      )}
+          </div>
+        </nav>
+      </div>
 
       <style jsx>{`
         /* Define the subtle 3D floating animation */
