@@ -147,30 +147,32 @@ function TeamMemberRow({ member, index, setHovered, isHovered }) {
     >
       <div className="max-w-[1800px] mx-auto px-6 md:px-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 md:gap-20">
 
-        {/* 01. Index & Name */}
-        <div className="flex items-baseline gap-12 flex-1 relative z-10">
-          <span className="text-xs md:text-sm font-mono text-gray-600">0{member.id}</span>
-          <div>
-            <h2 className="text-5xl md:text-8xl font-black text-white tracking-tighter uppercase transition-transform duration-500 group-hover:translate-x-10 group-hover:text-transparent group-hover:stroke-text group-hover:italic">
+        {/* 01. Index & Name & Role */}
+        <div className="flex items-start gap-8 md:gap-12 flex-1 relative z-20 pointer-events-none">
+          <span className="text-xs md:text-sm font-mono text-cinelineGold/50 mt-4">0{member.id}</span>
+          <div className="group-hover:translate-x-4 transition-transform duration-500">
+            <h2 className="text-5xl md:text-8xl font-black text-white tracking-tighter uppercase transition-colors duration-500 group-hover:text-transparent group-hover:stroke-text pointer-events-auto">
               {member.name}
             </h2>
-            {/* Role Reveal */}
-            <div className="overflow-hidden h-0 group-hover:h-auto transition-all duration-500 opacity-0 group-hover:opacity-100 group-hover:mt-4">
-              <p className="text-cinelineGold font-sans text-xs uppercase tracking-[0.4em]">{member.role}</p>
-            </div>
+            <p className="text-cinelineGold font-sans text-xs md:text-sm uppercase tracking-[0.3em] font-medium mt-2 md:mt-4 pointer-events-auto">
+              {member.role}
+            </p>
           </div>
         </div>
 
-        {/* 02. Hover Image Reveal (Desktop) */}
-        <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[500px] pointer-events-none z-0 opacity-0 group-hover:opacity-100 transition-all duration-500 rotate-3 group-hover:rotate-0 scale-90 group-hover:scale-100">
-          <div className="relative w-full h-full overflow-hidden">
+        {/* 02. Hover Image Reveal (Desktop) - Cinematic Wide */}
+        <div className="hidden md:block absolute left-[40%] top-1/2 -translate-y-1/2 w-[600px] h-[350px] pointer-events-none z-10 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-[0.22, 1, 0.36, 1] scale-95 group-hover:scale-100 group-hover:translate-x-12">
+          <div className="relative w-full h-full overflow-hidden shadow-2xl shadow-black/50 bg-gray-900 border border-white/5">
             <Image
               src={member.image}
               alt={member.name}
               fill
-              className="object-cover transition-transform duration-1000 scale-110 group-hover:scale-100"
+              className="object-cover transition-transform duration-1000 scale-110 group-hover:scale-100 grayscale-[50%] group-hover:grayscale-0"
             />
-            <div className="absolute inset-0 bg-cinelineGold/10 mix-blend-overlay" />
+            {/* Cinematic Letterbox Bars */}
+            <div className="absolute top-0 left-0 w-full h-[10%] bg-black/80 z-20" />
+            <div className="absolute bottom-0 left-0 w-full h-[10%] bg-black/80 z-20" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent z-10" />
           </div>
         </div>
 
