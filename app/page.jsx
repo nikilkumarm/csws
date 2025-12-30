@@ -11,6 +11,7 @@ import PremiumServices from "./components/PremiumServices";
 import Testimonials from "./components/Testimonials";
 import WhatsAppButton from "./components/WhatsAppButton";
 import WelcomeModal from "./components/WelcomeModal";
+import FounderNote from "./components/FounderNote";
 
 // --- VELOCITY SCROLL COMPONENT ---
 function ParallaxText({ children, baseVelocity = 100 }) {
@@ -325,11 +326,11 @@ export default function Page() {
         {/* 4. SELECTED WORKS - EDITORIAL LAYOUT */}
         < section className="py-0 bg-white relative" >
           {/* Section Background Text */}
-          < div className="absolute top-20 left-0 w-full overflow-hidden pointer-events-none opacity-[0.06]" >
+          <div className="absolute top-20 left-0 w-full overflow-hidden pointer-events-none opacity-[0.06]">
             <h2 className="text-[20vw] leading-[0.8] font-bold text-black whitespace-nowrap">
               SELECTED WORKS
             </h2>
-          </div >
+          </div>
 
           <div className="w-full">
             <div className="max-w-7xl mx-auto px-6 lg:px-0 pt-32 pb-12 flex flex-col md:flex-row justify-between items-end">
@@ -385,23 +386,26 @@ export default function Page() {
         </section >
 
         {/* 5. SERVICES - CLEAN & TECHNICAL */}
-        < div className="bg-[#f0f0f0] py-32 md:py-40 border-t border-gray-200 relative" >
+        <div className="bg-[#f0f0f0] py-32 md:py-40 border-t border-gray-200 relative text-cinelineDark overflow-hidden">
           {/* Technical Grid Pattern */}
-          < div className="absolute inset-0 opacity-[0.05]"
+          <div className="absolute inset-0 opacity-[0.05]"
             style={{ backgroundImage: `linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)`, backgroundSize: '40px 40px' }
             }
           />
-          < div className="max-w-7xl mx-auto px-6" >
+          <div className="max-w-7xl mx-auto px-6">
             <SectionHeader subtitle="Expertise" title="Our Services" dark={false} />
             <p className="max-w-2xl text-xl text-gray-500 mb-16 font-light">
               We offer a comprehensive suite of visual production services, tailored to elevate brands and capture life's defining moments.
             </p>
-          </div >
+          </div>
           <PremiumServices />
-        </div >
+        </div>
 
-        {/* 6. TESTIMONIALS - IMMERSIVE DARK */}
-        < div className="bg-[#050505] py-32 md:py-40 text-white relative overflow-hidden" >
+        {/* 6. FOUNDER NOTE - MINI PROFILE */}
+        <FounderNote />
+
+        {/* 7. TESTIMONIALS - IMMERSIVE DARK */}
+        <div className="bg-[#050505] py-32 md:py-40 text-white relative overflow-hidden">
           {/* Spotlight Effect & Constellation Pattern */}
           < div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-cinelineGold/5 blur-[120px] rounded-full pointer-events-none" />
 

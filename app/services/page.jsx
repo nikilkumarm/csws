@@ -100,7 +100,7 @@ function PremiumCard({ service, index }) {
 
             <div className="w-12 h-[1px] bg-cinelineGold mb-6 group-hover:w-full transition-all duration-700" />
 
-            <p className="text-gray-400 text-sm leading-relaxed mb-6 line-clamp-3 group-hover:text-gray-200 transition-colors duration-500">
+            <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-6 line-clamp-3 group-hover:text-gray-200 transition-colors duration-500">
               {service.desc}
             </p>
 
@@ -158,7 +158,7 @@ export default function ServicesPage() {
             {/* Cinematic Divider */}
             <div className="w-full max-w-[200px] h-[2px] bg-gradient-to-r from-cinelineGold to-transparent mb-12" />
             <div className="flex flex-col md:flex-row justify-between items-start pt-8 gap-8">
-              <p className="max-w-xl text-xl text-gray-400 font-light leading-relaxed">
+              <p className="max-w-xl text-sm md:text-base text-gray-400 font-light leading-relaxed">
                 We deliver a comprehensive suite of creative production services. From the initial spark of an idea to the final master export, perfection is our baseline.
               </p>
               <div className="hidden md:flex gap-12">
@@ -176,7 +176,7 @@ export default function ServicesPage() {
         </div>
 
         {/* SERVICES GRID */}
-        <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 border border-white/10 overflow-hidden">
+        <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 border border-white/10 overflow-hidden relative">
           {SERVICES.map((service, index) => (
             <PremiumCard key={index} service={service} index={index} />
           ))}

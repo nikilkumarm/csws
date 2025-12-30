@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
 import { Camera, Award, Heart, ArrowRight } from "lucide-react";
+import FounderNote from "../components/FounderNote";
 
 // --- GOD-LEVEL VISUAL COMPONENTS ---
 
@@ -329,6 +330,9 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* FOUNDER DETAILED SECTION */}
+      <FounderNote />
 
       {/* CORE VALUES (Transparent Cards) */}
       <section className="py-32 relative overflow-hidden">
