@@ -42,7 +42,7 @@ export default function Hero() {
 
     // 2. Define Base Layout (The "Architecture" of the pile) with explicit Z-index hierarchy
     const isMobile = window.innerWidth < 768;
-    const spreadFactor = isMobile ? 0.45 : 1; // Compact spread for mobile
+    const spreadFactor = isMobile ? 0.35 : 1; // Tighter spread for smaller mobile images
 
     const basePositions = [
       { id: 'center', x: 0 * spreadFactor, y: 0 * spreadFactor, rot: -2, z: 100, zIndex: 50, varX: 20, varY: 20, varRot: 5 },
@@ -68,10 +68,10 @@ export default function Hero() {
 
     setPositions(newPositions);
 
-    // 4. Randomized Sizes & Animation Delays (Smaller on Mobile)
+    // 4. Randomized Sizes & Animation Delays (Significantly Smaller on Mobile)
     const sizes = pilePhotos.map(() => ({
-      w: (isMobile ? 90 : 130) + Math.random() * (isMobile ? 30 : 40),
-      h: (isMobile ? 120 : 170) + Math.random() * (isMobile ? 40 : 50)
+      w: (isMobile ? 60 : 130) + Math.random() * (isMobile ? 20 : 40),
+      h: (isMobile ? 80 : 170) + Math.random() * (isMobile ? 30 : 50)
     }));
     setLoadingSizes(sizes);
 
