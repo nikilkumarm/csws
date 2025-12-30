@@ -1,11 +1,11 @@
 "use client";
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform, useMotionTemplate, useMotionValue } from "framer-motion";
-import { Video, Camera, Package, MonitorPlay, ArrowUpRight } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Video, Camera, Package, MonitorPlay, ArrowUpRight, ArrowLeft } from "lucide-react";
 import TrustedPartners from "../components/TrustedPartners";
 import Image from "next/image";
 import Link from "next/link";
-import { CinematicGrain, SubtleGrid, DotGrid } from "../components/Patterns";
+import { CinematicGrain, SubtleGrid } from "../components/Patterns";
 
 // Data
 const SERVICES = [
@@ -14,110 +14,30 @@ const SERVICES = [
     desc: "We don't just record events; we craft legacies. Every frame is composed with a cinematographer's eye, capturing the raw emotion and grandeur of your union.",
     icon: Video,
     slug: "wedding-films",
-    image: "/images/services/wedding.jpg" // Placeholder path, using gradients for now if image fails
+    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2000&auto=format&fit=crop"
   },
   {
     title: "Event Photography",
     desc: "From high-society galas to intimate private celebrations, we document the essence of the moment with an editorial flair that rivals fashion magazines.",
     icon: Camera,
     slug: "event-photography",
-    image: "/images/services/event.jpg"
+    image: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2000&auto=format&fit=crop"
   },
   {
     title: "Product Campaigns",
     desc: "Elevate your brand with high-fidelity visuals. We create product imagery that speaks visual language of desire, precision, and luxury.",
     icon: Package,
     slug: "product-campaigns",
-    image: "/images/services/product.jpg"
+    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=2000&auto=format&fit=crop"
   },
   {
-    title: "Broadcast\u00A0& Commercials",
+    title: "Broadcast & Commercials",
     desc: "End-to-end production for commercials and documentaries. We handle everything from conceptualization to the final color grade.",
     icon: MonitorPlay,
     slug: "broadcast-commercials",
-    image: "/images/services/commercial.jpg"
+    image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=2000&auto=format&fit=crop"
   },
 ];
-
-function PremiumCard({ service, index }) {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  function handleMouseMove({ currentTarget, clientX, clientY }) {
-    const { left, top } = currentTarget.getBoundingClientRect();
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
-  }
-
-  return (
-    <Link href={`/services/${service.slug}`} className="block w-full">
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: index * 0.1 }}
-        className="group relative w-full h-[500px] bg-[#0a0a0a] border border-white/5 overflow-hidden hover:border-cinelineGold/30 transition-all duration-700"
-        onMouseMove={handleMouseMove}
-      >
-        <DotGrid opacity={0.05} />
-        {/* 1. Spotlight Effect */}
-        <motion.div
-          className="pointer-events-none absolute -inset-px opacity-0 transition duration-500 group-hover:opacity-100 mix-blend-soft-light z-10"
-          style={{
-            background: useMotionTemplate`
-                radial-gradient(
-                600px circle at ${mouseX}px ${mouseY}px,
-                rgba(255, 255, 255, 0.1),
-                transparent 80%
-                )
-            `,
-          }}
-        />
-
-        {/* 2. Background Elements */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-0 pointer-events-none" />
-        <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] z-0 mix-blend-overlay" />
-
-        {/* Subtle Background Glow on Hover */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cinelineGold/20 blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-
-        {/* 3. Content */}
-        <div className="relative h-full flex flex-col justify-between p-10 z-20">
-
-          {/* Top: Icon & Number */}
-          <div className="flex justify-between items-start">
-            <div className="w-20 h-20 rounded-full bg-white/5 backdrop-blur-md flex items-center justify-center border border-white/10 group-hover:bg-cinelineGold group-hover:text-black group-hover:border-cinelineGold transition-all duration-500 text-white">
-              <service.icon strokeWidth={1.5} size={40} />
-            </div>
-            <span className="font-mono text-xs text-white/30 group-hover:text-cinelineGold transition-colors duration-500">0{index + 1}</span>
-          </div>
-
-          {/* Bottom: Text Info */}
-          <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-            <h3 className="text-3xl md:text-4xl font-black text-white uppercase leading-none tracking-tighter mb-4">
-              {service.title.split(' ').map((word, i) => (
-                <span key={i} className="block">{word}</span>
-              ))}
-            </h3>
-
-            <div className="w-12 h-[1px] bg-cinelineGold mb-6 group-hover:w-full transition-all duration-700" />
-
-            <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-6 line-clamp-3 group-hover:text-gray-200 transition-colors duration-500">
-              {service.desc}
-            </p>
-
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-white/50 group-hover:text-cinelineGold transition-colors duration-500">
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform -translate-x-2 group-hover:translate-x-0">Explore Service</span>
-              <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75 transform -translate-x-2 group-hover:translate-x-0" />
-            </div>
-          </div>
-
-        </div>
-
-      </motion.div>
-    </Link>
-  );
-}
 
 export default function ServicesPage() {
   const containerRef = useRef(null);
@@ -129,70 +49,126 @@ export default function ServicesPage() {
       <div className="fixed inset-0 pointer-events-none">
         <CinematicGrain opacity={0.06} />
         <SubtleGrid opacity={0.04} />
-        <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-white/5 to-transparent opacity-20" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cinelineGold/5 blur-[150px] rounded-full" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cinelineGold/5 blur-[150px] rounded-full mix-blend-screen" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-white/[0.02] blur-[150px] rounded-full mix-blend-screen" />
       </div>
+
+      {/* Nav */}
+      <nav className="fixed top-0 left-0 w-full z-50 px-6 py-8 md:px-12 flex justify-between items-center mix-blend-difference">
+        <Link href="/" className="group flex items-center gap-2 text-white/80 hover:text-white transition-colors">
+          <div className="p-2 rounded-full border border-white/20 group-hover:border-white transition-colors">
+            <ArrowLeft size={16} />
+          </div>
+          <span className="text-sm font-medium tracking-widest uppercase">Home</span>
+        </Link>
+      </nav>
 
       <main className="relative z-10 pt-40 pb-20">
 
-        {/* HERO SECTION */}
-        <div className="container mx-auto px-6 mb-32">
+        {/* HERO SECTION - ARCHIVE STYLE */}
+        <div className="container mx-auto px-6 mb-40">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center md:text-left"
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-center lg:text-left"
           >
-            {/* Cinematic Label */}
-            <div className="flex flex-col items-center md:items-start relative z-10">
-              <span className="block text-cinelineGold text-sm md:text-base font-bold uppercase tracking-[1em] mb-4 pl-1 opacity-80">
-                Our
+            <div className="flex flex-col items-center lg:items-start relative z-10">
+              <span className="block text-cinelineGold text-xs font-bold uppercase tracking-[0.8em] mb-4 opacity-80">
+                The Master Catalogue
               </span>
 
-              {/* Massive Cinematic Title */}
-              <h1 className="relative text-8xl md:text-[13rem] font-black uppercase leading-[0.8] tracking-tighter mb-12 text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-200 to-gray-600">
-                Services
-                {/* Bloom Effect Duplicate */}
-                <span className="absolute inset-0 text-white opacity-20 blur-2xl -z-10" aria-hidden="true">
-                  Services
-                </span>
+              <h1 className="text-[15vw] lg:text-[10vw] font-black uppercase leading-[0.8] tracking-tighter text-white mb-12">
+                Services<span className="text-cinelineGold italic font-serif text-[8vw] lg:text-[5vw] lowercase block lg:inline lg:ml-8">Archive</span>
               </h1>
             </div>
 
-            {/* Cinematic Divider */}
-            <div className="w-full max-w-[200px] h-[2px] bg-gradient-to-r from-cinelineGold to-transparent mb-12" />
-            <div className="flex flex-col md:flex-row justify-between items-start pt-8 gap-8">
-              <p className="max-w-xl text-sm md:text-base text-gray-400 font-light leading-relaxed">
-                We deliver a comprehensive suite of creative production services. From the initial spark of an idea to the final master export, perfection is our baseline.
-              </p>
-              <div className="hidden md:flex gap-12">
-                <div>
-                  <span className="block text-4xl font-bold text-white mb-2">4+</span>
-                  <span className="text-xs uppercase tracking-widest text-gray-500">Core Disciplines</span>
-                </div>
-                <div>
-                  <span className="block text-4xl font-bold text-white mb-2">Top</span>
-                  <span className="text-xs uppercase tracking-widest text-gray-500">Tier Gear</span>
-                </div>
-              </div>
-            </div>
+            <div className="w-24 h-[1px] bg-cinelineGold/50 mb-12 mx-auto lg:mx-0" />
+
+            <p className="max-w-2xl text-xl md:text-2xl text-gray-400 font-light leading-relaxed mx-auto lg:mx-0">
+              A high-fidelity suite of creative production services. From conceptual narrative to the final cinematic export.
+            </p>
           </motion.div>
         </div>
 
-        {/* SERVICES GRID */}
-        <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 border border-white/10 overflow-hidden relative">
+        {/* SERVICES NARRATIVE - Alternating Rows */}
+        <div className="container mx-auto px-6 space-y-32 md:space-y-64">
           {SERVICES.map((service, index) => (
-            <PremiumCard key={index} service={service} index={index} />
+            <ServiceRow key={index} service={service} index={index} />
           ))}
         </div>
 
         {/* TRUSTED PARTNERS SECTION */}
-        <div className="mt-32 border-t border-white/5">
+        <div className="mt-40 md:mt-64 border-t border-white/5">
           <TrustedPartners />
         </div>
 
       </main>
 
     </div>
+  );
+}
+
+function ServiceRow({ service, index }) {
+  const isEven = index % 2 === 0;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-10%" }}
+      transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+      className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12 lg:gap-32 group`}
+    >
+      {/* IMAGE HALF - CINEMATIC RATIO */}
+      <div className="w-full lg:w-3/5 flex justify-center">
+        <div className="relative w-full aspect-[16/9] lg:aspect-[21/9] overflow-hidden bg-[#0a0a0a] border border-white/5 shadow-2xl transition-all duration-700 group-hover:scale-[1.02]">
+          <Image
+            src={service.image}
+            alt={service.title}
+            fill
+            sizes="(max-width: 1024px) 100vw, 60vw"
+            className="object-cover filter grayscale contrast-125 opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-[2s] ease-out group-hover:scale-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
+
+          {/* Viewfinder Decorative Corner */}
+          <div className="absolute top-8 left-8 flex items-center gap-3">
+            <div className="w-2 h-2 rounded-full bg-cinelineGold animate-pulse" />
+            <span className="text-[10px] font-mono text-white/40 tracking-[0.3em] uppercase">SV-ARCHIVE_0{index + 1}</span>
+          </div>
+
+          {/* Gold Focus Brackets */}
+          <div className="absolute top-4 right-4 w-4 h-4 border-t border-r border-cinelineGold/0 group-hover:border-cinelineGold transition-all duration-700" />
+          <div className="absolute bottom-4 left-4 w-4 h-4 border-b border-l border-cinelineGold/0 group-hover:border-cinelineGold transition-all duration-700" />
+        </div>
+      </div>
+
+      {/* TEXT HALF */}
+      <div className="w-full lg:w-2/5 space-y-8 text-center lg:text-left">
+        <div className="space-y-4">
+          <div className="overflow-hidden flex justify-center lg:justify-start">
+            <span className="inline-block text-cinelineGold text-xs font-bold uppercase tracking-[0.6em] transform translate-y-full group-hover:translate-y-0 transition-transform duration-700">
+              {index < 9 ? `0${index + 1}` : index + 1} / Strategy
+            </span>
+          </div>
+
+          <h2 className="text-4xl sm:text-6xl md:text-7xl font-black text-white leading-[0.9] tracking-tighter uppercase transform group-hover:translate-x-4 transition-transform duration-1000">
+            {service.title}
+          </h2>
+        </div>
+
+        <p className="text-base md:text-lg text-gray-400 font-light leading-relaxed border-l-2 lg:border-l border-cinelineGold/30 pl-8 mx-4 lg:mx-0 py-2">
+          “{service.desc}”
+        </p>
+
+        <div className="pt-4 flex justify-center lg:justify-start">
+          <Link href={`/services/${service.slug}`} className="group/btn relative inline-flex items-center gap-4 px-10 py-5 bg-white text-black font-bold uppercase text-[10px] tracking-[0.3em] overflow-hidden hover:bg-cinelineGold transition-colors duration-500">
+            <span className="relative z-10 transition-colors group-hover/btn:text-black">Explore Catalogue</span>
+            <ArrowUpRight size={16} className="relative z-10 group-hover/btn:rotate-45 transition-transform" />
+          </Link>
+        </div>
+      </div>
+    </motion.div>
   );
 }
