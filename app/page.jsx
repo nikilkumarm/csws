@@ -315,104 +315,103 @@ export default function Page() {
               <div className="absolute bottom-12 left-12 right-12 flex justify-between items-end">
                 <div>
                   <span className="block text-cinelineGold uppercase tracking-widest text-xs mb-2">Featured</span>
+                  <h3 className="text-4xl md:text-5xl font-black text-white drop-shadow-md tracking-tighter">2024 Collection</h3>
                 </div>
-                <h3 className="text-4xl md:text-5xl font-black text-white drop-shadow-md tracking-tighter">2024 Collection</h3>
+                <MagneticButton className="cursor-pointer">
+                  <div className="w-20 h-20 rounded-full bg-white text-black flex items-center justify-center hover:bg-cinelineGold hover:text-white transition-all duration-300">
+                    <Play size={24} fill="currentColor" />
+                  </div>
+                </MagneticButton>
               </div>
-              <MagneticButton className="cursor-pointer">
-                <div className="w-20 h-20 rounded-full bg-white text-black flex items-center justify-center hover:bg-cinelineGold hover:text-white transition-all duration-300">
-                  <Play size={24} fill="currentColor" />
-                </div>
-              </MagneticButton>
+            </motion.div>
           </div>
-        </motion.div>
-    </div>
         </section >
 
-    {/* 4. SELECTED WORKS - EDITORIAL LAYOUT */ }
-    < section className = "py-0 bg-white relative" >
-      {/* Section Background Text */ }
-      < div className = "absolute top-20 left-0 w-full overflow-hidden pointer-events-none opacity-[0.06]" >
-        <h2 className="text-[20vw] leading-[0.8] font-bold text-black whitespace-nowrap">
-          SELECTED WORKS
-        </h2>
+        {/* 4. SELECTED WORKS - EDITORIAL LAYOUT */}
+        < section className="py-0 bg-white relative" >
+          {/* Section Background Text */}
+          < div className="absolute top-20 left-0 w-full overflow-hidden pointer-events-none opacity-[0.06]" >
+            <h2 className="text-[20vw] leading-[0.8] font-bold text-black whitespace-nowrap">
+              SELECTED WORKS
+            </h2>
           </div >
 
-    <div className="w-full">
-      <div className="max-w-7xl mx-auto px-6 lg:px-0 pt-32 pb-12 flex flex-col md:flex-row justify-between items-end">
-        <SectionHeader subtitle="Portfolio" title="Selected Works" dark={false} />
+          <div className="w-full">
+            <div className="max-w-7xl mx-auto px-6 lg:px-0 pt-32 pb-12 flex flex-col md:flex-row justify-between items-end">
+              <SectionHeader subtitle="Portfolio" title="Selected Works" dark={false} />
 
-      </div>
+            </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {/* Massive Feature */}
-        <ProjectCard
-          title="Vogue Editorial"
-          category="Fashion"
-          year="2024"
-          img="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=1600&auto=format&fit=crop"
-          colSpan={2}
-        />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+              {/* Massive Feature */}
+              <ProjectCard
+                title="Vogue Editorial"
+                category="Fashion"
+                year="2024"
+                img="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=1600&auto=format&fit=crop"
+                colSpan={2}
+              />
 
-        {/* Vertical Portrait */}
-        <ProjectCard
-          title="The Royal Union"
-          category="Wedding"
-          year="2023"
-          img="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=1600&auto=format&fit=crop"
-        />
+              {/* Vertical Portrait */}
+              <ProjectCard
+                title="The Royal Union"
+                category="Wedding"
+                year="2023"
+                img="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=1600&auto=format&fit=crop"
+              />
 
-        <ProjectCard
-          title="Urban Kinetics"
-          category="Commercial"
-          year="2024"
-          img="https://images.unsplash.com/photo-1552168324-d612d77725e3?q=80&w=1600&auto=format&fit=crop"
-        />
+              <ProjectCard
+                title="Urban Kinetics"
+                category="Commercial"
+                year="2024"
+                img="https://images.unsplash.com/photo-1552168324-d612d77725e3?q=80&w=1600&auto=format&fit=crop"
+              />
 
-        {/* Massive Feature Bottom */}
-        <ProjectCard
-          title="Neon Nights"
-          category="Event"
-          year="2023"
-          img="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1600&auto=format&fit=crop"
-          colSpan={2}
-        />
-      </div>
+              {/* Massive Feature Bottom */}
+              <ProjectCard
+                title="Neon Nights"
+                category="Event"
+                year="2023"
+                img="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1600&auto=format&fit=crop"
+                colSpan={2}
+              />
+            </div>
 
-      <div className="py-32 flex justify-center bg-white relative z-10">
-        <Link href="/portfolio" className="group relative px-12 py-6 bg-black text-white overflow-hidden rounded-full">
-          <div className="absolute inset-0 w-full h-full bg-cinelineGold translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.19,1,0.22,1]" />
-          <div className="relative flex items-center gap-3">
-            <span className="text-sm font-bold uppercase tracking-[0.2em] group-hover:text-black transition-colors">View All Projects</span>
-            <ArrowRight className="w-4 h-4 group-hover:text-black transition-colors" />
+            <div className="py-32 flex justify-center bg-white relative z-10">
+              <Link href="/portfolio" className="group relative px-12 py-6 bg-black text-white overflow-hidden rounded-full">
+                <div className="absolute inset-0 w-full h-full bg-cinelineGold translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.19,1,0.22,1]" />
+                <div className="relative flex items-center gap-3">
+                  <span className="text-sm font-bold uppercase tracking-[0.2em] group-hover:text-black transition-colors">View All Projects</span>
+                  <ArrowRight className="w-4 h-4 group-hover:text-black transition-colors" />
+                </div>
+              </Link>
+            </div>
           </div>
-        </Link>
-      </div>
-    </div>
         </section >
 
-    {/* 5. SERVICES - CLEAN & TECHNICAL */ }
-    < div className = "bg-[#f0f0f0] py-32 md:py-40 border-t border-gray-200 relative" >
-      {/* Technical Grid Pattern */ }
-      < div className = "absolute inset-0 opacity-[0.05]"
-  style = {{ backgroundImage: `linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)`, backgroundSize: '40px 40px' }
-}
+        {/* 5. SERVICES - CLEAN & TECHNICAL */}
+        < div className="bg-[#f0f0f0] py-32 md:py-40 border-t border-gray-200 relative" >
+          {/* Technical Grid Pattern */}
+          < div className="absolute inset-0 opacity-[0.05]"
+            style={{ backgroundImage: `linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)`, backgroundSize: '40px 40px' }
+            }
           />
-  < div className = "max-w-7xl mx-auto px-6" >
+          < div className="max-w-7xl mx-auto px-6" >
             <SectionHeader subtitle="Expertise" title="Our Services" dark={false} />
             <p className="max-w-2xl text-xl text-gray-500 mb-16 font-light">
               We offer a comprehensive suite of visual production services, tailored to elevate brands and capture life's defining moments.
             </p>
           </div >
-  <PremiumServices />
+          <PremiumServices />
         </div >
 
-  {/* 6. TESTIMONIALS - IMMERSIVE DARK */ }
-  < div className = "bg-[#050505] py-32 md:py-40 text-white relative overflow-hidden" >
-    {/* Spotlight Effect & Constellation Pattern */ }
-    < div className = "absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-cinelineGold/5 blur-[120px] rounded-full pointer-events-none" />
+        {/* 6. TESTIMONIALS - IMMERSIVE DARK */}
+        < div className="bg-[#050505] py-32 md:py-40 text-white relative overflow-hidden" >
+          {/* Spotlight Effect & Constellation Pattern */}
+          < div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-cinelineGold/5 blur-[120px] rounded-full pointer-events-none" />
 
-      {/* Geometric Constellation */ }
-      < svg className = "absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none" xmlns = "http://www.w3.org/2000/svg" >
+          {/* Geometric Constellation */}
+          < svg className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none" xmlns="http://www.w3.org/2000/svg" >
             <defs>
               <pattern id="grid-pattern" width="100" height="100" patternUnits="userSpaceOnUse">
                 <circle cx="1" cy="1" r="1" fill="white" opacity="0.5" />
@@ -420,7 +419,7 @@ export default function Page() {
             </defs>
             <rect width="100%" height="100%" fill="url(#grid-pattern)" />
 
-{/* Connected Lines */ }
+            {/* Connected Lines */}
             <line x1="20%" y1="20%" x2="50%" y2="50%" stroke="rgba(212, 175, 55, 0.2)" strokeWidth="1" />
             <line x1="80%" y1="30%" x2="50%" y2="50%" stroke="rgba(212, 175, 55, 0.2)" strokeWidth="1" />
             <circle cx="50%" cy="50%" r="200" stroke="rgba(255,255,255,0.05)" fill="none" />
@@ -444,7 +443,7 @@ export default function Page() {
 
       </main >
 
-  <WhatsAppButton />
+      <WhatsAppButton />
     </div >
   );
 }
