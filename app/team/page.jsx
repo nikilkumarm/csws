@@ -66,21 +66,20 @@ export default function TeamPage() {
       <div className="fixed inset-0 pointer-events-none opacity-[0.04] z-0 mix-blend-overlay"
         style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}
       />
-
-      {/* Hero Section */}
-      <section className="relative h-screen flex flex-col justify-center items-center overflow-hidden">
+      {/* Hero Section - Optimized for Mobile visibility */}
+      <section className="relative h-[50vh] md:h-screen flex flex-col justify-center items-center overflow-hidden pt-20 md:pt-0">
         <motion.div style={{ y: yHero, opacity: opacityHero }} className="z-10 text-center px-4">
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-8"
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="mb-4 md:mb-8"
           >
-            <span className="inline-block py-1 px-3 border border-cinelineGold/30 rounded-full text-cinelineGold text-xs uppercase tracking-widest">
+            <span className="inline-block py-1 px-3 border border-cinelineGold/30 rounded-full text-cinelineGold text-[10px] md:text-xs uppercase tracking-widest">
               The Ensemble
             </span>
           </motion.div>
-          <h1 className="text-[12vw] leading-[0.85] font-black text-white tracking-tighter mix-blend-difference">
+          <h1 className="text-[14vw] md:text-[12vw] leading-[0.85] font-black text-white tracking-tighter mix-blend-difference">
             <span className="block">CREATIVE</span>
             <span className="block text-transparent stroke-text">MINDS</span>
           </h1>
@@ -90,16 +89,16 @@ export default function TeamPage() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 1 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 text-xs uppercase tracking-widest text-gray-500"
+          transition={{ delay: 0.5, duration: 1 }}
+          className="absolute bottom-6 md:bottom-12 left-1/2 -translate-x-1/2 text-[10px] md:text-xs uppercase tracking-widest text-gray-500"
         >
-          Scroll to Meet
+          Scroll
         </motion.div>
       </section>
 
-      {/* Team Grid - Magazine Style */}
-      <section className="relative z-10 px-4 md:px-12 pb-40">
-        <div className="max-w-[1800px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-32">
+      {/* Team Grid - Magazine Style - Mobile Optimized */}
+      <section className="relative z-10 px-4 md:px-12 pb-20 md:pb-40">
+        <div className="max-w-[1800px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12 md:gap-y-32">
           {TEAM_MEMBERS.map((member, index) => (
             <TeamCard key={member.id} member={member} index={index} />
           ))}
@@ -107,9 +106,9 @@ export default function TeamPage() {
       </section>
 
       {/* Join CTA */}
-      <section className="py-40 bg-[#080808] border-t border-white/5 relative overflow-hidden">
+      <section className="py-24 md:py-40 bg-[#080808] border-t border-white/5 relative overflow-hidden">
         <div className="max-w-4xl mx-auto text-center px-6 relative z-10">
-          <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tighter">Your Vision. <br /> <span className="text-cinelineGold italic font-serif">Our Canvas.</span></h2>
+          <h2 className="text-4xl md:text-7xl font-bold text-white mb-8 tracking-tighter">Your Vision. <br /> <span className="text-cinelineGold italic font-serif">Our Canvas.</span></h2>
           <a href="mailto:careers@cinelinestudios.com" className="inline-flex items-center gap-3 text-lg text-white border-b border-cinelineGold pb-1 hover:text-cinelineGold transition-colors">
             Join the Team <ArrowUpRight size={20} />
           </a>
@@ -138,55 +137,57 @@ function TeamCard({ member, index }) {
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-10%" }}
-        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-        className="group relative aspect-square w-full overflow-hidden bg-gray-900 border border-white/5"
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        className="group relative aspect-square w-full overflow-hidden bg-gray-900 border border-white/5 active:scale-95 transition-transform duration-300"
       >
-        {/* Image */}
+        {/* Image - Optimized for loading speed */}
         <Image
           src={member.image}
           alt={member.name}
           fill
+          sizes="(max-width: 768px) 100vw, 50vw"
+          priority={index < 2}
           className="object-cover transition-all duration-1000 scale-[1.01] group-hover:scale-110 grayscale contrast-125 brightness-90 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100"
         />
 
         {/* Overlay Vignette */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-60" />
 
-        {/* Content Overlay */}
-        <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end">
+        {/* Content Overlay - Always visible on mobile for better UX, or keep interaction same if requested */}
+        <div className="absolute inset-0 p-6 md:p-12 flex flex-col justify-end">
 
-          <div className="transform transition-transform duration-500 translate-y-4 group-hover:translate-y-0">
+          <div className="transform transition-transform duration-500 translate-y-2 md:translate-y-4 group-hover:translate-y-0">
             {/* Role with Line */}
-            <div className="flex items-center gap-4 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-              <div className="h-[1px] w-8 bg-cinelineGold" />
-              <span className="text-cinelineGold text-xs uppercase tracking-[0.2em] font-medium">{member.role}</span>
+            <div className="flex items-center gap-3 md:gap-4 mb-2 md:mb-4 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 md:delay-100">
+              <div className="h-[1px] w-6 md:w-8 bg-cinelineGold" />
+              <span className="text-cinelineGold text-[10px] md:text-xs uppercase tracking-[0.2em] font-medium">{member.role}</span>
             </div>
 
             {/* Name */}
-            <h2 className="text-4xl md:text-6xl font-black text-white text-uppercase tracking-tighter leading-none mb-2">
+            <h2 className="text-3xl md:text-6xl font-black text-white text-uppercase tracking-tighter leading-none mb-2">
               {member.name}
             </h2>
           </div>
 
-          {/* Bio Reveal */}
-          <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-[0.22, 1, 0.36, 1]">
+          {/* Bio Reveal - Click/Hover on mobile */}
+          <div className="grid grid-rows-[1fr] md:grid-rows-[0fr] md:group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-[0.22, 1, 0.36, 1]">
             <div className="overflow-hidden">
-              <p className="text-gray-400 font-light leading-relaxed pt-6 text-sm md:text-base max-w-md opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-200">
+              <p className="text-gray-400 font-light leading-relaxed pt-3 md:pt-6 text-sm md:text-base max-w-md opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-700 md:delay-200">
                 {member.bio}
               </p>
               {/* Socials */}
-              <div className="flex gap-4 pt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
-                {member.socials.instagram && <a href={member.socials.instagram} className="text-white hover:text-cinelineGold"><Instagram size={20} /></a>}
-                {member.socials.linkedin && <a href={member.socials.linkedin} className="text-white hover:text-cinelineGold"><Linkedin size={20} /></a>}
-                {member.socials.email && <a href={member.socials.email} className="text-white hover:text-cinelineGold"><Mail size={20} /></a>}
+              <div className="flex gap-4 pt-4 md:pt-6 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-700 md:delay-300">
+                {member.socials.instagram && <a href={member.socials.instagram} className="text-white hover:text-cinelineGold"><Instagram size={18} /></a>}
+                {member.socials.linkedin && <a href={member.socials.linkedin} className="text-white hover:text-cinelineGold"><Linkedin size={18} /></a>}
+                {member.socials.email && <a href={member.socials.email} className="text-white hover:text-cinelineGold"><Mail size={18} /></a>}
               </div>
             </div>
           </div>
         </div>
 
         {/* Corner Accent */}
-        <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-          <ArrowUpRight className="text-white" size={32} />
+        <div className="absolute top-0 right-0 p-4 md:p-6 opacity-50 md:opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          <ArrowUpRight className="text-white" size={24} />
         </div>
 
       </motion.div>
