@@ -284,7 +284,7 @@ export default function Page() {
 
               <div className="flex gap-6">
                 <div className="flex flex-col gap-1">
-                  <span className="text-4xl font-bold text-white">500+</span>
+                  <span className="text-4xl font-bold text-white">100+</span>
                   <span className="text-sm uppercase tracking-widest text-gray-500">Projects</span>
                 </div>
                 <div className="w-[1px] bg-white/10 h-12" />
