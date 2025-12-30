@@ -14,7 +14,7 @@ export default function ContactForm() {
     e.preventDefault();
     setStatus("loading");
     try {
-      await axios.post("/api/contact", form);
+      await axios.post("https://formsubmit.co/ajax/cinelinestudio24@gmail.com", form);
       setStatus("success");
       setForm({ name: "", email: "", message: "" });
     } catch {

@@ -70,26 +70,27 @@ export default function BookingPage() {
       const data = new FormData();
       Object.keys(form).forEach((key) => {
         if (key === "files") {
-          (form.files || []).forEach((file) =>
-            data.append("attachments", file)
+          (form.files || []).forEach((file, index) =>
+            data.append(`attachment_${index}`, file)
           );
         } else {
           data.append(key, form[key]);
         }
       });
 
-      await axios.post("/api/bookings", data);
+      // Pointing to FormSubmit.co for direct email automation
+      await axios.post("https://formsubmit.co/ajax/cinelinestudio24@gmail.com", data);
 
       setPopup({
         type: "success",
-        message: "Your booking and files have been uploaded successfully!",
+        message: "Your booking and files have been sent directly to our inbox!",
       });
 
       resetForm();
     } catch (err) {
       setPopup({
         type: "error",
-        message: err?.response?.data?.error || "Something went wrong.",
+        message: "Something went wrong. Please try again or email us directly.",
       });
     } finally {
       setLoading(false);
