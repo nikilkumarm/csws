@@ -30,7 +30,7 @@ const SERVICES = [
     image: "/images/services/product.jpg"
   },
   {
-    title: "Broadcast & Commercials",
+    title: "Broadcast\u00A0& Commercials",
     desc: "End-to-end production for commercials and documentaries. We handle everything from conceptualization to the final color grade.",
     icon: MonitorPlay,
     slug: "broadcast-commercials",
