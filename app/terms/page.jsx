@@ -163,7 +163,7 @@ export default function TermsPage() {
                             <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-cinelineGold group-hover:text-white transition-all">
                                 <Globe size={20} />
                             </div>
-                            <span className="text-gray-300 group-hover:text-white font-medium">cinelinestudios.com</span>
+                            <span className="text-gray-300 group-hover:text-white font-medium">cinelinestudios.vercel.app</span>
                         </a>
                     </div>
 
