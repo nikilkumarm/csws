@@ -129,7 +129,7 @@ export default function Navbar() {
                 <Link
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className={`relative block text-5xl md:text-7xl font-black uppercase italic tracking-tighter transition-all duration-500 ease-out transform ${open ? "translate-y-0 opacity-100 rotate-0" : "translate-y-20 opacity-0 rotate-3"
+                  className={`relative block text-4xl md:text-6xl font-black uppercase italic tracking-tighter transition-all duration-500 ease-out transform ${open ? "translate-y-0 opacity-100 rotate-0" : "translate-y-20 opacity-0 rotate-3"
                     }`}
                   style={{ transitionDelay: `${100 + i * 100}ms` }}
                 >
