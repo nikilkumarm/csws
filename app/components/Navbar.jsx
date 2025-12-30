@@ -93,9 +93,9 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* MOBILE MENU - GOD MODE MINIMAL */}
+      {/* MOBILE MENU - GOD MODE FORMAL */}
       <div
-        className={`md:hidden fixed inset-0 bg-[#080808] z-[10000] flex flex-col justify-center items-center transition-all duration-700 ease-[0.22, 1, 0.36, 1] ${open ? "clip-path-circle-full opacity-100 visible" : "clip-path-circle-zero opacity-0 invisible delay-300"
+        className={`md:hidden fixed inset-0 bg-[#050505] z-[10000] flex flex-col justify-center items-center transition-all duration-700 ease-[0.22, 1, 0.36, 1] ${open ? "clip-path-circle-full opacity-100 visible" : "clip-path-circle-zero opacity-0 invisible delay-300"
           }`}
         style={{
           clipPath: open ? "circle(150% at 90% 5%)" : "circle(0% at 90% 5%)",
@@ -104,61 +104,50 @@ export default function Navbar() {
       >
         {/* Background Atmosphere */}
         <div className="absolute inset-0 z-0 opacity-20 pointer-events-none"
-          style={{ backgroundImage: 'radial-gradient(circle at center, #2a2a2a 1px, transparent 1px)', backgroundSize: '40px 40px' }}
+          style={{ backgroundImage: 'radial-gradient(circle at center, #222 1px, transparent 1px)', backgroundSize: '40px 40px' }}
         />
-        <div className="absolute top-0 right-0 w-[60vw] h-[60vw] bg-cinelineGold/10 rounded-full blur-[100px] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[80vw] h-[80vw] bg-cinelineGold/5 rounded-full blur-[120px] pointer-events-none" />
 
-        <nav className="flex flex-col gap-2 text-center z-10 w-full px-6 container mx-auto">
+        <nav className="flex flex-col gap-0 text-center z-10 w-full px-8 max-w-lg mx-auto">
 
-          {/* Menu Logo */}
-          <div className={`mb-8 flex justify-center transition-all duration-700 ease-[0.22, 1, 0.36, 1] ${open ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-12"
+          {/* Menu Logo - Clean & Centered */}
+          <div className={`mb-16 flex justify-center transition-all duration-700 ease-[0.22, 1, 0.36, 1] ${open ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8"
             }`}>
             <Image
               src="/cs_logo_w_t.png"
               alt="Cineline Studios"
               width={160}
               height={50}
-              className="w-40 h-auto opacity-90"
+              className="w-40 h-auto opacity-100"
             />
           </div>
 
-          <div className="flex flex-col items-center gap-4">
+          {/* Links - Formal List */}
+          <div className="flex flex-col divide-y divide-white/10 border-y border-white/10">
             {NAV_ITEMS.map((item, i) => (
-              <div key={item.href} className="relative group overflow-hidden">
-                <Link
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  className={`relative block text-4xl md:text-6xl font-black uppercase italic tracking-tighter transition-all duration-500 ease-out transform ${open ? "translate-y-0 opacity-100 rotate-0" : "translate-y-20 opacity-0 rotate-3"
-                    }`}
-                  style={{ transitionDelay: `${100 + i * 100}ms` }}
-                >
-                  <span className="absolute -left-6 top-0 text-xs font-mono text-cinelineGold/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -translate-y-2">
-                    0{i + 1}
-                  </span>
-                  <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-b from-gray-600 to-gray-900 group-hover:text-white transition-colors duration-300">
-                    {item.label}
-                  </span>
-                  {/* Glitch/Ghost Effect on Hover */}
-                  <span className="absolute top-0 left-0 text-cinelineGold opacity-0 group-hover:opacity-30 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 pointer-events-none">
-                    {item.label}
-                  </span>
-                </Link>
-              </div>
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className={`group py-6 flex items-center justify-between text-3xl font-light tracking-wide text-gray-400 hover:text-white transition-all duration-500 transform ${open ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
+                  }`}
+                style={{ transitionDelay: `${150 + i * 50}ms` }}
+              >
+                <span>{item.label}</span>
+                <span className="w-2 h-2 rounded-full bg-cinelineGold opacity-0 group-hover:opacity-100 transform scale-0 group-hover:scale-100 transition-all duration-300" />
+              </Link>
             ))}
           </div>
 
           <div
-            className={`mt-12 w-full flex justify-center transition-all duration-700 delay-500 ${open ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-12 scale-90"
+            className={`mt-16 w-full flex justify-center transition-all duration-700 delay-500 ${open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
           >
             <Link
               href="/booking"
               onClick={() => setOpen(false)}
-              className="group relative px-12 py-5 bg-transparent border border-white/10 text-white text-xs font-bold uppercase tracking-[0.3em] overflow-hidden transition-all hover:border-cinelineGold hover:shadow-[0_0_40px_rgba(212,175,55,0.2)]"
+              className="w-full py-5 rounded-lg bg-white/5 border border-white/10 text-white text-sm font-medium uppercase tracking-[0.2em] hover:bg-cinelineGold hover:text-black hover:border-cinelineGold transition-all duration-300"
             >
-              <span className="absolute inset-0 bg-cinelineGold transform scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-bottom ease-[0.22, 1, 0.36, 1]" />
-              <span className="relative z-10 group-hover:text-black transition-colors duration-500">Starts Here</span>
+              Book Now
             </Link>
           </div>
         </nav>
