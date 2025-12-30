@@ -15,6 +15,8 @@ const pilePhotos = [
   "/images/pile/p6.JPG",
   "/images/pile/p7.jpg",
   "/images/pile/p8.JPG",
+  "/images/pile/p9.JPG",
+  "/images/pile/p10.JPG",
 ];
 
 export default function Hero() {
