@@ -99,9 +99,7 @@ export default function ManifestoPage() {
             </main>
 
             {/* Footer Simple */}
-            <footer className="relative z-10 py-12 border-t border-white/10 text-center text-sm text-gray-600 bg-[#050505]">
-                <p>© {new Date().getFullYear()} Cineline Studios. All rights reserved.</p>
-            </footer>
+
 
         </div>
     );
