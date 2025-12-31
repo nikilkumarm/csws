@@ -169,7 +169,7 @@ export default function AboutPage() {
 
               <div className="flex gap-8 pt-8 border-t border-white/10 justify-center lg:justify-start">
                 <div>
-                  <span className="block text-4xl font-light text-white mb-1">500+</span>
+                  <span className="block text-4xl font-light text-white mb-1">100+</span>
                   <span className="text-xs uppercase tracking-widest text-cinelineGold">Stories Told</span>
                 </div>
                 <div className="w-px bg-white/10 h-12" />
