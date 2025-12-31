@@ -26,15 +26,7 @@ export default function ManifestoPage() {
                 <div className="fixed top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 pointer-events-none mix-blend-overlay" />
             </div>
 
-            {/* Nav */}
-            <nav className="fixed top-0 left-0 w-full z-50 px-6 py-8 flex justify-between items-center mix-blend-difference">
-                <Link href="/" className="group flex items-center gap-2 text-white/80 hover:text-white transition-colors">
-                    <div className="p-2 rounded-full border border-white/20 group-hover:border-white transition-colors">
-                        <ArrowLeft size={16} />
-                    </div>
-                    <span className="text-sm font-medium tracking-widest uppercase">Back to Home</span>
-                </Link>
-            </nav>
+
 
             {/* Main Content */}
             <main className="relative z-10 pt-24 md:pt-40 pb-20 md:pb-32 px-6">

@@ -14,9 +14,8 @@ const serviceContent = {
         image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2000&auto=format&fit=crop",
         desc: "We don't just record events; we weave emotion, sound, and light into a masterpiece. Our wedding films are graded with cinema-quality color science and edited to tell your unique love story.",
         gallery: [
-            "https://images.unsplash.com/photo-1511285560982-1351cdeb9821?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=800&auto=format&fit=crop"
+            "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800&auto=format&fit=crop"
         ],
         features: [
             "4K Cinema Line Cameras",
@@ -31,9 +30,8 @@ const serviceContent = {
         image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2000&auto=format&fit=crop",
         desc: "Whether it’s a high-stakes corporate summit or an exclusive gala, our team operates seamlessly in the background to capture candid moments, keynotes, and the electric atmosphere.",
         gallery: [
-            "https://images.unsplash.com/photo-1514525253440-b393452e8d26?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1475721027767-f43f0aa78cc7?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=800&auto=format&fit=crop"
+            "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1475721027767-f43f0aa78cc7?q=80&w=800&auto=format&fit=crop"
         ],
         features: [
             "Multi-Photographer Teams",
@@ -48,9 +46,8 @@ const serviceContent = {
         image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=2000&auto=format&fit=crop",
         desc: "Elevate your brand with high-fidelity product photography and short-form video content designed for engagement. We focus on texture, lighting, and composition to make your product the hero.",
         gallery: [
-            "https://images.unsplash.com/photo-1523293188086-b469b90660a1?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=800&auto=format&fit=crop"
+            "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=800&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop"
         ],
         features: [
             "Creative Art Direction",
@@ -66,8 +63,7 @@ const serviceContent = {
         desc: "From 30-second TV spots to brand documentaries, we handle end-to-end production. Scripting, casting, filming, and post-production—all executed with broadcast standards in mind.",
         gallery: [
             "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=800&auto=format&fit=crop"
+            "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=800&auto=format&fit=crop"
         ],
         features: [
             "Script to Screen",
@@ -93,15 +89,7 @@ export default function ServiceDetail({ params }) {
         <div ref={containerRef} className="min-h-screen bg-black text-white selection:bg-cinelineGold selection:text-black font-sans relative overflow-x-hidden">
             <CinematicGrain opacity={0.1} />
 
-            {/* FLOATING NAV BACK */}
-            <nav className="fixed top-0 left-0 w-full z-50 px-6 py-8 md:px-12 flex justify-between items-center mix-blend-difference">
-                <Link href="/services" className="group flex items-center gap-2 text-white/80 hover:text-white transition-colors">
-                    <div className="p-2 rounded-full border border-white/20 group-hover:border-white transition-colors">
-                        <ArrowLeft size={16} />
-                    </div>
-                    <span className="text-sm font-medium tracking-widest uppercase">Catalogue</span>
-                </Link>
-            </nav>
+
 
             {/* IMMERSIVE HERO - CINEMATIC SCALE */}
             <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
@@ -149,13 +137,13 @@ export default function ServiceDetail({ params }) {
                         <div className="space-y-12">
                             <div className="space-y-6">
                                 <span className="text-cinelineGold text-xs font-bold uppercase tracking-[0.4em]">The Standard</span>
-                                <h2 className="text-4xl md:text-7xl font-black uppercase leading-tight tracking-tighter">
-                                    Quality is a <br />
+                                <h2 className="text-4xl md:text-7xl font-black uppercase leading-tight tracking-tighter text-white relative z-10">
+                                    Quality is <br />
                                     <span className="text-cinelineGold italic font-serif lowercase block mt-2 text-3xl md:text-5xl">non-negotiable.</span>
                                 </h2>
                             </div>
 
-                            <p className="text-xl md:text-2xl text-gray-400 font-light leading-relaxed border-l-2 border-cinelineGold/30 pl-8">
+                            <p className="text-lg md:text-xl text-gray-400 font-light leading-relaxed border-l-2 border-cinelineGold/30 pl-8">
                                 {data.desc}
                             </p>
 
@@ -167,7 +155,6 @@ export default function ServiceDetail({ params }) {
                                         </div>
                                         <div>
                                             <h4 className="text-white text-sm font-bold uppercase tracking-widest mb-1">{f}</h4>
-                                            <p className="text-xs text-gray-500 font-mono">Mastery Certified</p>
                                         </div>
                                     </div>
                                 ))}
@@ -184,10 +171,7 @@ export default function ServiceDetail({ params }) {
                             />
                             {/* Frame Accents */}
                             <div className="absolute inset-8 border border-white/10 opacity-50 group-hover:opacity-100 transition-opacity" />
-                            <div className="absolute top-12 left-12 flex items-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-cinelineGold animate-pulse" />
-                                <span className="text-[10px] font-mono text-white/60 tracking-widest uppercase">Live_Preview_01</span>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -197,7 +181,7 @@ export default function ServiceDetail({ params }) {
             <section className="py-24 md:py-40 bg-[#080808]">
                 <div className="container mx-auto px-6 mb-20 text-center md:text-left">
                     <span className="text-cinelineGold text-xs font-bold uppercase tracking-[0.4em] mb-4 block">Visual Proof</span>
-                    <h2 className="text-4xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-4">The Archive</h2>
+                    <h2 className="text-4xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-4 text-white relative z-10">The Archive</h2>
                     <div className="w-24 h-[1px] bg-cinelineGold/50 mx-auto md:mx-0" />
                 </div>
 
@@ -212,7 +196,6 @@ export default function ServiceDetail({ params }) {
                             />
                             <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-700" />
                             <div className="absolute bottom-6 left-6 flex items-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity translate-y-4 group-hover:translate-y-0 duration-500">
-                                <span className="text-[10px] font-mono text-white tracking-[0.3em] uppercase">Archive_Frame_0{i + 1}</span>
                                 <ArrowUpRight size={14} className="text-cinelineGold" />
                             </div>
                         </div>

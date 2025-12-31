@@ -6,15 +6,7 @@ import { ArrowLeft, Mail, Phone, Globe } from "lucide-react";
 export default function PrivacyPage() {
     return (
         <div className="bg-[#050505] min-h-screen text-gray-300 font-sans selection:bg-cinelineGold selection:text-black">
-            {/* Header / Nav */}
-            <nav className="fixed top-0 left-0 w-full z-50 px-6 py-6 flex justify-between items-center mix-blend-difference">
-                <Link href="/" className="group flex items-center gap-2 text-white/80 hover:text-white transition-colors">
-                    <div className="p-2 rounded-full border border-white/20 group-hover:border-white transition-colors">
-                        <ArrowLeft size={16} />
-                    </div>
-                    <span className="text-sm font-medium tracking-widest uppercase">Back to Home</span>
-                </Link>
-            </nav>
+
 
             {/* Hero Section */}
             <section className="relative pt-40 pb-20 px-6 border-b border-white/5 bg-cinelineDark text-center overflow-hidden">

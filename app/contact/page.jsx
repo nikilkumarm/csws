@@ -144,8 +144,8 @@ export default function ContactPage() {
                 {/* Location Card */}
                 <ContactCard
                   icon={MapPin}
-                  label="Studio"
-                  value="Chennai, India"
+                  label="Location"
+                  value="Tamilnadu, India"
                   sub="Available Globally"
                   delay={0.6}
                 />

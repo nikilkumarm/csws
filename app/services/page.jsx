@@ -53,15 +53,7 @@ export default function ServicesPage() {
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-white/[0.02] blur-[150px] rounded-full mix-blend-screen" />
       </div>
 
-      {/* Nav */}
-      <nav className="fixed top-0 left-0 w-full z-50 px-6 py-8 md:px-12 flex justify-between items-center mix-blend-difference">
-        <Link href="/" className="group flex items-center gap-2 text-white/80 hover:text-white transition-colors">
-          <div className="p-2 rounded-full border border-white/20 group-hover:border-white transition-colors">
-            <ArrowLeft size={16} />
-          </div>
-          <span className="text-sm font-medium tracking-widest uppercase">Home</span>
-        </Link>
-      </nav>
+
 
       <main className="relative z-10 pt-40 pb-20">
 

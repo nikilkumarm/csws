@@ -59,7 +59,7 @@ const TEAM_MEMBERS = [
     id: 7,
     name: "Sam Asir",
     role: "Cinematographer & Editor",
-    image: "/images/team/sam.jpg",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop",
     bio: "Visual poet with a lens. Turning fleeting moments into cinematic monuments.",
     socials: { instagram: "#", email: "mailto:samasir@cinelinestudios.com" }
   },
@@ -84,15 +84,7 @@ export default function TeamPage() {
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-gray-300 font-sans selection:bg-cinelineGold selection:text-black relative">
 
-      {/* Nav */}
-      <nav className="fixed top-0 left-0 w-full z-50 px-4 md:px-12 py-6 md:py-8 flex justify-between items-center mix-blend-difference">
-        <Link href="/" className="group flex items-center gap-2 text-white/80 hover:text-white transition-colors">
-          <div className="p-2 rounded-full border border-white/20 group-hover:border-white transition-colors">
-            <ArrowLeft size={14} className="md:w-4 md:h-4" />
-          </div>
-          <span className="text-[10px] md:text-sm font-medium tracking-widest uppercase">Home</span>
-        </Link>
-      </nav>
+
 
       {/* Background Texture */}
       <div className="fixed inset-0 pointer-events-none opacity-[0.04] z-0 mix-blend-overlay"
