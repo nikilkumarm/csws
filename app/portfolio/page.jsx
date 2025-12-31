@@ -91,7 +91,7 @@ export default function PortfolioPage() {
         <section className="px-6 max-w-[1600px] mx-auto">
           <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <AnimatePresence>
-              {filtered.map((project) => (
+              {filtered.map((project, index) => (
                 <motion.div
                   key={project.id}
                   layout
@@ -108,23 +108,25 @@ export default function PortfolioPage() {
                       src={project.src}
                       alt={project.title}
                       fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      priority={index < 4}
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
 
-                    {/* Dark Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    {/* Dark Overlay - Always on for Mobile, Hover for Desktop */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300" />
 
-                    {/* Content Layer */}
-                    <div className="absolute inset-0 p-8 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    {/* Content Layer - Always on for Mobile, Hover for Desktop */}
+                    <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-500">
                         <span className="text-cinelineGold text-xs font-bold tracking-widest uppercase mb-2 block">{project.category}</span>
                         <div className="flex justify-between items-end">
                           <div>
                             <h3 className="text-white text-2xl font-bold">{project.title}</h3>
                             <p className="text-gray-300 text-sm mt-1">{project.client}</p>
                           </div>
-                          <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md text-white border border-white/20 flex items-center justify-center hover:bg-cinelineGold hover:border-cinelineGold transition-colors duration-300">
-                            <ArrowUpRight size={22} />
+                          <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-md text-white border border-white/20 flex items-center justify-center hover:bg-cinelineGold hover:border-cinelineGold transition-colors duration-300">
+                            <ArrowUpRight size={20} />
                           </div>
                         </div>
                       </div>

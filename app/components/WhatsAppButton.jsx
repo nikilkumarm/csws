@@ -8,16 +8,16 @@ export default function WhatsAppButton() {
   const href = `https://wa.me/918124887577?text=${sampleText}`;
 
   return (
-    <div className="fixed bottom-28 right-10 z-[100] flex items-center gap-4">
+    <div className="fixed bottom-6 right-6 z-[100] flex items-center gap-4">
       <AnimatePresence>
         {isHovered && (
           <motion.div
             initial={{ opacity: 0, x: 20, scale: 0.8 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             exit={{ opacity: 0, x: 10, scale: 0.8 }}
-            className="bg-white/90 dark:bg-black/90 backdrop-blur-md border border-white/20 px-4 py-2 rounded-xl shadow-xl whitespace-nowrap hidden md:block"
+            className="bg-white/90 dark:bg-black/90 backdrop-blur-md border border-white/20 px-3 py-1.5 rounded-lg shadow-xl whitespace-nowrap hidden md:block"
           >
-            <p className="text-sm font-medium text-gray-800 dark:text-gray-200">Chat with us</p>
+            <p className="text-xs font-medium text-gray-800 dark:text-gray-200">Chat</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -30,7 +30,7 @@ export default function WhatsAppButton() {
         onMouseLeave={() => setIsHovered(false)}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        className="relative group flex items-center justify-center w-16 h-16 bg-[#25D366] rounded-full shadow-[0_4px_20px_rgba(37,211,102,0.4)] hover:shadow-[0_6px_30px_rgba(37,211,102,0.6)] transition-shadow duration-300"
+        className="relative group flex items-center justify-center w-12 h-12 bg-[#25D366] rounded-full shadow-[0_4px_15px_rgba(37,211,102,0.4)] hover:shadow-[0_6px_25px_rgba(37,211,102,0.6)] transition-shadow duration-300"
         aria-label="Open WhatsApp chat"
       >
         {/* Pulse Effect */}
@@ -38,8 +38,8 @@ export default function WhatsAppButton() {
 
         <svg
           viewBox="0 0 24 24"
-          width="32"
-          height="32"
+          width="24"
+          height="24"
           fill="currentColor"
           className="text-white relative z-10"
         >

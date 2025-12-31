@@ -44,6 +44,10 @@ body {
 }
 
 /* Typography */
+.font-script {
+  font-family: var(--font-script), cursive;
+}
+
 h1,
 h2,
 h3 {

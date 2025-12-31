@@ -9,6 +9,7 @@ const NAV_ITEMS = [
   { label: "About", href: "/about" },
   { label: "Portfolio", href: "/portfolio" },
   { label: "Services", href: "/services" },
+  { label: "Team", href: "/team" },
 ];
 
 export default function Navbar() {
@@ -69,64 +70,73 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* MOBILE MENU BUTTON */}
+          {/* MOBILE MENU BUTTON - ANIMATED */}
           <button
             onClick={() => setOpen((s) => !s)}
-            className="md:hidden p-2 text-black cinematic-item relative z-[10001] cursor-pointer"
+            className="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 z-[10001] relative group"
+            aria-label="Toggle Menu"
           >
-            <svg
-              className="w-6 h-6"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth="2"
-              fill="none"
-            >
-              {open ? (
-                <path d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <>
-                  <path d="M3 7h18" />
-                  <path d="M3 12h18" />
-                  <path d="M3 17h18" />
-                </>
-              )}
-            </svg>
+            <span
+              className={`w-8 h-[1.5px] bg-black transition-all duration-500 ease-[0.22, 1, 0.36, 1] ${open ? "rotate-45 translate-y-2 bg-cinelineGold" : "group-hover:bg-cinelineGold"
+                }`}
+            />
+            <span
+              className={`w-8 h-[1.5px] bg-black transition-all duration-500 ease-[0.22, 1, 0.36, 1] ${open ? "opacity-0" : "group-hover:bg-cinelineGold"
+                }`}
+            />
+            <span
+              className={`w-8 h-[1.5px] bg-black transition-all duration-500 ease-[0.22, 1, 0.36, 1] ${open ? "-rotate-45 -translate-y-2 bg-cinelineGold" : "group-hover:bg-cinelineGold"
+                }`}
+            />
           </button>
 
         </div>
       </div>
 
-      {/* MOBILE MENU */}
-      {open && (
-        <div
-          ref={menuRef}
-          onClick={(e) => {
-            if (e.target === e.currentTarget) setOpen(false);
-          }}
-          className="md:hidden fixed inset-0 bg-white/95 backdrop-blur-xl px-6 pt-32 z-[9998] flex flex-col items-center gap-8 shadow-2xl transition-all duration-300"
-        >
-          <nav className="flex flex-col gap-6 text-black text-2xl font-light tracking-wide text-center">
+      {/* MOBILE MENU - STATIC NO ANIMATION */}
+      <div
+        className={`md:hidden fixed inset-0 bg-black z-[10000] flex-col justify-center items-center ${open ? "flex" : "hidden"
+          }`}
+      >
+        <nav className="flex flex-col gap-0 text-center z-10 w-full px-8 max-w-lg mx-auto">
+
+          {/* Menu Logo */}
+          <div className="mb-16 flex justify-center">
+            <Image
+              src="/cs_logo_w_t.png"
+              alt="Cineline Studios"
+              width={160}
+              height={50}
+              className="w-40 h-auto"
+            />
+          </div>
+
+          {/* Links - Static List */}
+          <div className="flex flex-col divide-y divide-white/10 border-y border-white/10">
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="py-2 hover:text-cinelineGold transition-colors"
+                className="group py-6 flex items-center justify-between text-3xl font-light tracking-wide text-white hover:text-cinelineGold"
               >
-                {item.label}
+                <span>{item.label}</span>
+                <span className="w-2 h-2 rounded-full bg-cinelineGold opacity-0 group-hover:opacity-100" />
               </Link>
             ))}
+          </div>
 
+          <div className="mt-16 w-full flex justify-center">
             <Link
               href="/booking"
               onClick={() => setOpen(false)}
-              className="mt-6 px-10 py-4 bg-black text-white rounded-full uppercase text-sm font-bold tracking-widest hover:bg-cinelineGold transition-colors shadow-lg"
+              className="w-full py-5 rounded-lg bg-white/5 border border-white/10 text-white text-sm font-medium uppercase tracking-[0.2em] hover:bg-cinelineGold hover:text-black hover:border-cinelineGold"
             >
               Book Now
             </Link>
-          </nav>
-        </div>
-      )}
+          </div>
+        </nav>
+      </div>
 
       <style jsx>{`
         /* Define the subtle 3D floating animation */

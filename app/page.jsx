@@ -10,7 +10,8 @@ import Hero from "./components/Hero";
 import PremiumServices from "./components/PremiumServices";
 import Testimonials from "./components/Testimonials";
 import WhatsAppButton from "./components/WhatsAppButton";
-import WelcomeModal from "./components/WelcomeModal";
+import FounderNote from "./components/FounderNote";
+import { CinematicGrain, SubtleGrid, DotGrid } from "./components/Patterns";
 
 // --- VELOCITY SCROLL COMPONENT ---
 function ParallaxText({ children, baseVelocity = 100 }) {
@@ -195,7 +196,6 @@ const ProjectCard = ({ title, category, img, year = "2024", colSpan = 1 }) => {
 };
 
 export default function Page() {
-  const [entered, setEntered] = useState(true);
   const containerRef = useRef(null);
 
   // Manifesto Parallax
@@ -205,19 +205,19 @@ export default function Page() {
 
   return (
     <div ref={containerRef} className="bg-[#fcfbf9] min-h-screen text-[#111] overflow-x-hidden selection:bg-cinelineGold selection:text-white font-sans">
-      {!entered && <WelcomeModal onEnter={() => setEntered(true)} />}
-
       <main>
         {/* 1. HERO - FULL SCREEN & IMMERSIVE */}
         <Hero />
 
         {/* 2. VELOCITY SCROLL STRIP - SEAMLESS BLEND */}
         <div className="py-12 bg-black border-y border-white/10 relative z-20 overflow-hidden">
+          <CinematicGrain opacity={0.1} />
           <ParallaxText baseVelocity={-2}>Visual Excellence • Cineline Studios •</ParallaxText>
         </div>
 
         {/* 3. MANIFESTO - DARK MODE PARALLAX */}
         <section className="relative py-40 md:py-60 px-6 bg-[#050505] text-white">
+          <SubtleGrid opacity={0.05} />
 
           {/* Subtle Dynamic Background & GEOMETRIC PATTERNS */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -284,7 +284,7 @@ export default function Page() {
 
               <div className="flex gap-6">
                 <div className="flex flex-col gap-1">
-                  <span className="text-4xl font-bold text-white">500+</span>
+                  <span className="text-4xl font-bold text-white">100+</span>
                   <span className="text-sm uppercase tracking-widest text-gray-500">Projects</span>
                 </div>
                 <div className="w-[1px] bg-white/10 h-12" />
@@ -314,21 +314,16 @@ export default function Page() {
 
               <div className="absolute bottom-12 left-12 right-12 flex justify-between items-end">
                 <div>
-                  <span className="block text-cinelineGold uppercase tracking-widest text-xs mb-2">Featured Showreel</span>
-                  <h3 className="text-3xl font-bold">2024 Collection</h3>
+                  <span className="block text-cinelineGold uppercase tracking-widest text-xs mb-2">Featured</span>
+                  <h3 className="text-4xl md:text-5xl font-black text-white drop-shadow-md tracking-tighter">2025 Collection</h3>
                 </div>
-                <MagneticButton className="cursor-pointer">
-                  <div className="w-20 h-20 rounded-full bg-white text-black flex items-center justify-center hover:bg-cinelineGold hover:text-white transition-all duration-300">
-                    <Play size={24} fill="currentColor" />
-                  </div>
-                </MagneticButton>
               </div>
             </motion.div>
           </div>
-        </section>
+        </section >
 
         {/* 4. SELECTED WORKS - EDITORIAL LAYOUT */}
-        <section className="py-0 bg-white relative">
+        < section className="py-0 bg-white relative" >
           {/* Section Background Text */}
           <div className="absolute top-20 left-0 w-full overflow-hidden pointer-events-none opacity-[0.06]">
             <h2 className="text-[20vw] leading-[0.8] font-bold text-black whitespace-nowrap">
@@ -387,13 +382,14 @@ export default function Page() {
               </Link>
             </div>
           </div>
-        </section>
+        </section >
 
         {/* 5. SERVICES - CLEAN & TECHNICAL */}
-        <div className="bg-[#f0f0f0] py-32 md:py-40 border-t border-gray-200 relative">
+        <div className="bg-[#f0f0f0] py-32 md:py-40 border-t border-gray-200 relative text-cinelineDark overflow-hidden">
           {/* Technical Grid Pattern */}
           <div className="absolute inset-0 opacity-[0.05]"
-            style={{ backgroundImage: `linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)`, backgroundSize: '40px 40px' }}
+            style={{ backgroundImage: `linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)`, backgroundSize: '40px 40px' }
+            }
           />
           <div className="max-w-7xl mx-auto px-6">
             <SectionHeader subtitle="Expertise" title="Our Services" dark={false} />
@@ -404,13 +400,18 @@ export default function Page() {
           <PremiumServices />
         </div>
 
-        {/* 6. TESTIMONIALS - IMMERSIVE DARK */}
-        <div className="bg-[#050505] py-32 md:py-40 text-white relative overflow-hidden">
+        {/* 6. FOUNDER NOTE - MINI PROFILE */}
+        <FounderNote />
+
+        {/* 7. TESTIMONIALS - IMMERSIVE DARK */}
+        <div className="bg-[#050505] py-12 md:py-16 text-white relative overflow-hidden">
+          <CinematicGrain opacity={0.05} />
+          <DotGrid opacity={0.05} />
           {/* Spotlight Effect & Constellation Pattern */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-cinelineGold/5 blur-[120px] rounded-full pointer-events-none" />
+          < div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-cinelineGold/5 blur-[120px] rounded-full pointer-events-none" />
 
           {/* Geometric Constellation */}
-          <svg className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+          < svg className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none" xmlns="http://www.w3.org/2000/svg" >
             <defs>
               <pattern id="grid-pattern" width="100" height="100" patternUnits="userSpaceOnUse">
                 <circle cx="1" cy="1" r="1" fill="white" opacity="0.5" />
@@ -422,9 +423,9 @@ export default function Page() {
             <line x1="20%" y1="20%" x2="50%" y2="50%" stroke="rgba(212, 175, 55, 0.2)" strokeWidth="1" />
             <line x1="80%" y1="30%" x2="50%" y2="50%" stroke="rgba(212, 175, 55, 0.2)" strokeWidth="1" />
             <circle cx="50%" cy="50%" r="200" stroke="rgba(255,255,255,0.05)" fill="none" />
-          </svg>
+          </svg >
 
-          <div className="max-w-7xl mx-auto px-6 mb-20 text-center relative z-10">
+          <div className="max-w-7xl mx-auto px-6 mb-12 text-center relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -438,11 +439,11 @@ export default function Page() {
             </motion.div>
           </div>
           <Testimonials />
-        </div>
+        </div >
 
-      </main>
+      </main >
 
       <WhatsAppButton />
-    </div>
+    </div >
   );
 }

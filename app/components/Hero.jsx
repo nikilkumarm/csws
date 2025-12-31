@@ -15,6 +15,8 @@ const pilePhotos = [
   "/images/pile/p6.JPG",
   "/images/pile/p7.jpg",
   "/images/pile/p8.JPG",
+  "/images/pile/p9.JPG",
+  "/images/pile/p10.JPG",
 ];
 
 export default function Hero() {
@@ -40,7 +42,7 @@ export default function Hero() {
 
     // 2. Define Base Layout (The "Architecture" of the pile) with explicit Z-index hierarchy
     const isMobile = window.innerWidth < 768;
-    const spreadFactor = isMobile ? 0.6 : 1; // Compact spread for mobile
+    const spreadFactor = isMobile ? 0.35 : 1; // Tighter spread for smaller mobile images
 
     const basePositions = [
       { id: 'center', x: 0 * spreadFactor, y: 0 * spreadFactor, rot: -2, z: 100, zIndex: 50, varX: 20, varY: 20, varRot: 5 },
@@ -51,27 +53,29 @@ export default function Hero() {
       { id: 'farRight', x: 220 * spreadFactor, y: 110 * spreadFactor, rot: -12, z: 0, zIndex: 2, varX: 50, varY: 50, varRot: 15 },
       { id: 'farLeft', x: -220 * spreadFactor, y: -20 * spreadFactor, rot: 8, z: 5, zIndex: 3, varX: 50, varY: 50, varRot: 15 },
       { id: 'botCenter', x: 40 * spreadFactor, y: 170 * spreadFactor, rot: 2, z: 80, zIndex: 45, varX: 30, varY: 30, varRot: 5 },
+      { id: 'deepTopLeft', x: -180 * spreadFactor, y: -180 * spreadFactor, rot: -15, z: -40, zIndex: 1, varX: 60, varY: 60, varRot: 15 },
+      { id: 'midBotRight', x: 200 * spreadFactor, y: 180 * spreadFactor, rot: 10, z: 45, zIndex: 30, varX: 40, varY: 40, varRot: 10 },
     ];
 
     // 3. Generate Randomized Positions based on Architecture + Jitter
     const newPositions = basePositions.map((p) => ({
-      x: p.x + (Math.random() * p.varX * 2 - p.varX),         // e.g. -20 to +20
+      x: p.x + (Math.random() * p.varX * 2 - p.varX),
       y: p.y + (Math.random() * p.varY * 2 - p.varY),
       rot: p.rot + (Math.random() * p.varRot * 2 - p.varRot),
-      z: p.z,   // Keep depth hierarchy stable
+      z: p.z,
       zIndex: p.zIndex
     }));
 
     setPositions(newPositions);
 
-    // 4. Randomized Sizes & Animation Delays
+    // 4. Randomized Sizes & Animation Delays (Significantly Smaller on Mobile)
     const sizes = pilePhotos.map(() => ({
-      w: 130 + Math.random() * 40, // Varied widths (130-170ish)
-      h: 170 + Math.random() * 50  // Varied heights (170-220ish)
+      w: (isMobile ? 60 : 130) + Math.random() * (isMobile ? 20 : 40),
+      h: (isMobile ? 80 : 170) + Math.random() * (isMobile ? 30 : 50)
     }));
     setLoadingSizes(sizes);
 
-    const delays = pilePhotos.map(() => Math.random() * -8); // Start at different points in the 8s cycle
+    const delays = pilePhotos.map(() => Math.random() * -8);
     setFloatDelays(delays);
 
     // Trigger Entrance
@@ -114,7 +118,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative w-full pt-24 pb-20 md:pt-32 md:pb-32 bg-[var(--bg)] overflow-hidden select-none min-h-screen flex items-center">
+    <section className="relative w-full pt-12 pb-12 md:pt-32 md:pb-32 bg-[var(--bg)] overflow-hidden select-none min-h-[100dvh] md:min-h-screen flex items-center">
 
       {/* ATMOSPHERE LAYERS */}
       <div className="absolute inset-0 pointer-events-none">
@@ -135,18 +139,18 @@ export default function Hero() {
         </svg>
 
         {/* Crosshairs */}
-        <div className="absolute top-8 right-8 text-cinelineGold/40">+</div>
-        <div className="absolute bottom-8 left-8 text-cinelineGold/40">+</div>
+        <div className="hidden md:block absolute top-8 right-8 text-cinelineGold/40">+</div>
+        <div className="hidden md:block absolute bottom-8 left-8 text-cinelineGold/40">+</div>
       </div>
       <div className="absolute inset-0 opacity-[0.4] pointer-events-none mix-blend-soft-light grain" />
 
       {/* GOD RAY / PROJECTOR LIGHT EFFECT BEHIND IMAGES */}
       <div className="absolute right-0 top-1/4 w-1/2 h-[500px] bg-gradient-to-l from-cinelineGold/10 to-transparent blur-[120px] pointer-events-none" />
 
-      <div className="relative w-full max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 md:gap-20 items-center">
+      <div className="relative w-full max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center">
 
         {/* LEFT SIDE: CONTENT */}
-        <div className="flex flex-col items-start z-10 will-change-transform">
+        <div className="flex flex-col items-center md:items-start text-center md:text-left z-10 will-change-transform order-last md:order-first">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -163,7 +167,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] mb-8 text-cinelineDark"
+            className="text-4xl md:text-7xl lg:text-8xl font-bold leading-[1.1] mb-8 text-cinelineDark"
           >
             Crafting <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cinelineGold to-yellow-700">
@@ -186,7 +190,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="flex flex-wrap gap-8"
+            className="flex flex-wrap justify-center md:justify-start gap-6 md:gap-8"
           >
             <Link
               href="/portfolio"
@@ -210,7 +214,7 @@ export default function Hero() {
         </div>
 
         {/* RIGHT SIDE: PREMIUM CONNECTED GALLERY (Curated 3D Cluster) */}
-        <div className="relative w-full h-[500px] md:h-[600px] flex items-center justify-center perspective-[2000px] cursor-grab active:cursor-grabbing">
+        <div className="relative w-full h-[400px] md:h-[600px] flex items-center justify-center perspective-[2000px] cursor-grab active:cursor-grabbing">
           <div
             className="relative w-full h-full preserve-3d will-change-transform"
             style={{
