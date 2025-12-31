@@ -133,9 +133,9 @@ export default function Footer() {
                   cinelinestudio24@gmail.com
                 </a>
                 <div className="flex items-center gap-6 pt-2">
-                  <a href="https://instagram.com" className="text-white/40 hover:text-cinelineGold transition-colors"><Instagram size={20} /></a>
-                  <a href="https://youtube.com" className="text-white/40 hover:text-cinelineGold transition-colors"><Youtube size={20} /></a>
-                  <a href="https://linkedin.com" className="text-white/40 hover:text-cinelineGold transition-colors"><Linkedin size={20} /></a>
+                  <a href="https://www.instagram.com/cinelinestudios/" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-cinelineGold transition-colors"><Instagram size={20} /></a>
+                  <a href="https://www.youtube.com/@cinelinestudios" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-cinelineGold transition-colors"><Youtube size={20} /></a>
+                  <a href="https://www.linkedin.com/company/cinelinestudios/" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-cinelineGold transition-colors"><Linkedin size={20} /></a>
                   <a href="mailto:cinelinestudio24@gmail.com" className="text-white/40 hover:text-cinelineGold transition-colors"><Mail size={20} /></a>
                 </div>
               </div>

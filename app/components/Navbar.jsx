@@ -38,7 +38,6 @@ export default function Navbar() {
         <div className="relative z-[11000] flex w-full items-center justify-between rounded-full px-6 py-2.5 transition-all duration-500">
 
           {/* GOD MODE: ULTIMATE BLACK GLASS LAYER */}
-          {/* Base Dark Glass with Gradient */}
           <div className="absolute inset-0 -z-10 rounded-full bg-gradient-to-b from-black/80 to-black/95 backdrop-blur-3xl border border-white/[0.08] shadow-[0_20px_50px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.1)]" />
 
           {/* Top Edge Highlight - Cinematic Shine */}
@@ -281,8 +280,12 @@ export default function Navbar() {
               {/* MINIMAL FOOTER: SOCIALS ONLY */}
               <div className="pb-16 flex flex-col items-center">
                 <div className="flex gap-8 text-[9px] font-black uppercase tracking-[0.5em] text-white/10">
-                  <Instagram size={16} className="hover:text-white transition-colors cursor-pointer" />
-                  <Youtube size={16} className="hover:text-white transition-colors cursor-pointer" />
+                  <a href="https://www.instagram.com/cinelinestudios/" target="_blank" rel="noopener noreferrer">
+                    <Instagram size={16} className="hover:text-white transition-colors cursor-pointer" />
+                  </a>
+                  <a href="https://www.youtube.com/@cineline-studios" target="_blank" rel="noopener noreferrer">
+                    <Youtube size={16} className="hover:text-white transition-colors cursor-pointer" />
+                  </a>
                 </div>
               </div>
             </div>
