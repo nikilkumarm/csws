@@ -9,7 +9,7 @@ import { ArrowLeft, Instagram, Linkedin, Mail, ArrowUpRight } from "lucide-react
 const TEAM_MEMBERS = [
   {
     id: 1,
-    name: "Nikil Kumar",
+    name: "Nikilkumar",
     role: "Founder & Creative Director",
     image: "/images/team/nikil.jpg",
     bio: "Visionary storyteller crafting narratives that resonate on a primal level. Architecting memories, not just videos.",
