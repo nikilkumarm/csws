@@ -13,7 +13,7 @@ const TEAM_MEMBERS = [
     role: "Founder & Creative Director",
     image: "/images/team/nikil.jpg",
     bio: "Visionary storyteller crafting narratives that resonate on a primal level. Architecting memories, not just videos.",
-    socials: { instagram: "#", linkedin: "#", email: "mailto:nikil@cinelinestudios.com" }
+    socials: { instagram: "https://www.instagram.com/inikil._", linkedin: "https://www.linkedin.com/in/nikilkumarm/" }
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const TEAM_MEMBERS = [
     role: "Co-Founder & Lead Strategist",
     image: "/images/team/rakshan.jpg",
     bio: "The catalyst. Forging great stories in the fires of strategy and pure passion. He ensures the wildest dreams fly.",
-    socials: { instagram: "#", linkedin: "#", email: "mailto:rakshan@cinelinestudios.com" }
+    socials: { instagram: "https://www.instagram.com/nrstudios7", linkedin: "https://www.linkedin.com/in/rakshan-m-3907b4316/" }
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ const TEAM_MEMBERS = [
     role: "Admin & Operations Head",
     image: "/images/team/mokshanand.JPG",
     bio: "The backbone. Creativity needs chaos, but execution demands order. Ensuring the vision survives reality.",
-    socials: { instagram: "#", email: "mailto:mokshanand@cinelinestudios.com" }
+    socials: { instagram: "https://www.instagram.com/_moxhanand_", linkedin: "https://www.linkedin.com/in/mokshanand-t-b0a986249/" }
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ const TEAM_MEMBERS = [
     role: "Head of Finance",
     image: "/images/team/sukesh.JPG",
     bio: "The anchor. Sustainable growth is the canvas for artistic freedom. Discipline allows us to dream bigger.",
-    socials: { linkedin: "#", email: "mailto:sukesan@cinelinestudios.com" }
+    socials: { instagram: "https://www.instagram.com/__sukes.an___", linkedin: "https://www.linkedin.com/in/sukesan-e-g-52a913249/" }
   },
   {
     id: 5,
@@ -45,7 +45,7 @@ const TEAM_MEMBERS = [
     role: "Network Admin",
     image: "/images/team/allen.jpg",
     bio: "The digital guardian. Ensuring our infrastructure is as robust as our creative ambition.",
-    socials: { linkedin: "#", email: "mailto:allen@cinelinestudios.com" }
+    socials: { instagram: "https://www.instagram.com/offx.all3n", linkedin: "https://www.linkedin.com/in/allenmatthewtj/" }
   },
   {
     id: 6,
@@ -53,15 +53,15 @@ const TEAM_MEMBERS = [
     role: "Cinematographer & Editor",
     image: "/images/team/jerry.jpg",
     bio: "Capturing the unseen and weaving it into the narrative. A dual-threat creative force.",
-    socials: { instagram: "#", email: "mailto:jerlin@cinelinestudios.com" }
+    socials: { instagram: "https://www.instagram.com/sam_frizz_", linkedin: "https://www.linkedin.com/in/jerlin-sam/" }
   },
   {
     id: 7,
-    name: "Sam Asir",
+    name: "Samuel Robinson",
     role: "Cinematographer & Editor",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop",
+    image: "/images/team/sam asir.jpg",
     bio: "Visual poet with a lens. Turning fleeting moments into cinematic monuments.",
-    socials: { instagram: "#", email: "mailto:samasir@cinelinestudios.com" }
+    socials: { instagram: "https://www.instagram.com/_sam_asir", linkedin: "https://www.linkedin.com/in/samuelrobinson17/" }
   },
   {
     id: 8,
@@ -69,7 +69,7 @@ const TEAM_MEMBERS = [
     role: "Photographer",
     image: "/images/team/judah.jpeg",
     bio: "Freezing time with precision and soul. Every still tells a moving story.",
-    socials: { instagram: "#", email: "mailto:judah@cinelinestudios.com" }
+    socials: { instagram: "https://www.instagram.com/judah_fonarcus" }
   }
 ];
 
