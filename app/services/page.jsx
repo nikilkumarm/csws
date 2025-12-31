@@ -14,28 +14,28 @@ const SERVICES = [
     desc: "We don't just record events; we craft legacies. Every frame is composed with a cinematographer's eye, capturing the raw emotion and grandeur of your union.",
     icon: Video,
     slug: "wedding-films",
-    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2000&auto=format&fit=crop"
+    image: "https://camouflageclicks.com/assets/uploads/blog/9492088.jpg"
   },
   {
     title: "Event Photography",
     desc: "From high-society galas to intimate private celebrations, we document the essence of the moment with an editorial flair that rivals fashion magazines.",
     icon: Camera,
     slug: "event-photography",
-    image: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2000&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=2070&auto=format&fit=crop"
   },
   {
     title: "Product Campaigns",
     desc: "Elevate your brand with high-fidelity visuals. We create product imagery that speaks visual language of desire, precision, and luxury.",
     icon: Package,
     slug: "product-campaigns",
-    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=2000&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=2070&auto=format&fit=crop"
   },
   {
     title: "Broadcast & Commercials",
     desc: "End-to-end production for commercials and documentaries. We handle everything from conceptualization to the final color grade.",
     icon: MonitorPlay,
     slug: "broadcast-commercials",
-    image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=2000&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=2059&auto=format&fit=crop"
   },
 ];
 
@@ -117,7 +117,7 @@ function ServiceRow({ service, index }) {
             alt={service.title}
             fill
             sizes="(max-width: 1024px) 100vw, 60vw"
-            className="object-cover filter grayscale contrast-125 opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-[2s] ease-out group-hover:scale-110"
+            className="object-cover opacity-100 transition-all duration-[2s] ease-out group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
 

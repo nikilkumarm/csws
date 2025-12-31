@@ -13,7 +13,7 @@ function FounderProfile({ name, role, title, quote, image, reverse = false, inde
         offset: ["start end", "end start"],
     });
 
-    const y = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+    const y = useTransform(scrollYProgress, [0, 1], ["0%", "5%"]);
     const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.3, 1, 1, 0.3]);
 
     return (
@@ -30,7 +30,7 @@ function FounderProfile({ name, role, title, quote, image, reverse = false, inde
                             src={image}
                             alt={name}
                             fill
-                            className="object-cover contrast-125 brightness-[0.8] transition-all duration-1000 group-hover:scale-110 group-hover:brightness-100"
+                            className="object-cover contrast-125 brightness-[0.8] transition-all duration-500 group-hover:scale-105 group-hover:brightness-100"
                             sizes="(max-width: 1024px) 100vw, 50vw"
                         />
                     </motion.div>

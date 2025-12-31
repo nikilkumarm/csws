@@ -75,7 +75,7 @@ const SectionHeader = ({ subtitle, title, dark = false }) => (
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
       className="text-6xl md:text-8xl font-black leading-[0.9] tracking-tighter"
     >
       {title}
@@ -93,7 +93,7 @@ function MagneticButton({ children, className = "" }) {
     const { height, width, left, top } = ref.current.getBoundingClientRect();
     const middleX = clientX - (left + width / 2);
     const middleY = clientY - (top + height / 2);
-    setPosition({ x: middleX * 0.1, y: middleY * 0.1 });
+    setPosition({ x: middleX * 0.05, y: middleY * 0.05 });
   };
 
   const reset = () => {
@@ -304,7 +304,7 @@ export default function Page() {
               className="relative h-[400px] md:h-[600px] w-full bg-gray-900 overflow-hidden"
             >
               <Image
-                src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1600&auto=format&fit=crop"
+                src="/images/pile/p5.JPG"
                 alt="Reel"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -343,7 +343,7 @@ export default function Page() {
                 title="Vogue Editorial"
                 category="Fashion"
                 year="2024"
-                img="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=1600&auto=format&fit=crop"
+                img="/images/pile/p4.JPG"
                 colSpan={2}
               />
 
@@ -352,14 +352,14 @@ export default function Page() {
                 title="The Royal Union"
                 category="Wedding"
                 year="2023"
-                img="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=1600&auto=format&fit=crop"
+                img="/images/portfolio/wedding1.jpg"
               />
 
               <ProjectCard
                 title="Urban Kinetics"
                 category="Commercial"
                 year="2024"
-                img="https://images.unsplash.com/photo-1552168324-d612d77725e3?q=80&w=1600&auto=format&fit=crop"
+                img="/images/pile/p1.JPG"
               />
 
               {/* Massive Feature Bottom */}
@@ -367,7 +367,7 @@ export default function Page() {
                 title="Neon Nights"
                 category="Event"
                 year="2023"
-                img="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1600&auto=format&fit=crop"
+                img="/images/pile/p6.JPG"
                 colSpan={2}
               />
             </div>

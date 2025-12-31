@@ -3,7 +3,7 @@ import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
-import { ArrowRight, Heart, Camera, Star, Sparkles, Infinity } from "lucide-react";
+import { ArrowRight, Heart, Camera, Star, Sparkles, Infinity as InfinityIcon } from "lucide-react";
 import FounderNote from "../components/FounderNote";
 import { CinematicGrain } from "../components/Patterns";
 
@@ -14,7 +14,7 @@ function FloatingParticles() {
 
   useEffect(() => {
     // Soft floating particles (like dust motes in sunlight)
-    const p = Array.from({ length: 8 }).map((_, i) => ({
+    const p = Array.from({ length: 4 }).map((_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
@@ -59,11 +59,11 @@ function LoveCard({ title, desc, icon: Icon, delay }) {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.8, delay }}
+      transition={{ duration: 0.4, delay }}
       className="group relative h-full p-px rounded-2xl overflow-hidden"
     >
       {/* Gradient Border */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent group-hover:from-cinelineGold/50 transition-colors duration-700 rounded-2xl" />
+      <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent group-hover:from-cinelineGold/50 transition-colors duration-300 rounded-2xl" />
 
       <div className="relative h-full bg-[#080808] p-8 rounded-2xl flex flex-col items-start gap-6 z-10 transition-colors duration-500 group-hover:bg-[#0a0a0a]">
         <div className="w-16 h-16 rounded-full bg-cinelineGold/5 flex items-center justify-center text-cinelineGold group-hover:bg-cinelineGold group-hover:text-black transition-all duration-500 shadow-sm group-hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]">
@@ -81,12 +81,39 @@ function LoveCard({ title, desc, icon: Icon, delay }) {
   )
 }
 
-function SectionHeading({ children }) {
+function PartnerCard({ name, image, description, delay, scale = 0.8 }) {
   return (
-    <h2 className="text-4xl md:text-6xl font-medium tracking-tight text-white mb-8 font-display">
-      {children}
-    </h2>
-  )
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay }}
+      className="relative flex flex-col items-center"
+    >
+      <div className="relative aspect-square w-full max-w-[280px] bg-white overflow-hidden rounded-full flex flex-col items-center justify-center p-8 border border-white/10 shadow-xl">
+        {/* Logo Container */}
+        <div
+          className="relative w-full h-full"
+          style={{ transform: `scale(${scale})` }}
+        >
+          <Image
+            src={image}
+            alt={name}
+            fill
+            className="object-contain"
+          />
+        </div>
+      </div>
+
+      {/* Content Below */}
+      <div className="mt-8 space-y-2 text-center">
+        <h3 className="text-white text-sm font-bold uppercase tracking-widest">{name}</h3>
+        <p className="text-white/30 text-[10px] uppercase tracking-[0.2em] font-medium leading-relaxed">
+          {description}
+        </p>
+      </div>
+    </motion.div>
+  );
 }
 
 // --- PAGE COMPONENT ---
@@ -114,7 +141,7 @@ export default function AboutPage() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.5 }}
             className="mb-8 flex justify-center"
           >
             <div className="flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
@@ -227,7 +254,7 @@ export default function AboutPage() {
               delay={0.2}
             />
             <LoveCard
-              icon={Infinity}
+              icon={InfinityIcon}
               title="Timeless Connection"
               desc="We build relationships, not just portfolios. We are honored to walk beside you on your most important days."
               delay={0.4}
@@ -238,6 +265,54 @@ export default function AboutPage() {
 
       {/* 4. FOUNDER NOTE (TEAM) */}
       <FounderNote />
+
+      {/* 4.5 TRUSTED PARTNERS: THE COLLECTIVE */}
+      <section className="py-32 bg-black border-t border-white/5 relative overflow-hidden">
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
+            <div className="max-w-xl">
+              <span className="text-cinelineGold uppercase tracking-[0.4em] text-[10px] font-bold mb-4 block">The Alliance</span>
+              <h2 className="text-4xl md:text-6xl font-medium tracking-tight text-white font-display uppercase">
+                Trusted <br /> <span className="text-white/40 italic font-serif">Partners.</span>
+              </h2>
+            </div>
+            <p className="max-w-md text-white/40 text-sm font-light leading-relaxed border-l border-white/10 pl-8">
+              Collaborating with the industry’s finest to ensure every facet of your production meets our exacting standards for excellence and innovation.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16">
+            <PartnerCard
+              name="Ramo Photography"
+              image="/images/team/ramo photography logo.png"
+              description="Timeless Wedding Photography & Cinematic Films"
+              delay={0.1}
+              scale={1.8}
+            />
+            <PartnerCard
+              name="BRNDX"
+              image="/images/team/BRNDX Logo.png"
+              description="Strategic Branding & Visual Identity"
+              delay={0.2}
+              scale={1.1}
+            />
+            <PartnerCard
+              name="Just Cliks"
+              image="/images/team/just clicks.PNG"
+              description="Premium Social Media Management"
+              delay={0.3}
+              scale={1.1}
+            />
+            <PartnerCard
+              name="Just Sappaduu"
+              image="/images/team/just sappaduu.png"
+              description="Culinary Styling & Gastronomy"
+              delay={0.4}
+              scale={1.1}
+            />
+          </div>
+        </div>
+      </section>
 
       {/* 5. CALL TO ACTION: ELEGANT */}
       <section className="h-[70vh] flex flex-col items-center justify-center relative overflow-hidden bg-black text-center">

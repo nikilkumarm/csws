@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import { Star, Quote } from "lucide-react";
+import { Star, Quote, User } from "lucide-react";
 import { motion } from "framer-motion";
 
 const testimonials = [
@@ -56,14 +56,8 @@ export default function Testimonials({ darkMode = true }) {
               </p>
 
               <div className={`flex items-center gap-4 pt-6 border-t ${darkMode ? 'border-white/10' : 'border-gray-100'}`}>
-                <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-600 relative grayscale">
-                  <Image
-                    src={t.image}
-                    fill
-                    className="object-cover"
-                    alt={t.name}
-                    sizes="50px"
-                  />
+                <div className={`w-12 h-12 rounded-full flex items-center justify-center ${darkMode ? 'bg-white/10 text-white/50' : 'bg-gray-100 text-gray-400'}`}>
+                  <User size={24} strokeWidth={1.5} />
                 </div>
                 <div>
                   <h4 className={`font-semibold ${darkMode ? 'text-white' : 'text-cinelineDark'}`}>{t.name}</h4>

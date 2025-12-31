@@ -11,11 +11,11 @@ const serviceContent = {
     "wedding-films": {
         title: "Wedding Cinema",
         subtitle: "The Art of Forever.",
-        image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2000&auto=format&fit=crop",
+        image: "/images/portfolio/wedding1.jpg",
         desc: "We don't just record events; we weave emotion, sound, and light into a masterpiece. Our wedding films are graded with cinema-quality color science and edited to tell your unique love story.",
         gallery: [
-            "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800&auto=format&fit=crop"
+            "/images/portfolio/wedding2.jpg",
+            "/images/portfolio/wedding3.jpg"
         ],
         features: [
             "4K Cinema Line Cameras",
@@ -27,11 +27,11 @@ const serviceContent = {
     "event-photography": {
         title: "Event Coverage",
         subtitle: "Capturing the Pulse.",
-        image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2000&auto=format&fit=crop",
+        image: "/images/pile/p6.JPG",
         desc: "Whether it’s a high-stakes corporate summit or an exclusive gala, our team operates seamlessly in the background to capture candid moments, keynotes, and the electric atmosphere.",
         gallery: [
-            "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1475721027767-f43f0aa78cc7?q=80&w=800&auto=format&fit=crop"
+            "/images/pile/p7.jpg",
+            "/images/pile/p2.jpg"
         ],
         features: [
             "Multi-Photographer Teams",
@@ -43,11 +43,11 @@ const serviceContent = {
     "product-campaigns": {
         title: "Product Visuals",
         subtitle: "Aesthetics that Sell.",
-        image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=2000&auto=format&fit=crop",
+        image: "/images/pile/p5.JPG",
         desc: "Elevate your brand with high-fidelity product photography and short-form video content designed for engagement. We focus on texture, lighting, and composition to make your product the hero.",
         gallery: [
-            "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop"
+            "/images/pile/p1.JPG",
+            "/images/pile/p10.JPG"
         ],
         features: [
             "Creative Art Direction",
@@ -59,11 +59,11 @@ const serviceContent = {
     "broadcast-commercials": {
         title: "Commercial Film",
         subtitle: "Stories that Move Markets.",
-        image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=2000&auto=format&fit=crop",
+        image: "/images/pile/p1.JPG",
         desc: "From 30-second TV spots to brand documentaries, we handle end-to-end production. Scripting, casting, filming, and post-production—all executed with broadcast standards in mind.",
         gallery: [
-            "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=800&auto=format&fit=crop"
+            "/images/pile/p9.JPG",
+            "/images/pile/p3.jpg"
         ],
         features: [
             "Script to Screen",

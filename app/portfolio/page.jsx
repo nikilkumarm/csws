@@ -1,47 +1,44 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Camera, ImageOff } from "lucide-react";
 import Image from "next/image";
 
 // --- CURATED PROJECTS DATA ---
 const allProjects = [
   // Editorial / Fashion
-  { id: 101, src: "https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=800&auto=format&fit=crop", category: "editorial", title: "Vogue Cover", client: "Fashion Week '24" },
-  { id: 102, src: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop", category: "editorial", title: "Urban Shadows", client: "Adidas Originals" },
+  { id: 101, src: "/images/portfolio-gallery/editorial-1.jpg", category: "editorial", title: "Atmospheric Portraits", client: "Studio Session", available: true },
+  { id: 102, src: "/images/portfolio-gallery/editorial-2.jpg", category: "editorial", title: "Urban Shadows", client: "Street Series", available: true },
+  { id: 103, src: "/images/portfolio-gallery/IMG_2114.JPG", category: "editorial", title: "Ethereal Essence", client: "Vogue India", available: true },
 
   // Weddings
-  { id: 201, src: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop", category: "wedding", title: "Sarah & John", client: "Lake Como, Italy" },
-  { id: 202, src: "https://images.unsplash.com/photo-1511285560982-1351cdeb9821?q=80&w=800&auto=format&fit=crop", category: "wedding", title: "Golden Hour Vows", client: "Napa Valley" },
-  { id: 203, src: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=800&auto=format&fit=crop", category: "wedding", title: "The Royal Union", client: "Jaipur Palace" },
-  { id: 204, src: "https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800&auto=format&fit=crop", category: "wedding", title: "Intimate Elopement", client: "Swiss Alps" },
+  { id: 201, src: "/images/portfolio-gallery/IMG_0001.jpg", category: "wedding", title: "The Royal Union", client: "Palace Wedding", available: true },
+  { id: 202, src: "/images/portfolio-gallery/IMG_6835.jpg", category: "wedding", title: "Golden Hour Vows", client: "Heritage Resort", available: true },
+  { id: 203, src: "/images/portfolio-gallery/IMG_1804.JPG", category: "wedding", title: "Eternal Love", client: "Church Ceremony", available: true },
+  { id: 204, src: "/images/portfolio-gallery/IMG_2048.JPG", category: "wedding", title: "Sacred Rituals", client: "Temple Tradition", available: true },
 
   // Commercial / Product
-  { id: 301, src: "https://images.unsplash.com/photo-1523293188086-b469b90660a1?q=80&w=800&auto=format&fit=crop", category: "commercial", title: "Luxe Perfume", client: "Chanel Beauty" },
-  { id: 302, src: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop", category: "commercial", title: "Automotive Art", client: "Porsche Design" },
+  { id: 301, src: "/images/portfolio-gallery/commercial-1.jpg", category: "commercial", title: "Brand Narrative", client: "Corporate Campaign", available: true },
+  { id: 302, src: "/images/portfolio-gallery/commercial-2.jpg", category: "commercial", title: "Visual Language", client: "Product Showcase", available: true },
+  { id: 303, src: "/images/portfolio-gallery/IMG_3419.JPG", category: "commercial", title: "Luxe Kinetics", client: "Aura Watch", available: true },
 
   // Events
-  { id: 401, src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop", category: "events", title: "Tech Summit Keynote", client: "Google I/O" },
-  { id: 402, src: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800&auto=format&fit=crop", category: "events", title: "Neon Nights", client: "Coachella Festival" },
-  { id: 403, src: "https://images.unsplash.com/photo-1561489413-985b06da5bee?q=80&w=800&auto=format&fit=crop", category: "events", title: "Gala Dinner", client: "Met Museum" },
-];
-
-const categories = [
-  { id: "all", label: "All Work" },
-  { id: "wedding", label: "Weddings" },
-  { id: "editorial", label: "Editorial" },
-  { id: "commercial", label: "Commercial" },
-  { id: "events", label: "Events" },
-];
+  { id: 401, src: "/images/portfolio-gallery/event-1.jpg", category: "events", title: "The Grand Launch", client: "Corporate Gala", available: true },
+  { id: 402, src: "/images/portfolio-gallery/IMG_0198-2.JPG", category: "events", title: "Neon Pulse", client: "Music Festival", available: true },
+].filter(p => p.available);
 
 export default function PortfolioPage() {
-  const [activeTab, setActiveTab] = useState("all");
   const [hovered, setHovered] = useState(null);
+  const [shuffledProjects, setShuffledProjects] = useState([]);
 
-  const filtered = activeTab === "all"
-    ? allProjects
-    : allProjects.filter(p => p.category === activeTab);
+  useEffect(() => {
+    // Shuffling projects on mount
+    const shuffled = [...allProjects].sort(() => Math.random() - 0.5);
+    setShuffledProjects(shuffled);
+  }, []);
+
+  const filtered = shuffledProjects;
 
   return (
     <div className="min-h-screen bg-[var(--bg)] text-[var(--text)]">
@@ -65,26 +62,7 @@ export default function PortfolioPage() {
             </p>
           </motion.div>
 
-          {/* Filter Tabs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex flex-wrap justify-center gap-4 mt-12"
-          >
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => setActiveTab(cat.id)}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeTab === cat.id
-                  ? "bg-cinelineDark text-white shadow-lg scale-105"
-                  : "bg-white border border-gray-200 text-gray-600 hover:border-cinelineGold hover:text-cinelineGold"
-                  }`}
-              >
-                {cat.label}
-              </button>
-            ))}
-          </motion.div>
+
         </section>
 
         {/* Gallery Grid */}
@@ -103,34 +81,22 @@ export default function PortfolioPage() {
                   onMouseEnter={() => setHovered(project.id)}
                   onMouseLeave={() => setHovered(null)}
                 >
-                  <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-gray-100 shadow-sm">
-                    <Image
-                      src={project.src}
-                      alt={project.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      priority={index < 4}
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-
-                    {/* Dark Overlay - Always on for Mobile, Hover for Desktop */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300" />
-
-                    {/* Content Layer - Always on for Mobile, Hover for Desktop */}
-                    <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-500">
-                        <span className="text-cinelineGold text-xs font-bold tracking-widest uppercase mb-2 block">{project.category}</span>
-                        <div className="flex justify-between items-end">
-                          <div>
-                            <h3 className="text-white text-2xl font-bold">{project.title}</h3>
-                            <p className="text-gray-300 text-sm mt-1">{project.client}</p>
-                          </div>
-                          <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-md text-white border border-white/20 flex items-center justify-center hover:bg-cinelineGold hover:border-cinelineGold transition-colors duration-300">
-                            <ArrowUpRight size={20} />
-                          </div>
-                        </div>
+                  <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-gray-100 shadow-sm flex items-center justify-center">
+                    {project.available ? (
+                      <Image
+                        src={project.src}
+                        alt={project.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        priority={index < 4}
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="flex flex-col items-center gap-4 text-gray-300 group-hover:text-cinelineGold transition-colors duration-500">
+                        <ImageOff size={48} strokeWidth={1} />
+                        <span className="text-[10px] uppercase tracking-[0.2em] font-bold">Image Coming Soon</span>
                       </div>
-                    </div>
+                    )}
                   </div>
                 </motion.div>
               ))}

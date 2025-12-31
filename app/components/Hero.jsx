@@ -157,7 +157,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             className="flex items-center gap-2 mb-6"
           >
             <div className="h-[2px] w-12 bg-cinelineGold"></div>
@@ -169,7 +169,7 @@ export default function Hero() {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
             className="text-4xl md:text-7xl lg:text-8xl font-bold leading-[1.1] mb-8 text-cinelineDark"
           >
             Crafting <br />
@@ -182,7 +182,7 @@ export default function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             className="text-gray-600 text-lg md:text-xl leading-relaxed max-w-md font-light mb-10"
           >
             We blend artistic vision with technical precision to create
@@ -192,7 +192,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.25 }}
             className="flex flex-wrap justify-center md:justify-start gap-6 md:gap-8"
           >
             <Link
@@ -222,7 +222,7 @@ export default function Hero() {
             className="relative w-full h-full preserve-3d will-change-transform"
             style={{
               transform: `rotateX(${mouse.y * 2 - scrollY * 0.005}deg) rotateY(${mouse.x * 2}deg)`,
-              transition: "transform 0.6s cubic-bezier(0.1, 0.4, 0.2, 1)",
+              transition: "transform 0.4s cubic-bezier(0.1, 0.4, 0.2, 1)",
             }}
           >
             {/* Show only when positions are ready to avoid layout shift */}
@@ -240,7 +240,7 @@ export default function Hero() {
                     : `translate3d(0px, 0px, -200px) rotateZ(0deg) scale(0.5)`,
                   zIndex: positions[i]?.zIndex || 1,
                   opacity: mounted ? 1 : 0,
-                  transitionDelay: `${i * 60}ms`,
+                  transitionDelay: `${i * 20}ms`,
                 }}
               >
                 {/* The Boutique Frame Style (The White Gallery Look) */}
@@ -279,7 +279,7 @@ export default function Hero() {
           50% { transform: translateY(-8px); } 
         }
         .premium-float {
-          animation: premiumFloat 8s ease-in-out infinite;
+          animation: premiumFloat 12s ease-in-out infinite;
           will-change: transform;
         }
       `}</style>
