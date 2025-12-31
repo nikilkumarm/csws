@@ -200,8 +200,8 @@ export default function Page() {
 
   // Manifesto Parallax
   const { scrollYProgress } = useScroll();
-  const manifestoOpacity = useTransform(scrollYProgress, [0.1, 0.25], [0, 1]);
-  const manifestoScale = useTransform(scrollYProgress, [0.1, 0.25], [0.95, 1]);
+  const manifestoOpacity = useTransform(scrollYProgress, [0.05, 0.2], [0, 1]);
+  const manifestoScale = useTransform(scrollYProgress, [0.05, 0.2], [0.98, 1]);
 
   return (
     <div ref={containerRef} className="bg-[#fcfbf9] min-h-screen text-[#111] overflow-x-hidden selection:bg-cinelineGold selection:text-white font-sans">
@@ -248,27 +248,27 @@ export default function Page() {
           <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center relative z-10">
             <motion.div
               style={{ opacity: manifestoOpacity, scale: manifestoScale }}
-              className="space-y-12"
+              className="space-y-8 md:space-y-12"
             >
               {/* STAGGERED REVEAL TEXT */}
-              <h2 className="text-5xl md:text-7xl lg:text-8xl font-medium leading-[0.95] tracking-tight">
-                <span className="block text-white">We frame</span>
+              <h2 className="text-4xl md:text-7xl lg:text-8xl font-medium leading-[1.1] md:leading-[0.95] tracking-tight">
+                <span className="block text-white mb-2 md:mb-0">We frame</span>
                 {/* Word-by-word reveal */}
-                <div className="overflow-hidden block">
+                <div className="overflow-visible md:overflow-hidden block">
                   <motion.span
-                    initial={{ y: "100%" }}
-                    whileInView={{ y: 0 }}
+                    initial={{ y: "40%", opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: 0.1, ease: [0.33, 1, 0.68, 1] }}
-                    className="block text-white"
+                    className="block text-white mb-2 md:mb-0"
                   >
                     the moments
                   </motion.span>
                 </div>
-                <div className="overflow-hidden block">
+                <div className="overflow-visible md:overflow-hidden block">
                   <motion.span
-                    initial={{ y: "100%" }}
-                    whileInView={{ y: 0 }}
+                    initial={{ y: "40%", opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: 0.2, ease: [0.33, 1, 0.68, 1] }}
                     className="block text-cinelineGold italic font-serif"
@@ -278,19 +278,19 @@ export default function Page() {
                 </div>
               </h2>
 
-              <p className="text-xl md:text-2xl text-gray-400 font-light leading-relaxed max-w-xl border-l-2 border-cinelineGold/30 pl-8">
+              <p className="text-lg md:text-2xl text-gray-400 font-light leading-relaxed max-w-xl border-l-2 border-cinelineGold/30 pl-6 md:pl-8">
                 Cineline Studios is a collective of visionary artists dedicated to the pursuit of the perfect shot. Light is our language, emotion is our currency.
               </p>
 
-              <div className="flex gap-6">
+              <div className="flex gap-8 md:gap-12">
                 <div className="flex flex-col gap-1">
-                  <span className="text-4xl font-bold text-white">100+</span>
-                  <span className="text-sm uppercase tracking-widest text-gray-500">Projects</span>
+                  <span className="text-3xl md:text-5xl font-bold text-white">100+</span>
+                  <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] text-gray-500 font-bold">Projects</span>
                 </div>
-                <div className="w-[1px] bg-white/10 h-12" />
+                <div className="w-[1px] bg-white/10 h-10 md:h-14" />
                 <div className="flex flex-col gap-1">
-                  <span className="text-4xl font-bold text-white">100%</span>
-                  <span className="text-sm uppercase tracking-widest text-gray-500">Satisfaction</span>
+                  <span className="text-3xl md:text-5xl font-bold text-white">100%</span>
+                  <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] text-gray-500 font-bold">Satisfaction</span>
                 </div>
               </div>
             </motion.div>

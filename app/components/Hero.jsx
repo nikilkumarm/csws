@@ -42,40 +42,51 @@ export default function Hero() {
 
     // 2. Define Base Layout (The "Architecture" of the pile) with explicit Z-index hierarchy
     const isMobile = window.innerWidth < 768;
-    const spreadFactor = isMobile ? 0.35 : 1; // Tighter spread for smaller mobile images
+    const spreadFactor = isMobile ? 0.22 : 0.55;
 
+    // THE "WHITE GALLERY" ARCHITECTURE - PERFECT SYMMETRICAL GRID
     const basePositions = [
-      { id: 'center', x: 0 * spreadFactor, y: 0 * spreadFactor, rot: -2, z: 100, zIndex: 50, varX: 20, varY: 20, varRot: 5 },
-      { id: 'left1', x: -140 * spreadFactor, y: -50 * spreadFactor, rot: 6, z: 20, zIndex: 10, varX: 40, varY: 40, varRot: 10 },
-      { id: 'right1', x: 150 * spreadFactor, y: 40 * spreadFactor, rot: -4, z: 30, zIndex: 20, varX: 40, varY: 40, varRot: 10 },
-      { id: 'botLeft', x: -100 * spreadFactor, y: 130 * spreadFactor, rot: -8, z: 60, zIndex: 40, varX: 30, varY: 30, varRot: 10 },
-      { id: 'topRight', x: 110 * spreadFactor, y: -120 * spreadFactor, rot: 5, z: 10, zIndex: 5, varX: 40, varY: 40, varRot: 10 },
-      { id: 'farRight', x: 220 * spreadFactor, y: 110 * spreadFactor, rot: -12, z: 0, zIndex: 2, varX: 50, varY: 50, varRot: 15 },
-      { id: 'farLeft', x: -220 * spreadFactor, y: -20 * spreadFactor, rot: 8, z: 5, zIndex: 3, varX: 50, varY: 50, varRot: 15 },
-      { id: 'botCenter', x: 40 * spreadFactor, y: 170 * spreadFactor, rot: 2, z: 80, zIndex: 45, varX: 30, varY: 30, varRot: 5 },
-      { id: 'deepTopLeft', x: -180 * spreadFactor, y: -180 * spreadFactor, rot: -15, z: -40, zIndex: 1, varX: 60, varY: 60, varRot: 15 },
-      { id: 'midBotRight', x: 200 * spreadFactor, y: 180 * spreadFactor, rot: 10, z: 45, zIndex: 30, varX: 40, varY: 40, varRot: 10 },
+      // Column 1 (Portrait Top, Landscape Bottom)
+      { id: 'c1-1', x: -330 * spreadFactor, y: -160 * spreadFactor, rot: 0, z: 20, zIndex: 10, w: isMobile ? 80 : 160, h: isMobile ? 110 : 220 },
+      { id: 'c1-2', x: -330 * spreadFactor, y: 160 * spreadFactor, rot: 0, z: 0, zIndex: 5, w: isMobile ? 85 : 170, h: isMobile ? 65 : 130 },
+
+      // Column 2 (Landscape Top, Portrait Bottom)
+      { id: 'c2-1', x: -110 * spreadFactor, y: -160 * spreadFactor, rot: 0, z: 50, zIndex: 30, w: isMobile ? 85 : 170, h: isMobile ? 65 : 130 },
+      { id: 'c2-2', x: -110 * spreadFactor, y: 160 * spreadFactor, rot: 0, z: 10, zIndex: 15, w: isMobile ? 80 : 160, h: isMobile ? 110 : 220 },
+
+      // Column 3 (Portrait Top, Landscape Bottom)
+      { id: 'c3-1', x: 110 * spreadFactor, y: -160 * spreadFactor, rot: 0, z: 70, zIndex: 40, w: isMobile ? 80 : 160, h: isMobile ? 110 : 220 },
+      { id: 'c3-2', x: 110 * spreadFactor, y: 160 * spreadFactor, rot: 0, z: 20, zIndex: 10, w: isMobile ? 85 : 170, h: isMobile ? 65 : 130 },
+
+      // Column 4 (Landscape Top, Portrait Bottom)
+      { id: 'c4-1', x: 330 * spreadFactor, y: -160 * spreadFactor, rot: 0, z: 5, zIndex: 2, w: isMobile ? 85 : 170, h: isMobile ? 65 : 130 },
+      { id: 'c4-2', x: 330 * spreadFactor, y: 160 * spreadFactor, rot: 0, z: 90, zIndex: 90, w: isMobile ? 80 : 160, h: isMobile ? 110 : 220 },
+
+      // Depth Layers (Subtle background floaters to maintain 'pile' count)
+      { id: 'fl1', x: -40 * spreadFactor, y: 0 * spreadFactor, rot: 0, z: -100, zIndex: 1, w: isMobile ? 70 : 140, h: isMobile ? 50 : 100 },
+      { id: 'fl2', x: 240 * spreadFactor, y: 0 * spreadFactor, rot: 0, z: -150, zIndex: 0, w: isMobile ? 70 : 140, h: isMobile ? 50 : 100 },
     ];
 
-    // 3. Generate Randomized Positions based on Architecture + Jitter
+    // 3. Generate Settled Positions with absolute minimal jitter for a straight, clean look
     const newPositions = basePositions.map((p) => ({
-      x: p.x + (Math.random() * p.varX * 2 - p.varX),
-      y: p.y + (Math.random() * p.varY * 2 - p.varY),
-      rot: p.rot + (Math.random() * p.varRot * 2 - p.varRot),
+      x: p.x + (Math.random() * 2 - 1),
+      y: p.y + (Math.random() * 2 - 1),
+      rot: p.rot, // Lock rotation to 0 for the straight gallery look
       z: p.z,
       zIndex: p.zIndex
     }));
 
     setPositions(newPositions);
 
-    // 4. Randomized Sizes & Animation Delays (Significantly Smaller on Mobile)
-    const sizes = pilePhotos.map(() => ({
-      w: (isMobile ? 60 : 130) + Math.random() * (isMobile ? 20 : 40),
-      h: (isMobile ? 80 : 170) + Math.random() * (isMobile ? 30 : 50)
+    // 4. Curated Sizes
+    const sizes = basePositions.map((p) => ({
+      w: p.w,
+      h: p.h
     }));
     setLoadingSizes(sizes);
 
-    const delays = pilePhotos.map(() => Math.random() * -8);
+    // DYNAMIC SPRING TRANSITION (Simulated by transition prop in return)
+    const delays = basePositions.map(() => Math.random() * -12);
     setFloatDelays(delays);
 
     // Trigger Entrance
@@ -222,8 +233,8 @@ export default function Hero() {
               transition: "transform 0.4s cubic-bezier(0.1, 0.4, 0.2, 1)",
             }}
           >
-            {/* Show only when positions are ready to avoid layout shift, or use initial dummy state */}
-            {positions.length > 0 && displayPhotos.map((src, i) => (
+            {/* Show only when positions are ready to avoid layout shift */}
+            {positions.length > 0 && displayPhotos.slice(0, positions.length).map((src, i) => (
               <div
                 key={i}
                 className="absolute left-1/2 top-1/2 transition-all duration-[1500ms] cubic-bezier(0.19, 1, 0.22, 1) will-change-transform"
@@ -233,29 +244,33 @@ export default function Hero() {
                   marginLeft: -(loadingSizes[i]?.w || 200) / 2,
                   marginTop: -(loadingSizes[i]?.h || 260) / 2,
                   transform: mounted
-                    ? `translate3d(${positions[i].x}px, ${positions[i].y}px, ${positions[i].z}px) rotateZ(${positions[i].rot}deg)`
+                    ? `translate3d(${positions[i]?.x || 0}px, ${positions[i]?.y || 0}px, ${positions[i]?.z || 0}px) rotateZ(${positions[i]?.rot || 0}deg)`
                     : `translate3d(0px, 0px, -200px) rotateZ(0deg) scale(0.5)`,
-                  zIndex: positions[i].zIndex,
+                  zIndex: positions[i]?.zIndex || 1,
                   opacity: mounted ? 1 : 0,
                   transitionDelay: `${i * 60}ms`,
                 }}
               >
-                {/* Cinema Card Style */}
+                {/* The Boutique Frame Style (The White Gallery Look) */}
                 <div
-                  className="w-full h-full rounded-lg overflow-hidden border-[3px] border-white shadow-[0_20px_60px_rgba(0,0,0,0.35)] premium-float group relative bg-black"
+                  className="w-full h-full p-[2px] md:p-[4px] bg-white rounded-[2px] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3),0_15px_30px_-10px_rgba(0,0,0,0.2)] premium-float group relative border border-gray-100"
                   style={{ animationDelay: `${floatDelays[i]}s` }}
                 >
-                  <div className="relative w-full h-full">
-                    <Image
-                      src={src}
-                      alt="Cinematic Moment"
-                      fill
-                      className="object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105 transform"
-                      sizes="300px"
-                      priority={i < 4}
-                    />
-                    {/* Luxe Gloss Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none mix-blend-overlay"></div>
+                  {/* The Inner Matte Area */}
+                  <div className="w-full h-full relative overflow-hidden bg-[#f8f8f8] flex items-center justify-center p-[2%]">
+                    {/* The Image Itself */}
+                    <div className="relative w-full h-full shadow-[inset_0_2px_10px_rgba(0,0,0,0.1)]">
+                      <Image
+                        src={src}
+                        alt="Cineline Moment"
+                        fill
+                        className="object-cover opacity-95 group-hover:opacity-100 transition-all duration-700 group-hover:scale-[1.03]"
+                        sizes="400px"
+                        priority={i < 4}
+                      />
+                    </div>
+                    {/* Perspective Light Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-40 mix-blend-overlay pointer-events-none"></div>
                   </div>
                 </div>
               </div>
@@ -268,8 +283,8 @@ export default function Hero() {
         .preserve-3d { transform-style: preserve-3d; perspective: 1200px; }
         .grain { background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png"); }
         @keyframes premiumFloat {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-15px) rotate(1deg); } 
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-8px); } 
         }
         .premium-float {
           animation: premiumFloat 8s ease-in-out infinite;

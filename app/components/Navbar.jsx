@@ -130,106 +130,177 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="fixed inset-0 z-[99999] bg-black flex flex-col text-white overscroll-none"
+            className="fixed inset-0 z-[99999] bg-[#030303] flex flex-col text-white overscroll-none"
           >
-            {/* TOP BAR: CLOSE ONLY */}
-            <div className="relative z-10 p-8 flex justify-end items-center">
+            {/* ATMOSPHERIC BACKGROUND LAYER - THE OBSIDIAN ATMOSPHERE */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden select-none">
+
+              {/* Cinematic Grain Texture */}
+              <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay pointer-events-none" style={{ backgroundImage: `url("https://grainy-gradients.vercel.app/noise.svg")` }} />
+
+              {/* Ethereal Light Leaks */}
+              <motion.div
+                animate={{
+                  scale: [1, 1.2, 1],
+                  opacity: [0.03, 0.07, 0.03],
+                  x: [0, 50, 0],
+                  y: [0, -30, 0]
+                }}
+                transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-white rounded-full blur-[120px]"
+              />
+              <motion.div
+                animate={{
+                  scale: [1.2, 1, 1.2],
+                  opacity: [0.02, 0.05, 0.02],
+                  x: [0, -40, 0],
+                  y: [0, 60, 0]
+                }}
+                transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -bottom-48 -right-48 w-[600px] h-[600px] bg-white rounded-full blur-[150px]"
+              />
+
+              {/* Minimalist Vector Geometry */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                {/* Outermost Orbit */}
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
+                  className="w-[110vw] h-[110vw] border-[0.5px] border-white/5 rounded-full"
+                >
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1px] h-12 bg-white/10" />
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1px] h-12 bg-white/10" />
+                </motion.div>
+
+                {/* Second Orbit (Dashed) */}
+                <motion.div
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 180, repeat: Infinity, ease: "linear" }}
+                  className="absolute w-[85vw] h-[85vw] border-[0.5px] border-dashed border-white/10 rounded-full"
+                />
+
+                {/* Technical Centering Crosshair */}
+                <div className="absolute w-full h-[0.5px] bg-white/[0.03]" />
+                <div className="absolute h-full w-[0.5px] bg-white/[0.03]" />
+              </div>
+
+              {/* HUD Accents (Simplified & Aesthetic) */}
+              <div className="absolute top-12 left-12 flex flex-col gap-1">
+                <span className="text-[6px] font-mono tracking-[0.5em] text-white/30 uppercase">System: Online</span>
+                <span className="text-[6px] font-mono tracking-[0.5em] text-white/10 uppercase">Frame: 24FPS</span>
+              </div>
+              <div className="absolute top-12 right-12 text-[6px] font-mono tracking-[0.5em] text-white/20 uppercase">CS Archive // 2025</div>
+              <div className="absolute bottom-12 left-12 text-[6px] font-mono tracking-[0.5em] text-white/10 uppercase">34.0522° N, 118.2437° W</div>
+              <div className="absolute bottom-12 right-12 text-[6px] font-mono tracking-[0.5em] text-white/30 uppercase">Cineline Studios</div>
+            </div>
+
+
+
+            {/* TOP BAR: CLOSE COMMAND */}
+            <div className="relative z-20 pt-24 pb-8 px-8 flex justify-end items-center">
               <button
                 onClick={() => setOpen(false)}
                 className="group flex items-center gap-3 py-2 px-1 focus:outline-none"
               >
                 <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/40 group-hover:text-white transition-colors">Close</span>
-                <X size={20} strokeWidth={1.5} className="text-white/60 group-hover:text-white transition-colors" />
+                <div className="w-8 h-8 flex items-center justify-center rounded-full border border-white/5 bg-white/[0.03] group-hover:bg-white group-hover:text-black transition-all duration-500">
+                  <X size={18} strokeWidth={1.5} />
+                </div>
               </button>
             </div>
 
-            {/* CENTERED CONTENT HUB */}
-            <div className="flex-1 flex flex-col justify-center items-center px-8 text-center pb-20">
+            {/* CONTENT LAYER */}
+            <div className="relative z-10 flex-1 flex flex-col">
+              {/* CENTERED CONTENT HUB */}
+              <div className="flex-1 flex flex-col justify-center items-center px-8 text-center pb-4 mt-[-8%]">
 
-              {/* LOGO (BROUGHT DOWN) */}
-              <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="mb-16"
-              >
-                <Image
-                  src="/cs_logo_only_w_t.png"
-                  alt="CS"
-                  width={50}
-                  height={30}
-                  className="opacity-90 w-auto h-auto"
-                />
-              </motion.div>
+                {/* LOGO (BROUGHT DOWN) */}
+                <motion.div
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="mb-8"
+                >
+                  <Image
+                    src="/cs_logo_only_w_t.png"
+                    alt="CS"
+                    width={50}
+                    height={30}
+                    className="opacity-90 w-auto h-auto"
+                  />
+                </motion.div>
 
-              {/* EDITORIAL NAVIGATION */}
-              <div className="flex flex-col gap-8 mb-12 bg-transparent">
-                {NAV_ITEMS.map((item, index) => (
-                  <motion.div
-                    key={item.href}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 + index * 0.08, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                    className="bg-transparent"
-                  >
-                    <Link
-                      href={item.href}
-                      onClick={() => setOpen(false)}
-                      className="block group bg-transparent"
+                {/* EDITORIAL NAVIGATION */}
+                <div className="flex flex-col gap-5 mb-6 bg-transparent">
+                  {NAV_ITEMS.map((item, index) => (
+                    <motion.div
+                      key={item.href}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.1 + index * 0.08, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                      className="bg-transparent"
                     >
-                      <span className="text-4xl font-medium tracking-tight text-white/50 group-hover:text-white transition-all duration-500 hover:scale-105 inline-block">
-                        {item.label}
-                      </span>
-                    </Link>
-                  </motion.div>
-                ))}
+                      <Link
+                        href={item.href}
+                        onClick={() => setOpen(false)}
+                        className="block group bg-transparent"
+                      >
+                        <span className="text-3xl font-medium tracking-tight text-white/50 group-hover:text-white transition-all duration-500 hover:scale-105 inline-block">
+                          {item.label}
+                        </span>
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* MINIMALIST SUB-SECTION */}
+                <motion.div
+                  initial={{ opacity: 0, width: 0 }}
+                  animate={{ opacity: 1, width: "60px" }}
+                  transition={{ delay: 0.6, duration: 1 }}
+                  className="h-[1px] bg-white/10 mb-6"
+                />
+
+
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.8 }}
+                  className="max-w-[280px] text-[10px] font-medium leading-relaxed tracking-[0.2em] text-white/60 uppercase mb-8"
+                >
+                  We capture the extraordinary through a lens of digital precision and cinematic flair.
+                </motion.p>
+
+                {/* MOVED BUTTON: THE COMMISSION CALL */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1 }}
+                  className="w-full max-w-xs px-6"
+                >
+                  <Link
+                    href="/booking"
+                    onClick={() => setOpen(false)}
+                    className="
+                    w-full py-4 rounded-full bg-white text-black
+                    flex items-center justify-center gap-3
+                    text-[10px] font-black uppercase tracking-[0.3em]
+                    hover:scale-[1.02] active:scale-[0.98] transition-all duration-500
+                    shadow-[0_15px_30px_-10px_rgba(255,255,255,0.2)]
+                  "
+                  >
+                    Book a Session
+                    <ChevronRight size={14} />
+                  </Link>
+                </motion.div>
               </div>
 
-              {/* MINIMALIST SUB-SECTION */}
-              <motion.div
-                initial={{ opacity: 0, width: 0 }}
-                animate={{ opacity: 1, width: "60px" }}
-                transition={{ delay: 0.6, duration: 1 }}
-                className="h-[1px] bg-white/10 mb-8"
-              />
-
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.8 }}
-                className="max-w-[280px] text-[10px] font-medium leading-relaxed tracking-[0.2em] text-white/60 uppercase"
-              >
-                We capture the extraordinary through a lens of digital precision and cinematic flair.
-              </motion.p>
-            </div>
-
-            {/* BOTTOM ACTION: THE COMMISSION CALL */}
-            <div className="p-12 flex flex-col items-center gap-8">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1 }}
-                className="w-full max-w-xs"
-              >
-                <Link
-                  href="/booking"
-                  onClick={() => setOpen(false)}
-                  className="
-                   w-full py-5 rounded-full bg-white text-black 
-                   flex items-center justify-center gap-3
-                   text-[11px] font-black uppercase tracking-[0.3em]
-                   hover:scale-[1.02] active:scale-[0.98] transition-all duration-500
-                   shadow-[0_20px_40px_-10px_rgba(255,255,255,0.2)]
-                 "
-                >
-                  Book a Session
-                  <ChevronRight size={14} />
-                </Link>
-              </motion.div>
-
-              <div className="flex gap-8 text-[9px] font-black uppercase tracking-[0.5em] text-white/10">
-                <Instagram size={16} className="hover:text-white transition-colors cursor-pointer" />
-                <Youtube size={16} className="hover:text-white transition-colors cursor-pointer" />
+              {/* MINIMAL FOOTER: SOCIALS ONLY */}
+              <div className="pb-16 flex flex-col items-center">
+                <div className="flex gap-8 text-[9px] font-black uppercase tracking-[0.5em] text-white/10">
+                  <Instagram size={16} className="hover:text-white transition-colors cursor-pointer" />
+                  <Youtube size={16} className="hover:text-white transition-colors cursor-pointer" />
+                </div>
               </div>
             </div>
           </motion.div>

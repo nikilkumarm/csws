@@ -6,22 +6,22 @@ import { motion } from "framer-motion";
 
 const testimonials = [
   {
-    name: "Sarah & James",
+    name: "Aditi & Rohit",
     role: "Wedding Clients",
-    text: "Cineline made our wedding look like a movie. The attention to detail was incredible, and they captured moments we didn't even notice happening.",
+    text: "Literally speechless. The team felt like part of our family only and captured every emotion perfectly. Superb experience!",
     image: "/images/testimonials/client1.jpg"
   },
   {
-    name: "Elena Rodriguez",
-    role: "Brand Director, Vogue",
-    text: "Reviewing the final shots was an emotional experience. They didn't just take photos; they captured the soul of our brand campaign.",
+    name: "Sanjay Gupta",
+    role: "Business Owner",
+    text: "Best decision for our launch. The cinematic shots look extremely premium and 'hatke'. Pure passion and full value for money.",
     image: "/images/testimonials/client2.jpg"
   },
   {
-    name: "Michael Chen",
-    role: "Event Planner",
-    text: "Professional, punctual, and incredibly talented. The live broadcast for our summit was seamless. Highly recommended for high-stakes events.",
-    image: "/images/testimonials/client2.jpg" // Placeholder if 3rd image missing
+    name: "Meera Iyer",
+    role: "Independent Artist",
+    text: "Cineline totally nailed my vision! Patient, creative, and the results are just next level. Highly recommended to everyone!",
+    image: "/images/testimonials/client2.jpg"
   }
 ];
 
