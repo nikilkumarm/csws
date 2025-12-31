@@ -2,7 +2,7 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Video, Camera, Package, MonitorPlay, ArrowUpRight, ArrowLeft } from "lucide-react";
-import TrustedPartners from "../components/TrustedPartners";
+
 import Image from "next/image";
 import Link from "next/link";
 import { CinematicGrain, SubtleGrid } from "../components/Patterns";
@@ -31,7 +31,7 @@ const SERVICES = [
     image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=2000&auto=format&fit=crop"
   },
   {
-    title: "Broadcast & Commercials",
+    title: "Broadcast &\nCommercials",
     desc: "End-to-end production for commercials and documentaries. We handle everything from conceptualization to the final color grade.",
     icon: MonitorPlay,
     slug: "broadcast-commercials",
@@ -98,10 +98,7 @@ export default function ServicesPage() {
           ))}
         </div>
 
-        {/* TRUSTED PARTNERS SECTION */}
-        <div className="mt-40 md:mt-64 border-t border-white/5">
-          <TrustedPartners />
-        </div>
+
 
       </main>
 
@@ -132,11 +129,7 @@ function ServiceRow({ service, index }) {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
 
-          {/* Viewfinder Decorative Corner */}
-          <div className="absolute top-8 left-8 flex items-center gap-3">
-            <div className="w-2 h-2 rounded-full bg-cinelineGold animate-pulse" />
-            <span className="text-[10px] font-mono text-white/40 tracking-[0.3em] uppercase">SV-ARCHIVE_0{index + 1}</span>
-          </div>
+
 
           {/* Gold Focus Brackets */}
           <div className="absolute top-4 right-4 w-4 h-4 border-t border-r border-cinelineGold/0 group-hover:border-cinelineGold transition-all duration-700" />
@@ -153,7 +146,7 @@ function ServiceRow({ service, index }) {
             </span>
           </div>
 
-          <h2 className="text-4xl sm:text-6xl md:text-7xl font-black text-white leading-[0.9] tracking-tighter uppercase transform group-hover:translate-x-4 transition-transform duration-1000">
+          <h2 className="text-4xl sm:text-6xl md:text-7xl font-black text-white leading-[0.9] tracking-tighter uppercase transform group-hover:translate-x-4 transition-transform duration-1000 whitespace-pre-line">
             {service.title}
           </h2>
         </div>
