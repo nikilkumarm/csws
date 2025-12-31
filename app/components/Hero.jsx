@@ -57,14 +57,6 @@ export default function Hero() {
       // Column 3 (Portrait Top, Landscape Bottom)
       { id: 'c3-1', x: 110 * spreadFactor, y: -160 * spreadFactor, rot: 0, z: 70, zIndex: 40, w: isMobile ? 80 : 160, h: isMobile ? 110 : 220 },
       { id: 'c3-2', x: 110 * spreadFactor, y: 160 * spreadFactor, rot: 0, z: 20, zIndex: 10, w: isMobile ? 85 : 170, h: isMobile ? 65 : 130 },
-
-      // Column 4 (Landscape Top, Portrait Bottom)
-      { id: 'c4-1', x: 330 * spreadFactor, y: -160 * spreadFactor, rot: 0, z: 5, zIndex: 2, w: isMobile ? 85 : 170, h: isMobile ? 65 : 130 },
-      { id: 'c4-2', x: 330 * spreadFactor, y: 160 * spreadFactor, rot: 0, z: 90, zIndex: 90, w: isMobile ? 80 : 160, h: isMobile ? 110 : 220 },
-
-      // Depth Layers (Subtle background floaters to maintain 'pile' count)
-      { id: 'fl1', x: -40 * spreadFactor, y: 0 * spreadFactor, rot: 0, z: -100, zIndex: 1, w: isMobile ? 70 : 140, h: isMobile ? 50 : 100 },
-      { id: 'fl2', x: 240 * spreadFactor, y: 0 * spreadFactor, rot: 0, z: -150, zIndex: 0, w: isMobile ? 70 : 140, h: isMobile ? 50 : 100 },
     ];
 
     // 3. Generate Settled Positions with absolute minimal jitter for a straight, clean look
@@ -229,8 +221,8 @@ export default function Hero() {
           <div
             className="relative w-full h-full preserve-3d will-change-transform"
             style={{
-              transform: `rotateX(${mouse.y * 5 - scrollY * 0.015}deg) rotateY(${mouse.x * 5}deg)`,
-              transition: "transform 0.4s cubic-bezier(0.1, 0.4, 0.2, 1)",
+              transform: `rotateX(${mouse.y * 2 - scrollY * 0.005}deg) rotateY(${mouse.x * 2}deg)`,
+              transition: "transform 0.6s cubic-bezier(0.1, 0.4, 0.2, 1)",
             }}
           >
             {/* Show only when positions are ready to avoid layout shift */}

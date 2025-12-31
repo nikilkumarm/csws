@@ -117,7 +117,7 @@ export default function ServiceDetail({ params }) {
                         <h1 className="text-[15vw] md:text-[10vw] font-black uppercase leading-none tracking-tighter text-white">
                             {data.title}
                         </h1>
-                        <p className="text-sm md:text-xl font-light text-gray-400 tracking-[0.3em] uppercase max-w-2xl mx-auto italic">
+                        <p className="text-sm md:text-xl font-light text-white/70 tracking-[0.3em] uppercase max-w-2xl mx-auto italic">
                             “We pursue <span className="text-cinelineGold">perfection</span> in every frame.”
                         </p>
                     </motion.div>

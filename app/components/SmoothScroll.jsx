@@ -5,14 +5,14 @@ import Lenis from "@studio-freight/lenis";
 export default function SmoothScroll() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.0, // Reduced from 1.2 for snappier feel
+      duration: 0.8, // Reduced for snappier feel
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       direction: "vertical",
       gestureDirection: "vertical",
       smooth: true,
-      mouseMultiplier: 0.8, // Lower multiplier for more control
-      smoothTouch: false,   // OPTIMIZATION: Disable on mobile for native performance
-      touchMultiplier: 2,
+      mouseMultiplier: 0.6, // Lower for more precise control
+      smoothTouch: false,   // Native on mobile
+      touchMultiplier: 1.5,
     });
 
     function raf(time) {

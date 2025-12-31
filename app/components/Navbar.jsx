@@ -139,26 +139,9 @@ export default function Navbar() {
               <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay pointer-events-none" style={{ backgroundImage: `url("https://grainy-gradients.vercel.app/noise.svg")` }} />
 
               {/* Ethereal Light Leaks */}
-              <motion.div
-                animate={{
-                  scale: [1, 1.2, 1],
-                  opacity: [0.03, 0.07, 0.03],
-                  x: [0, 50, 0],
-                  y: [0, -30, 0]
-                }}
-                transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-white rounded-full blur-[120px]"
-              />
-              <motion.div
-                animate={{
-                  scale: [1.2, 1, 1.2],
-                  opacity: [0.02, 0.05, 0.02],
-                  x: [0, -40, 0],
-                  y: [0, 60, 0]
-                }}
-                transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-48 -right-48 w-[600px] h-[600px] bg-white rounded-full blur-[150px]"
-              />
+              {/* Ethereal Light Leaks - OPTIMIZED */}
+              <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-white rounded-full blur-[120px] opacity-[0.03]" />
+              <div className="absolute -bottom-48 -right-48 w-[600px] h-[600px] bg-white rounded-full blur-[150px] opacity-[0.02]" />
 
               {/* Minimalist Vector Geometry */}
               <div className="absolute inset-0 flex items-center justify-center">
@@ -310,11 +293,9 @@ export default function Navbar() {
       <style jsx>{`
         /* Define the subtle 3D floating animation */
         @keyframes cinematicFloat {
-          0% { transform: rotateX(0deg) rotateY(0deg) translateY(0px); }
-          25% { transform: rotateX(1.5deg) rotateY(1deg) translateY(-2px); }
-          50% { transform: rotateX(0deg) rotateY(0deg) translateY(0px); }
-          75% { transform: rotateX(-1.5deg) rotateY(-1deg) translateY(-2px); }
-          100% { transform: rotateX(0deg) rotateY(0deg) translateY(0px); }
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(-2px); }
+          100% { transform: translateY(0px); }
         }
 
         .cinematic-glass {
@@ -322,9 +303,9 @@ export default function Navbar() {
           perspective: 1000px;
           transform-style: preserve-3d;
           /* Apply the slow, continuous animation */
-          animation: cinematicFloat 20s ease-in-out infinite;
+          /* animation: cinematicFloat 20s ease-in-out infinite; */
           /* Optimize performance */
-          will-change: transform;
+          /* will-change: transform; */
           /* Slight shadow to enhance 3D effect */
           box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
         }

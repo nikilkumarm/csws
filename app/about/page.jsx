@@ -14,13 +14,13 @@ function FloatingParticles() {
 
   useEffect(() => {
     // Soft floating particles (like dust motes in sunlight)
-    const p = Array.from({ length: 20 }).map((_, i) => ({
+    const p = Array.from({ length: 8 }).map((_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: Math.random() * 3 + 1,
-      duration: Math.random() * 20 + 10,
-      delay: Math.random() * 5
+      size: Math.random() * 2 + 1,
+      duration: Math.random() * 10 + 10,
+      delay: Math.random() * 2
     }));
     setParticles(p);
   }, []);
@@ -38,13 +38,12 @@ function FloatingParticles() {
             height: p.size,
           }}
           animate={{
-            y: [0, -50, 0],
-            x: [0, 20, 0],
+            y: [0, -30, 0],
             opacity: [0.1, 0.4, 0.1],
           }}
           transition={{
             duration: p.duration,
-            repeat: 9999, // Workaround for potential Infinity issue in WAAPI
+            repeat: Infinity,
             delay: p.delay,
             ease: "easeInOut",
           }}
@@ -128,7 +127,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[15vw] lg:text-[10vw] leading-[0.9] font-medium tracking-tight text-white mb-8 mix-blend-overlay"
+            className="text-[15vw] lg:text-[10vw] leading-[0.9] font-medium tracking-tight text-white mb-8"
           >
             CAPTURING <br />
             <span className="font-serif italic text-cinelineGold opacity-90">The Unspoken.</span>
@@ -138,7 +137,7 @@ export default function AboutPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
-            className="max-w-xl mx-auto text-lg md:text-xl text-gray-300 font-light leading-relaxed px-4 md:px-0"
+            className="max-w-xl mx-auto text-lg md:text-xl text-white/80 font-light leading-relaxed px-4 md:px-0"
           >
             We translate fleeting moments into <span className="text-cinelineGold">eternal memories</span>.
             A sanctuary for love, art, and storytelling.
@@ -154,16 +153,15 @@ export default function AboutPage() {
             <div className="order-2 lg:order-1 space-y-12">
               <div>
                 <span className="text-cinelineGold text-xs font-bold uppercase tracking-[0.3em] mb-4 block">Our Essence</span>
-                <h2 className="text-4xl md:text-6xl font-medium leading-[1.1] mb-8 font-display">
+                <h2 className="text-4xl md:text-6xl font-medium leading-[1.1] mb-8 font-display text-white">
                   More than a camera. <br />
-                  <span className="text-gray-500 text-3xl md:text-5xl">We are witnesses to love.</span>
+                  <span className="text-white/50 text-3xl md:text-5xl">We are witnesses to love.</span>
                 </h2>
-                <p className="text-lg text-gray-400 font-light leading-relaxed mb-6">
-                  Every glance, every touch, every tear holds a universe of emotion. Our mission is to preserve these universes.
-                  We don't just document events; we craft a visual legacy that you will cherish for generations.
+                <p className="text-base text-white/60 font-light leading-relaxed mb-6">
+                  Every glance and touch holds a universe. We preserve these moments as a visual legacy to be cherished for generations.
                 </p>
-                <p className="text-lg text-gray-400 font-light leading-relaxed">
-                  At Cineline Studios, professionalism meets pure heart. We blend technical mastery with a deep sensitivity to the human experience, ensuring that your story is told with the grace it deserves.
+                <p className="text-base text-white/60 font-light leading-relaxed">
+                  Professionalism meets heart. We blend technical mastery with sensitivity to tell your story with the grace it deserves.
                 </p>
               </div>
 
@@ -210,7 +208,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
             <h2 className="text-4xl md:text-6xl font-medium tracking-tight text-white mb-6 md:mb-8 font-display">The Heart of Cineline</h2>
-            <p className="text-gray-400 text-lg md:text-xl font-light">
+            <p className="text-white/60 text-lg md:text-xl font-light">
               Built on a foundation of trust, excellence, and genuine care.
             </p>
           </div>

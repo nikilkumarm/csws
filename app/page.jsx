@@ -22,7 +22,7 @@ function ParallaxText({ children, baseVelocity = 100 }) {
     damping: 50,
     stiffness: 400
   });
-  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
+  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 2], {
     clamp: false
   });
 

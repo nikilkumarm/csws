@@ -2,8 +2,8 @@
 
 export function CinematicGrain({ opacity = 0.05 }) {
     return (
-        <div className="absolute inset-0 pointer-events-none z-0 mix-blend-overlay" style={{ opacity }}>
-            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat" />
+        <div className="absolute inset-0 pointer-events-none z-0" style={{ opacity }}>
+            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat opacity-[0.4]" />
         </div>
     )
 }
