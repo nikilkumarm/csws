@@ -6,6 +6,7 @@ import ScrollReveal from "./components/ScrollReveal";
 import SmoothScroll from "./components/SmoothScroll";
 import Spotlight from "./components/Spotlight";
 import WhatsAppButton from "./components/WhatsAppButton";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -55,6 +56,7 @@ export default function RootLayout({ children }) {
 
         <WhatsAppButton />
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
