@@ -7,10 +7,12 @@ import { motion, useScroll, useTransform, useSpring, useMotionValue, useVelocity
 import { wrap } from "@motionone/utils";
 import { ArrowRight, ArrowUpRight, Play, Star, Sparkles } from "lucide-react";
 import Hero from "./components/Hero";
-import PremiumServices from "./components/PremiumServices";
-import Testimonials from "./components/Testimonials";
-import WhatsAppButton from "./components/WhatsAppButton";
-import FounderNote from "./components/FounderNote";
+import dynamic from "next/dynamic";
+
+const PremiumServices = dynamic(() => import("./components/PremiumServices"), { ssr: true });
+const Testimonials = dynamic(() => import("./components/Testimonials"), { ssr: true });
+const WhatsAppButton = dynamic(() => import("./components/WhatsAppButton"), { ssr: false });
+const FounderNote = dynamic(() => import("./components/FounderNote"), { ssr: true });
 import { CinematicGrain, SubtleGrid, DotGrid } from "./components/Patterns";
 
 // --- VELOCITY SCROLL COMPONENT ---

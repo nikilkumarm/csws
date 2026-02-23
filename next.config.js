@@ -14,6 +14,9 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === "production", // Remove console.log in production
   },
+  experimental: {
+    optimizePackageImports: ['lucide-react'], // Helps eliminate unused icons/components
+  },
 };
 
 module.exports = nextConfig;

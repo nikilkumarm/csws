@@ -52,7 +52,7 @@ export default function PremiumServices() {
       <div className="flex flex-col md:flex-row items-end justify-between mb-20">
         <div className="max-w-xl">
           <span className="text-cinelineGold uppercase tracking-widest text-sm font-medium">Our Expertise</span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-4 leading-tight text-cinelineDark">
+          <h2 className="text-[22px] min-[375px]:text-2xl sm:text-4xl md:text-[2.25rem] lg:text-5xl font-bold mt-4 leading-snug sm:leading-tight text-cinelineDark tracking-tight">
             Premium Services for <br />
             <span className="text-gray-400">Modern Brands & Couples.</span>
           </h2>

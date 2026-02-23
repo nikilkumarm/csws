@@ -1,11 +1,13 @@
 import { Inter, Outfit, MonteCarlo } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import ScrollReveal from "./components/ScrollReveal";
-import SmoothScroll from "./components/SmoothScroll";
-import Spotlight from "./components/Spotlight";
-import WhatsAppButton from "./components/WhatsAppButton";
+import dynamic from "next/dynamic";
+
+const Footer = dynamic(() => import("./components/Footer"), { ssr: true });
+const ScrollReveal = dynamic(() => import("./components/ScrollReveal"), { ssr: false });
+const SmoothScroll = dynamic(() => import("./components/SmoothScroll"), { ssr: false });
+const Spotlight = dynamic(() => import("./components/Spotlight"), { ssr: false });
+const WhatsAppButton = dynamic(() => import("./components/WhatsAppButton"), { ssr: false });
 
 const inter = Inter({
   subsets: ["latin"],

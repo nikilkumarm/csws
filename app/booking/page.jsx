@@ -139,12 +139,12 @@ export default function BookingPage() {
                 </span>
               </div>
 
-              <h1 className="flex flex-col gap-1 leading-none">
+              <h1 className="flex flex-col leading-none relative z-10">
                 <motion.span
                   initial={{ y: 40, opacity: 0 }}
                   whileInView={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.8, ease: "circOut" }}
-                  className="text-6xl md:text-8xl font-black uppercase tracking-tighter text-white"
+                  className="text-5xl sm:text-6xl md:text-8xl font-black uppercase tracking-tighter text-white relative z-10"
                 >
                   Start
                 </motion.span>
@@ -152,7 +152,7 @@ export default function BookingPage() {
                   initial={{ y: 40, opacity: 0 }}
                   whileInView={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.2, ease: "circOut" }}
-                  className="font-script italic capitalize text-cinelineGold text-7xl md:text-9xl tracking-normal -mt-4 -mb-4 drop-shadow-2xl"
+                  className="font-script italic capitalize text-cinelineGold text-6xl sm:text-7xl md:text-[10rem] tracking-normal -mt-4 -mb-3 md:-mt-8 md:-mb-8 drop-shadow-2xl relative z-20"
                 >
                   Legacy
                 </motion.span>
@@ -160,7 +160,7 @@ export default function BookingPage() {
                   initial={{ y: 40, opacity: 0 }}
                   whileInView={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.4, ease: "circOut" }}
-                  className="text-6xl md:text-8xl font-black uppercase tracking-tighter text-white/40"
+                  className="text-5xl sm:text-6xl md:text-8xl font-black uppercase tracking-tighter text-white/40 relative z-10"
                 >
                   Project.
                 </motion.span>
