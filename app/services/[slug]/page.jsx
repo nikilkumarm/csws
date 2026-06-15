@@ -11,11 +11,11 @@ const serviceContent = {
     "wedding-films": {
         title: "Wedding Cinema",
         subtitle: "The Art of Forever.",
-        image: "/images/portfolio/wedding1.jpg",
+        image: "/images/portfolio/wedding1.webp",
         desc: "We don't just record events; we weave emotion, sound, and light into a masterpiece. Our wedding films are graded with cinema-quality color science and edited to tell your unique love story.",
         gallery: [
-            "/images/portfolio/wedding2.jpg",
-            "/images/portfolio/wedding3.jpg"
+            "/images/portfolio/wedding2.webp",
+            "/images/portfolio/wedding3.webp"
         ],
         features: [
             "4K Cinema Line Cameras",
@@ -27,11 +27,11 @@ const serviceContent = {
     "event-photography": {
         title: "Event Coverage",
         subtitle: "Capturing the Pulse.",
-        image: "/images/pile/p6.JPG",
+        image: "/images/pile/p6.webp",
         desc: "Whether it’s a high-stakes corporate summit or an exclusive gala, our team operates seamlessly in the background to capture candid moments, keynotes, and the electric atmosphere.",
         gallery: [
-            "/images/pile/p7.jpg",
-            "/images/pile/p2.jpg"
+            "/images/pile/p7.webp",
+            "/images/pile/p2.webp"
         ],
         features: [
             "Multi-Photographer Teams",
@@ -43,11 +43,11 @@ const serviceContent = {
     "product-campaigns": {
         title: "Product Visuals",
         subtitle: "Aesthetics that Sell.",
-        image: "/images/pile/p5.JPG",
+        image: "/images/pile/p5.webp",
         desc: "Elevate your brand with high-fidelity product photography and short-form video content designed for engagement. We focus on texture, lighting, and composition to make your product the hero.",
         gallery: [
-            "/images/pile/p1.JPG",
-            "/images/pile/p10.JPG"
+            "/images/pile/p1.webp",
+            "/images/pile/p10.webp"
         ],
         features: [
             "Creative Art Direction",
@@ -59,11 +59,11 @@ const serviceContent = {
     "broadcast-commercials": {
         title: "Commercial Film",
         subtitle: "Stories that Move Markets.",
-        image: "/images/pile/p1.JPG",
+        image: "/images/pile/p1.webp",
         desc: "From 30-second TV spots to brand documentaries, we handle end-to-end production. Scripting, casting, filming, and post-production—all executed with broadcast standards in mind.",
         gallery: [
-            "/images/pile/p9.JPG",
-            "/images/pile/p3.jpg"
+            "/images/pile/p9.webp",
+            "/images/pile/p3.webp"
         ],
         features: [
             "Script to Screen",

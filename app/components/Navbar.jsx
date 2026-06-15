@@ -14,7 +14,8 @@ import {
   Instagram,
   Youtube,
   Menu as MenuIcon,
-  X
+  X,
+  Palette
 } from "lucide-react";
 
 // Navbar Items
@@ -24,6 +25,7 @@ const NAV_ITEMS = [
   { label: "Portfolio", href: "/portfolio", icon: Film, num: "03" },
   { label: "Services", href: "/services", icon: Camera, num: "04" },
   { label: "Team", href: "/team", icon: Users, num: "05" },
+  { label: "Colour", href: "/colour", icon: Palette, num: "06" },
 ];
 
 export default function Navbar() {
@@ -53,7 +55,7 @@ export default function Navbar() {
             <div className="cinematic-item text-white">
               <Link href="/">
                 <Image
-                  src="/cs_logo_only_w_t.png"
+                  src="/cs_logo_only_w_t.webp"
                   alt="Cineline Studios"
                   width={48}
                   height={28}
@@ -64,7 +66,7 @@ export default function Navbar() {
             </div>
 
             {/* DESKTOP LINKS - LUXURY TYPOGRAPHY */}
-            <div className="hidden md:flex items-center gap-10 text-white">
+            <div className="hidden md:flex items-center gap-4 lg:gap-5 xl:gap-6 text-white">
               {NAV_ITEMS.map((item) => (
                 <Link
                   key={item.href}
@@ -84,12 +86,13 @@ export default function Navbar() {
               <Link
                 href="/booking"
                 className="
-                  px-7 py-2.5 rounded-full bg-white text-black 
+                  px-6 lg:px-7 py-2.5 rounded-full bg-white text-black 
                   text-[10px] font-black uppercase tracking-[0.2em]
                   shadow-[0_0_20px_-5px_rgba(255,255,255,0.4),0_0_40px_-10px_rgba(255,255,255,0.2)]
                   hover:shadow-[0_0_30px_-5px_rgba(255,255,255,0.8),0_0_60px_-10px_rgba(255,255,255,0.4)]
                   hover:scale-105 active:scale-95
                   transition-all duration-500 ease-out
+                  z-10
                 "
               >
                 Book
@@ -204,7 +207,7 @@ export default function Navbar() {
                   className="mb-8"
                 >
                   <Image
-                    src="/cs_logo_only_w_t.png"
+                    src="/cs_logo_only_w_t.webp"
                     alt="CS"
                     width={50}
                     height={30}

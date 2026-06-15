@@ -9,19 +9,19 @@ const testimonials = [
     name: "Aditi & Rohit",
     role: "Wedding Clients",
     text: "Literally speechless. The team felt like part of our family only and captured every emotion perfectly. Superb experience!",
-    image: "/images/testimonials/client1.jpg"
+    image: "/images/testimonials/client1.webp"
   },
   {
     name: "Sanjay Gupta",
     role: "Business Owner",
     text: "Best decision for our launch. The cinematic shots look extremely premium and 'hatke'. Pure passion and full value for money.",
-    image: "/images/testimonials/client2.jpg"
+    image: "/images/testimonials/client2.webp"
   },
   {
     name: "Meera Iyer",
     role: "Independent Artist",
     text: "Cineline totally nailed my vision! Patient, creative, and the results are just next level. Highly recommended to everyone!",
-    image: "/images/testimonials/client2.jpg"
+    image: "/images/testimonials/client2.webp"
   }
 ];
 

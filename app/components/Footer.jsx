@@ -89,7 +89,7 @@ export default function Footer() {
             {/* COLUMN 1: BRAND & MANIFESTO */}
             <div className="md:col-span-5 space-y-10">
               <Link href="/" className="inline-block">
-                <Image src="/cs_logo_w_t.png" width={220} height={80} alt="Logo" className="opacity-90 hover:opacity-100 transition-opacity w-[180px] md:w-[220px] h-auto" />
+                <Image src="/cs_logo_w_t.webp" width={220} height={80} alt="Logo" className="opacity-90 hover:opacity-100 transition-opacity w-[180px] md:w-[220px] h-auto" />
               </Link>
 
               <div className="space-y-6">

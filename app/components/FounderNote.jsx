@@ -80,7 +80,7 @@ export default function FounderNote() {
                         role="Founder & Creative Director"
                         title="Visionary"
                         quote="We don't just capture moments; we architect memories. Every frame is a deliberate stroke of art."
-                        image="/images/team/nikil.jpg"
+                        image="/images/team/nikil.webp"
                         index={0}
                     />
 
@@ -89,7 +89,7 @@ export default function FounderNote() {
                         role="Co-Founder & Lead Strategist"
                         title="Catalyst"
                         quote="Great stories don't just happen—they are forged in the fires of strategy and pure passion."
-                        image="/images/team/rakshan.jpg"
+                        image="/images/team/rakshan.webp"
                         reverse={true}
                         index={1}
                     />

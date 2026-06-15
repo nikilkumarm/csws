@@ -306,7 +306,7 @@ export default function Page() {
               className="relative h-[400px] md:h-[600px] w-full bg-gray-900 overflow-hidden"
             >
               <Image
-                src="/images/pile/p5.JPG"
+                src="/images/pile/p5.webp"
                 alt="Reel"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -345,7 +345,7 @@ export default function Page() {
                 title="Vogue Editorial"
                 category="Fashion"
                 year="2024"
-                img="/images/pile/p4.JPG"
+                img="/images/pile/p4.webp"
                 colSpan={2}
               />
 
@@ -354,14 +354,14 @@ export default function Page() {
                 title="The Royal Union"
                 category="Wedding"
                 year="2023"
-                img="/images/portfolio/wedding1.jpg"
+                img="/images/portfolio/wedding1.webp"
               />
 
               <ProjectCard
                 title="Urban Kinetics"
                 category="Commercial"
                 year="2024"
-                img="/images/pile/p1.JPG"
+                img="/images/pile/p1.webp"
               />
 
               {/* Massive Feature Bottom */}
@@ -369,7 +369,7 @@ export default function Page() {
                 title="Neon Nights"
                 category="Event"
                 year="2023"
-                img="/images/pile/p6.JPG"
+                img="/images/pile/p6.webp"
                 colSpan={2}
               />
             </div>

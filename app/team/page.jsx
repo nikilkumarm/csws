@@ -11,7 +11,7 @@ const TEAM_MEMBERS = [
     id: 1,
     name: "Nikilkumar",
     role: "Founder & Creative Director",
-    image: "/images/team/nikil.jpg",
+    image: "/images/team/nikil.webp",
     bio: "Visionary storyteller crafting narratives that resonate on a primal level. Architecting memories, not just videos.",
     socials: { instagram: "https://www.instagram.com/inikil._", linkedin: "https://www.linkedin.com/in/nikilkumarm/" }
   },
@@ -19,7 +19,7 @@ const TEAM_MEMBERS = [
     id: 2,
     name: "Rakshan",
     role: "Co-Founder & Lead Strategist",
-    image: "/images/team/rakshan.jpg",
+    image: "/images/team/rakshan.webp",
     bio: "The catalyst. Forging great stories in the fires of strategy and pure passion. He ensures the wildest dreams fly.",
     socials: { instagram: "https://www.instagram.com/nrstudios7", linkedin: "https://www.linkedin.com/in/rakshan-m-3907b4316/" }
   },
@@ -27,7 +27,7 @@ const TEAM_MEMBERS = [
     id: 3,
     name: "Mokshanand",
     role: "Admin & Operations Head",
-    image: "/images/team/mokshanand.JPG",
+    image: "/images/team/mokshanand.webp",
     bio: "The backbone. Creativity needs chaos, but execution demands order. Ensuring the vision survives reality.",
     socials: { instagram: "https://www.instagram.com/_moxhanand_", linkedin: "https://www.linkedin.com/in/mokshanand-t-b0a986249/" }
   },
@@ -35,7 +35,7 @@ const TEAM_MEMBERS = [
     id: 4,
     name: "Sukesan",
     role: "Head of Finance",
-    image: "/images/team/sukesh.JPG",
+    image: "/images/team/sukesh.webp",
     bio: "The anchor. Sustainable growth is the canvas for artistic freedom. Discipline allows us to dream bigger.",
     socials: { instagram: "https://www.instagram.com/__sukes.an___", linkedin: "https://www.linkedin.com/in/sukesan-e-g-52a913249/" }
   },
@@ -43,7 +43,7 @@ const TEAM_MEMBERS = [
     id: 5,
     name: "Allen Matthew",
     role: "Network Admin",
-    image: "/images/team/allen.jpg",
+    image: "/images/team/allen.webp",
     bio: "The digital guardian. Ensuring our infrastructure is as robust as our creative ambition.",
     socials: { instagram: "https://www.instagram.com/offx.all3n", linkedin: "https://www.linkedin.com/in/allenmatthewtj/" }
   },
@@ -51,7 +51,7 @@ const TEAM_MEMBERS = [
     id: 6,
     name: "Jerlin Sam",
     role: "Cinematographer & Editor",
-    image: "/images/team/jerry.jpg",
+    image: "/images/team/jerry.webp",
     bio: "Capturing the unseen and weaving it into the narrative. A dual-threat creative force.",
     socials: { instagram: "https://www.instagram.com/sam_frizz_", linkedin: "https://www.linkedin.com/in/jerlin-sam/" }
   },
@@ -59,7 +59,7 @@ const TEAM_MEMBERS = [
     id: 7,
     name: "Samuel Robinson",
     role: "Cinematographer & Editor",
-    image: "/images/team/sam asir.jpg",
+    image: "/images/team/sam asir.webp",
     bio: "Visual poet with a lens. Turning fleeting moments into cinematic monuments.",
     socials: { instagram: "https://www.instagram.com/_sam_asir", linkedin: "https://www.linkedin.com/in/samuelrobinson17/" }
   },
@@ -67,7 +67,7 @@ const TEAM_MEMBERS = [
     id: 8,
     name: "Judah Fonarcus",
     role: "Photographer",
-    image: "/images/team/judah.jpeg",
+    image: "/images/team/judah.webp",
     bio: "Freezing time with precision and soul. Every still tells a moving story.",
     socials: { instagram: "https://www.instagram.com/judah_fonarcus" }
   }

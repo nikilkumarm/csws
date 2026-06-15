@@ -1,336 +1,295 @@
 "use client";
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
-import { ArrowRight, Heart, Camera, Star, Sparkles, Infinity as InfinityIcon } from "lucide-react";
-import FounderNote from "../components/FounderNote";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { MoveRight, ArrowUpRight, Camera, Film, Crown, Sparkles, Gem } from "lucide-react";
 import { CinematicGrain } from "../components/Patterns";
 
-// --- VISUAL COMPONENTS ---
+const easeModern = { type: "spring", bounce: 0, duration: 1.5 };
 
-function FloatingParticles() {
-  const [particles, setParticles] = useState([]);
-
-  useEffect(() => {
-    // Soft floating particles (like dust motes in sunlight)
-    const p = Array.from({ length: 4 }).map((_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 2 + 1,
-      duration: Math.random() * 10 + 10,
-      delay: Math.random() * 2
-    }));
-    setParticles(p);
-  }, []);
-
+function BentoCard({ children, className = "", delay = 0 }) {
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-      {particles.map((p) => (
-        <motion.div
-          key={p.id}
-          className="absolute rounded-full bg-cinelineGold mix-blend-screen opacity-30"
-          style={{
-            left: `${p.x}%`,
-            top: `${p.y}%`,
-            width: p.size,
-            height: p.size,
-          }}
-          animate={{
-            y: [0, -30, 0],
-            opacity: [0.1, 0.4, 0.1],
-          }}
-          transition={{
-            duration: p.duration,
-            repeat: Infinity,
-            delay: p.delay,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
+    <motion.div
+      initial={{ opacity: 0, y: 20, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-5%" }}
+      transition={{ delay, ...easeModern }}
+      className={`relative p-8 md:p-10 rounded-[2.5rem] bg-gradient-to-br from-white/[0.05] to-transparent border border-white/10 backdrop-blur-3xl overflow-hidden group hover:border-cinelineGold/30 transition-all duration-700 ${className}`}
+    >
+      {/* Glow Hover */}
+      <div className="absolute top-[-20%] right-[-20%] w-3/4 h-3/4 bg-cinelineGold/15 blur-[120px] rounded-full group-hover:bg-cinelineGold/30 transition-colors duration-[2s] pointer-events-none z-0" />
+      <div className="relative z-10 w-full h-full flex flex-col">
+        {children}
+      </div>
+    </motion.div>
+  );
+}
+
+function CircularLogoItem({ name, role, image, imgScale = 1 }) {
+  return (
+    <div className="flex flex-col items-center gap-6 group">
+      <div className="w-40 h-40 md:w-56 md:h-56 rounded-full bg-white flex items-center justify-center p-8 shadow-[0_0_40px_rgba(255,255,255,0.08)] group-hover:scale-110 group-hover:shadow-[0_0_60px_rgba(255,255,255,0.15)] transition-all duration-500 cursor-pointer flex-shrink-0">
+        <div className="relative w-full h-full" style={{ transform: `scale(${imgScale})` }}>
+          <Image src={image} alt={name} fill className="object-contain" />
+        </div>
+      </div>
+
+      <div className="text-center space-y-2 opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+        <h3 className="text-white text-sm md:text-base font-bold tracking-[0.2em] uppercase">{name}</h3>
+        {role && <p className="text-cinelineGold text-[10px] uppercase tracking-[0.2em] font-bold">{role}</p>}
+      </div>
     </div>
   );
 }
-
-function LoveCard({ title, desc, icon: Icon, delay }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay }}
-      className="group relative h-full p-px rounded-2xl overflow-hidden"
-    >
-      {/* Gradient Border */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent group-hover:from-cinelineGold/50 transition-colors duration-300 rounded-2xl" />
-
-      <div className="relative h-full bg-[#080808] p-8 rounded-2xl flex flex-col items-start gap-6 z-10 transition-colors duration-500 group-hover:bg-[#0a0a0a]">
-        <div className="w-16 h-16 rounded-full bg-cinelineGold/5 flex items-center justify-center text-cinelineGold group-hover:bg-cinelineGold group-hover:text-black transition-all duration-500 shadow-sm group-hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]">
-          <Icon size={28} strokeWidth={1.5} />
-        </div>
-
-        <div>
-          <h3 className="text-2xl font-medium text-white mb-3 group-hover:text-cinelineGold transition-colors font-display">{title}</h3>
-          <p className="text-gray-400 font-light leading-relaxed group-hover:text-gray-300 transition-colors">
-            {desc}
-          </p>
-        </div>
-      </div>
-    </motion.div>
-  )
-}
-
-function PartnerCard({ name, image, description, delay, scale = 0.8 }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay }}
-      className="relative flex flex-col items-center"
-    >
-      <div className="relative aspect-square w-full max-w-[280px] bg-white overflow-hidden rounded-full flex flex-col items-center justify-center p-8 border border-white/10 shadow-xl">
-        {/* Logo Container */}
-        <div
-          className="relative w-full h-full"
-          style={{ transform: `scale(${scale})` }}
-        >
-          <Image
-            src={image}
-            alt={name}
-            fill
-            className="object-contain"
-          />
-        </div>
-      </div>
-
-      {/* Content Below */}
-      <div className="mt-8 space-y-2 text-center">
-        <h3 className="text-white text-sm font-bold uppercase tracking-widest">{name}</h3>
-        <p className="text-white/30 text-[10px] uppercase tracking-[0.2em] font-medium leading-relaxed">
-          {description}
-        </p>
-      </div>
-    </motion.div>
-  );
-}
-
-// --- PAGE COMPONENT ---
 
 export default function AboutPage() {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: containerRef });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+  const heroY = useTransform(scrollYProgress, [0, 0.5], ["0%", "50%"]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.9]);
 
   return (
-    <div ref={containerRef} className="bg-black text-white min-h-screen font-sans selection:bg-cinelineGold selection:text-white overflow-hidden">
-      <CinematicGrain opacity={0.12} />
+    <div ref={containerRef} className="bg-[#050505] text-[#FAFAFA] min-h-screen font-sans selection:bg-cinelineGold selection:text-black overflow-hidden relative">
+      <CinematicGrain opacity={0.1} />
 
-      {/* 1. HERO: TIMELESS ELEGANCE */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Soft Gradient Background */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-radial from-cinelineGold/10 via-black to-black opacity-60" />
-          <FloatingParticles />
-        </div>
+      {/* Futuristic Mesh Gradient Background */}
+      <div className="fixed inset-0 z-0 pointer-events-none opacity-40">
+        <div className="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] bg-cinelineGold/20 blur-[150px] rounded-full mix-blend-screen" />
+        <div className="absolute bottom-[-20%] right-[-10%] w-[50vw] h-[50vw] bg-blue-900/20 blur-[180px] rounded-full mix-blend-screen" />
+      </div>
 
-        <div className="container mx-auto px-6 relative z-10 text-center">
+      {/* 1. HERO: Luminous Glass */}
+      <section className="relative h-[90vh] min-h-[800px] flex items-center justify-center z-10 px-6">
+        <motion.div
+          style={{ y: heroY, scale: heroScale }}
+          className="container mx-auto max-w-7xl flex flex-col items-center text-center relative"
+        >
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-8 flex justify-center"
+            transition={{ ...easeModern, delay: 0.1 }}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-12 shadow-[0_0_30px_rgba(255,255,255,0.05)]"
           >
-            <div className="flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
-              <Sparkles className="w-4 h-4 text-cinelineGold" />
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-white/80">Est. 2024</span>
-            </div>
+            <Sparkles className="w-4 h-4 text-cinelineGold animate-pulse" />
+            <span className="text-xs font-bold uppercase tracking-[0.3em] text-white/90">Beyond Ordinary</span>
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[15vw] lg:text-[10vw] leading-[0.9] font-medium tracking-tight text-white mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...easeModern, delay: 0.2 }}
+            className="text-[12vw] md:text-[10vw] leading-[0.9] font-serif tracking-tighter mb-12 flex flex-col"
           >
-            CAPTURING <br />
-            <span className="font-serif italic text-cinelineGold opacity-90">The Unspoken.</span>
+            <span className="text-white uppercase font-sans font-black tracking-tighter block drop-shadow-2xl">Visual</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-b from-cinelineGold via-cinelineGold to-cinelineGold/40 italic font-light lowercase tracking-normal -mt-2 md:-mt-6">architects.</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 1 }}
-            className="max-w-xl mx-auto text-lg md:text-xl text-white/80 font-light leading-relaxed px-4 md:px-0"
+            transition={{ duration: 1, delay: 0.6 }}
+            className="max-w-xl text-lg md:text-xl text-white/50 font-light leading-relaxed"
           >
-            We translate fleeting moments into <span className="text-cinelineGold">eternal memories</span>.
-            A sanctuary for love, art, and storytelling.
+            We don't just capture moments. We engineer breathtaking cinematic experiences that outlive time itself.
           </motion.p>
-        </div>
+        </motion.div>
       </section>
 
-      {/* 2. NARRATIVE: THE LOVE STORY */}
-      <section className="py-20 md:py-32 relative text-center lg:text-left">
-        <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-center">
-            {/* Text Side */}
-            <div className="order-2 lg:order-1 space-y-12">
-              <div>
-                <span className="text-cinelineGold text-xs font-bold uppercase tracking-[0.3em] mb-4 block">Our Essence</span>
-                <h2 className="text-4xl md:text-6xl font-medium leading-[1.1] mb-8 font-display text-white">
-                  More than a camera. <br />
-                  <span className="text-white/50 text-3xl md:text-5xl">We are witnesses to love.</span>
+      {/* 2. THE ETHOS (Premium Gallery Layout) */}
+      <section className="py-32 md:py-48 relative z-10 bg-black">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="flex flex-col gap-32 md:gap-64 mt-12 md:mt-24">
+
+            {/* Block 1: Capturing the Unseen (Avant-Garde Manifesto) */}
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-32">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5, ...easeModern }}
+                className="lg:w-1/2 relative z-10 flex flex-col justify-center"
+              >
+                <div className="flex items-center gap-4 mb-8">
+                  <span className="w-12 h-[2px] bg-cinelineGold" />
+                  <span className="text-cinelineGold text-[10px] uppercase tracking-[0.5em] font-bold">Chapter One</span>
+                </div>
+
+                <h2 className="text-6xl md:text-7xl lg:text-[6.5rem] font-sans font-black text-white uppercase tracking-tighter leading-[0.85] drop-shadow-2xl mb-8">
+                  Capturing <br/>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-cinelineGold to-yellow-600 block mt-2 md:mt-4">The Unseen.</span>
                 </h2>
-                <p className="text-base text-white/60 font-light leading-relaxed mb-6">
-                  Every glance and touch holds a universe. We preserve these moments as a visual legacy to be cherished for generations.
+
+                <div className="pl-6 border-l-2 border-cinelineGold/50 mb-8">
+                  <p className="text-white/80 text-xl md:text-2xl font-serif italic leading-relaxed">
+                    "Aesthetics without profound emotion is empty."
+                  </p>
+                </div>
+
+                <p className="text-white/40 text-lg md:text-xl font-light leading-relaxed max-w-lg">
+                  We strip away the superficial to focus on raw authenticity, framing every heartbeat like a high-fashion editorial.
                 </p>
-                <p className="text-base text-white/60 font-light leading-relaxed">
-                  Professionalism meets heart. We blend technical mastery with sensitivity to tell your story with the grace it deserves.
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 2, ...easeModern }}
+                className="lg:w-5/12 w-full relative group"
+              >
+                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-tr-[5rem] rounded-bl-[5rem] shadow-[0_30px_80px_rgba(0,0,0,0.8)] border border-white/5">
+                  <Image src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop" fill className="object-cover grayscale brightness-[0.7] contrast-125 group-hover:grayscale-0 transition-all duration-[2s] ease-[0.16,1,0.3,1]" alt="Editorial Precision" />
+                </div>
+                <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-cinelineGold/10 rounded-full blur-[60px] pointer-events-none" />
+              </motion.div>
+            </div>
+
+            {/* Block 2: Cinematic Grading */}
+            <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-16 lg:gap-32">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 2, ...easeModern }}
+                className="lg:w-6/12 w-full relative group"
+              >
+                <div className="absolute -top-10 -left-10 w-48 h-48 bg-cinelineGold/10 rounded-full blur-[60px] pointer-events-none z-0" />
+                <div className="relative z-10 aspect-video w-full overflow-hidden rounded-tl-[5rem] rounded-br-[5rem] shadow-[0_30px_80px_rgba(0,0,0,0.8)] border border-white/5">
+                  <Image src="https://images.unsplash.com/photo-1623916298642-1e9bfef53715?q=80&w=1200&auto=format&fit=crop" fill className="object-cover grayscale brightness-[0.7] contrast-125 group-hover:grayscale-0 transition-all duration-[2s] ease-[0.16,1,0.3,1]" alt="Cinematic Grading" />
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5, ...easeModern }}
+                className="lg:w-5/12 relative z-10 flex flex-col justify-center lg:items-end lg:text-right"
+              >
+                <div className="flex items-center gap-4 mb-8 lg:flex-row-reverse">
+                  <span className="w-12 h-[2px] bg-cinelineGold" />
+                  <span className="text-cinelineGold text-[10px] uppercase tracking-[0.5em] font-bold">Chapter Two</span>
+                </div>
+
+                <h2 className="text-5xl md:text-7xl lg:text-[6.5rem] font-sans font-black text-white uppercase tracking-tighter leading-[0.85] drop-shadow-2xl mb-8 flex flex-col lg:items-end">
+                  <span>Cinematic</span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-cinelineGold to-yellow-600 block mt-2 md:mt-4">Grading.</span>
+                </h2>
+
+                <div className="pr-0 lg:pr-6 border-l-2 lg:border-l-0 lg:border-r-2 pl-6 lg:pl-0 border-cinelineGold/50 mb-8">
+                  <p className="text-white/80 text-xl md:text-2xl font-serif italic leading-relaxed">
+                    "Rejecting fleeting trends."
+                  </p>
+                </div>
+
+                <p className="text-white/40 text-lg md:text-xl font-light leading-relaxed max-w-lg">
+                  Our color science emulates perfectly exposed 35mm motion picture film. We manipulate light and shadow to create skin tones that glow and environments that breathe.
                 </p>
-              </div>
-
-              <div className="flex gap-8 pt-8 border-t border-white/10 justify-center lg:justify-start">
-                <div>
-                  <span className="block text-4xl font-light text-white mb-1">100+</span>
-                  <span className="text-xs uppercase tracking-widest text-cinelineGold">Stories Told</span>
-                </div>
-                <div className="w-px bg-white/10 h-12" />
-                <div>
-                  <span className="block text-4xl font-light text-white mb-1">100%</span>
-                  <span className="text-xs uppercase tracking-widest text-cinelineGold">Heart</span>
-                </div>
-              </div>
+              </motion.div>
             </div>
 
-            {/* Image Side - Updated to 1:1 Square */}
-            <div className="order-1 lg:order-2 relative group">
-              <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-white/5 shadow-2xl">
-                <Image
-                  src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop"
-                  alt="Wedding Emotion"
-                  fill
-                  className="object-cover grayscale group-hover:grayscale-0 opacity-80 hover:scale-105 transition-all duration-[1.5s] ease-out"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <div className="absolute bottom-10 left-10 p-6 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 max-w-xs transform group-hover:-translate-y-2 transition-transform duration-700">
-                  <p className="text-white italic font-serif text-lg">"Love is the only gold."</p>
-                </div>
-              </div>
+            {/* Block 3: Stats (Avant-Garde Monolithic Block) */}
+            <motion.div 
+                 initial={{ opacity: 0, y: 40 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 viewport={{ once: true }}
+                 transition={{ duration: 1.5, ...easeModern }}
+                 className="w-full mt-24 md:mt-32 flex flex-col md:flex-row items-center bg-[#050505] rounded-[3rem] border border-white/5 overflow-hidden shadow-2xl relative"
+            >
+               <div className="md:w-1/2 w-full p-16 md:p-24 flex flex-col items-center justify-center text-center relative z-10 group">
+                  <div className="absolute inset-0 bg-cinelineGold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 blur-[100px] pointer-events-none" />
+                  <h3 className="text-[6rem] md:text-[8rem] leading-[0.8] font-sans font-black text-white tracking-tighter mb-4 drop-shadow-lg">
+                    100<span className="text-transparent bg-clip-text bg-gradient-to-t from-cinelineGold to-yellow-500">+</span>
+                  </h3>
+                  <span className="text-white/60 text-[10px] uppercase tracking-[0.5em] font-bold">Stories Preserved</span>
+               </div>
 
-              {/* Decorative Frame Brackets - Consistency with Team Page */}
-              <div className="absolute -top-4 -left-4 w-12 h-12 border-t-2 border-l-2 border-cinelineGold/40 group-hover:border-cinelineGold transition-all duration-700" />
-              <div className="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-cinelineGold/40 group-hover:border-cinelineGold transition-all duration-700" />
-            </div>
+               <div className="hidden md:block w-px h-48 bg-gradient-to-b from-transparent via-white/10 to-transparent relative z-10" />
+               <div className="md:hidden h-px w-48 bg-gradient-to-r from-transparent via-white/10 to-transparent relative z-10" />
+
+               <div className="md:w-1/2 w-full p-16 md:p-24 flex flex-col items-center justify-center text-center relative z-10 group">
+                  <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 blur-[100px] pointer-events-none" />
+                  <h3 
+                    className="text-[4rem] lg:text-[6.5rem] leading-[0.8] font-sans font-black uppercase text-transparent tracking-tighter mb-4"
+                    style={{ WebkitTextStroke: "2px rgba(255,255,255,0.2)" }}
+                  >
+                    Infinity
+                  </h3>
+                  <span className="text-white/40 text-[10px] uppercase tracking-[0.5em] font-bold">Moments Captured</span>
+               </div>
+            </motion.div>
+
           </div>
         </div>
       </section>
 
-      {/* 3. CORE VALUES: PROFESSIONAL LOVE */}
-      <section className="py-32 bg-[#050505] relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-cinelineGold/5 blur-[150px] rounded-full pointer-events-none" />
+      {/* 3. THE ALLIANCE */}
+      <section className="py-20 md:py-32 relative z-10 bg-black/50 border-y border-white/10">
+        <div className="container mx-auto px-6 mb-24 md:mb-32 text-center">
+          <span className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.4em] text-cinelineGold mb-4">
+            <Crown className="w-4 h-4" /> The Alliance
+          </span>
+          <h2 className="text-3xl md:text-5xl font-display font-medium text-white tracking-tight">Trusted Collaborators</h2>
+        </div>
 
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
-            <h2 className="text-4xl md:text-6xl font-medium tracking-tight text-white mb-6 md:mb-8 font-display">The Heart of Cineline</h2>
-            <p className="text-white/60 text-lg md:text-xl font-light">
-              Built on a foundation of trust, excellence, and genuine care.
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-14 lg:gap-20">
+            <CircularLogoItem name="Ramo Photography" role="Cinematic Photography" image="/images/team/ramo photography logo.webp" imgScale={1.85} />
+            <CircularLogoItem name="BRNDX" role="Visual Identity" image="/images/team/BRNDX Logo.webp" />
+            <CircularLogoItem name="Just Cliks" role="Digital Presence" image="/images/team/just clicks.webp" />
+            <CircularLogoItem name="Just Sappaduu" role="Culinary Art" image="/images/team/just sappaduu.webp" />
+          </div>
+        </div>
+      </section>
+
+      {/* 4. THE GRAND FINALE (Premium Minimalist CTA) */}
+      <section className="py-32 md:py-48 relative border-t border-white/10 bg-[#020202] text-center flex flex-col items-center">
+        <div className="container mx-auto px-6 max-w-4xl flex flex-col items-center">
+
+          {/* Typography */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, ...easeModern }}
+            className="space-y-10 flex flex-col items-center"
+          >
+            <span className="inline-block border-b border-cinelineGold/40 pb-3 text-cinelineGold text-[10px] uppercase tracking-[0.5em] font-bold">The Next Chapter</span>
+
+            <h2 className="text-5xl md:text-7xl lg:text-[7rem] font-display font-medium text-white leading-[1.05] tracking-tight">
+              Ready to be <br />
+              <span className="font-serif italic text-white/50 font-light block mt-4 tracking-normal">Immortalized?</span>
+            </h2>
+
+            <p className="max-w-xl text-white/40 text-lg font-light leading-relaxed mx-auto">
+              Join us in crafting a visual legacy that transcends time. We accept a strictly limited number of commissions annually.
             </p>
-          </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <LoveCard
-              icon={Heart}
-              title="Emotive Storytelling"
-              desc="We look for the authentic moments. The quiet whispers, the loud laughter, the unscripted joy. That is where the magic lives."
-              delay={0}
-            />
-            <LoveCard
-              icon={Camera}
-              title="Artistic Excellence"
-              desc="Our team is composed of seasoned professionals who treat every frame as a painting. Perfection is our love language."
-              delay={0.2}
-            />
-            <LoveCard
-              icon={InfinityIcon}
-              title="Timeless Connection"
-              desc="We build relationships, not just portfolios. We are honored to walk beside you on your most important days."
-              delay={0.4}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* 4. FOUNDER NOTE (TEAM) */}
-      <FounderNote />
-
-      {/* 4.5 TRUSTED PARTNERS: THE COLLECTIVE */}
-      <section className="py-32 bg-black border-t border-white/5 relative overflow-hidden">
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
-            <div className="max-w-xl">
-              <span className="text-cinelineGold uppercase tracking-[0.4em] text-[10px] font-bold mb-4 block">The Alliance</span>
-              <h2 className="text-4xl md:text-6xl font-medium tracking-tight text-white font-display uppercase">
-                Trusted <br /> <span className="text-white/40 italic font-serif">Partners.</span>
-              </h2>
+            <div className="pt-10">
+              <Link
+                href="/contact"
+                className="group relative inline-flex items-center gap-6 pb-4 border-b border-white/20 hover:border-cinelineGold transition-colors duration-500"
+              >
+                <span className="text-white text-xs md:text-sm uppercase tracking-[0.3em] font-medium group-hover:text-cinelineGold transition-colors duration-500">Initiate Contact</span>
+                <MoveRight className="w-5 h-5 text-white/40 group-hover:text-cinelineGold group-hover:translate-x-2 transition-all duration-500" />
+              </Link>
             </div>
-            <p className="max-w-md text-white/40 text-sm font-light leading-relaxed border-l border-white/10 pl-8">
-              Collaborating with the industry’s finest to ensure every facet of your production meets our exacting standards for excellence and innovation.
-            </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16">
-            <PartnerCard
-              name="Ramo Photography"
-              image="/images/team/ramo photography logo.png"
-              description="Timeless Wedding Photography & Cinematic Films"
-              delay={0.1}
-              scale={1.8}
-            />
-            <PartnerCard
-              name="BRNDX"
-              image="/images/team/BRNDX Logo.png"
-              description="Strategic Branding & Visual Identity"
-              delay={0.2}
-              scale={1.1}
-            />
-            <PartnerCard
-              name="Just Cliks"
-              image="/images/team/just clicks.PNG"
-              description="Premium Social Media Management"
-              delay={0.3}
-              scale={1.1}
-            />
-            <PartnerCard
-              name="Just Sappaduu"
-              image="/images/team/just sappaduu.png"
-              description="Culinary Styling & Gastronomy"
-              delay={0.4}
-              scale={1.1}
-            />
-          </div>
         </div>
       </section>
 
-      {/* 5. CALL TO ACTION: ELEGANT */}
-      <section className="h-[70vh] flex flex-col items-center justify-center relative overflow-hidden bg-black text-center">
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.05]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-cinelineGold/10 via-transparent to-transparent opacity-50" />
-
-        <div className="relative z-10 px-6 max-w-4xl text-center">
-          <h2 className="text-4xl md:text-8xl font-medium tracking-tight mb-10 text-white font-display">
-            Your Story, <br />
-            <span className="text-cinelineGold italic font-serif opacity-90">Immoralized.</span>
-          </h2>
-
-          <Link href="/contact" className="group relative inline-flex items-center gap-4 px-12 py-5 bg-white text-black rounded-full overflow-hidden hover:bg-gray-100 transition-colors duration-300">
-            <span className="relative z-10 font-bold tracking-widest uppercase text-sm">Begin The Journey</span>
-            <ArrowRight className="relative z-10 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-          </Link>
-        </div>
-      </section>
+      <style jsx global>{`
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </div>
   );
 }

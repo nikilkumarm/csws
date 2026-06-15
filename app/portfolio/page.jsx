@@ -8,24 +8,24 @@ import Image from "next/image";
 // --- CURATED PROJECTS DATA ---
 const allProjects = [
   // Editorial / Fashion
-  { id: 101, src: "/images/portfolio-gallery/editorial-1.jpg", category: "editorial", title: "Atmospheric Portraits", client: "Studio Session", available: true },
-  { id: 102, src: "/images/portfolio-gallery/editorial-2.jpg", category: "editorial", title: "Urban Shadows", client: "Street Series", available: true },
-  { id: 103, src: "/images/portfolio-gallery/IMG_2114.JPG", category: "editorial", title: "Ethereal Essence", client: "Vogue India", available: true },
+  { id: 101, src: "/images/portfolio-gallery/editorial-1.webp", category: "editorial", title: "Atmospheric Portraits", client: "Studio Session", available: true },
+  { id: 102, src: "/images/portfolio-gallery/editorial-2.webp", category: "editorial", title: "Urban Shadows", client: "Street Series", available: true },
+  { id: 103, src: "/images/portfolio-gallery/IMG_2114.webp", category: "editorial", title: "Ethereal Essence", client: "Vogue India", available: true },
 
   // Weddings
-  { id: 201, src: "/images/portfolio-gallery/IMG_0001.jpg", category: "wedding", title: "The Royal Union", client: "Palace Wedding", available: true },
-  { id: 202, src: "/images/portfolio-gallery/IMG_6835.jpg", category: "wedding", title: "Golden Hour Vows", client: "Heritage Resort", available: true },
-  { id: 203, src: "/images/portfolio-gallery/IMG_1804.JPG", category: "wedding", title: "Eternal Love", client: "Church Ceremony", available: true },
-  { id: 204, src: "/images/portfolio-gallery/IMG_2048.JPG", category: "wedding", title: "Sacred Rituals", client: "Temple Tradition", available: true },
+  { id: 201, src: "/images/portfolio-gallery/IMG_0001.webp", category: "wedding", title: "The Royal Union", client: "Palace Wedding", available: true },
+  { id: 202, src: "/images/portfolio-gallery/IMG_6835.webp", category: "wedding", title: "Golden Hour Vows", client: "Heritage Resort", available: true },
+  { id: 203, src: "/images/portfolio-gallery/IMG_1804.webp", category: "wedding", title: "Eternal Love", client: "Church Ceremony", available: true },
+  { id: 204, src: "/images/portfolio-gallery/IMG_2048.webp", category: "wedding", title: "Sacred Rituals", client: "Temple Tradition", available: true },
 
   // Commercial / Product
-  { id: 301, src: "/images/portfolio-gallery/commercial-1.jpg", category: "commercial", title: "Brand Narrative", client: "Corporate Campaign", available: true },
-  { id: 302, src: "/images/portfolio-gallery/commercial-2.jpg", category: "commercial", title: "Visual Language", client: "Product Showcase", available: true },
-  { id: 303, src: "/images/portfolio-gallery/IMG_3419.JPG", category: "commercial", title: "Luxe Kinetics", client: "Aura Watch", available: true },
+  { id: 301, src: "/images/portfolio-gallery/commercial-1.webp", category: "commercial", title: "Brand Narrative", client: "Corporate Campaign", available: true },
+  { id: 302, src: "/images/portfolio-gallery/commercial-2.webp", category: "commercial", title: "Visual Language", client: "Product Showcase", available: true },
+  { id: 303, src: "/images/portfolio-gallery/IMG_3419.webp", category: "commercial", title: "Luxe Kinetics", client: "Aura Watch", available: true },
 
   // Events
-  { id: 401, src: "/images/portfolio-gallery/event-1.jpg", category: "events", title: "The Grand Launch", client: "Corporate Gala", available: true },
-  { id: 402, src: "/images/portfolio-gallery/IMG_0198-2.JPG", category: "events", title: "Neon Pulse", client: "Music Festival", available: true },
+  { id: 401, src: "/images/portfolio-gallery/event-1.webp", category: "events", title: "The Grand Launch", client: "Corporate Gala", available: true },
+  { id: 402, src: "/images/portfolio-gallery/IMG_0198-2.webp", category: "events", title: "Neon Pulse", client: "Music Festival", available: true },
 ].filter(p => p.available);
 
 export default function PortfolioPage() {
